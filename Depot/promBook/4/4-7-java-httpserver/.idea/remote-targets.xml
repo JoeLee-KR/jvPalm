@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="RemoteTargetsManager">
+    <targets>
+      <target name="doogie@u23:22" type="ssh/sftp" uuid="2b2e9524-e86c-418b-a634-5d73da197db1">
+        <config>
+          <option name="projectRootOnTarget" value="/home/doogie/4-7-java-httpserver" />
+          <option name="serverName" value="doogie@u23:22 password" />
+          <option name="useRsync" value="true" />
+        </config>
+        <ContributedStateBase type="JavaLanguageRuntime">
+          <config>
+            <option name="homePath" value="/" />
+            <option name="javaVersionString" value="1.8.0_262" />
+          </config>
+        </ContributedStateBase>
+      </target>
+    </targets>
+  </component>
+</project>
