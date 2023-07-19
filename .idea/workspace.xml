@@ -10,34 +10,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="21c8fc54-c20e-4ad5-9bc8-9442f1565984" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/scripts/SFM_QueryHistory.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scripts/checkMysqlJdbcConn.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scripts/checkSfJdbcConns.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/Study23/1. ChatGPT_kick-off_0317.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/Study2023/1. ChatGPT_kick-off_0317.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/Study23/AI 미디어 Company _0207(최종).pptx" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/Study2023/AI 미디어 Company _0207(최종).pptx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/Study23/AI_Mar2023.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/Study2023/AI_Mar2023.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/Study23/BigModel(202303).pdf" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/Study2023/BigModel(202303).pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/Study23/Chap01.WhatIsPrometheus.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/Study2023/Chap01.WhatIsPrometheus.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/Study23/Chap02.StartWithPrometheus.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/Study2023/Chap02.StartWithPrometheus.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/Study23/Chap03.Instrumentation.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/Study2023/Chap03.Instrumentation.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/Study23/Chap04.MetricExposition.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/Study2023/Chap04.MetricExposition.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/Study23/Chap05.Label.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/Study2023/Chap05.Label.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/Study23/Chap06.Grafana.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/Study2023/Chap06.Grafana.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/Study23/Chap07.NodeExporter.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/Study2023/Chap07.NodeExporter.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/Study23/Chap08.ServiceDiscovery_.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/Study2023/Chap08.ServiceDiscovery_.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/Study23/Chap10.GeneralExporter.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/Study2023/Chap10.GeneralExporter.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/Study23/Chap11.WorkWithOtherMonitors.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/Study2023/Chap11.WorkWithOtherMonitors.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/Study23/Chap13.UsingPromQL.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/Study2023/Chap13.UsingPromQL.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/Study23/OC_FinOps_Study_Plan_230407_add.pptx" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/Study2023/OC_FinOps_Study_Plan_230407_add.pptx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/Study23/OC_FinOps_Study_Plan_230607_add.pptx" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/Study2023/OC_FinOps_Study_Plan_230607_add.pptx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/Study23/OC_FinOps_Study_Plan_230707_add.pptx" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/Study2023/OC_FinOps_Study_Plan_230707_add.pptx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/Study23/OC_FinOps_Study_Plan_230707_interReport.pptx" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/Study2023/OC_FinOps_Study_Plan_230707_interReport.pptx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/Study23/OC_FinOps_Study_Plan_230716_interReport.pptx" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/Study2023/OC_FinOps_Study_Plan_230716_interReport.pptx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/Study23/chatGPT_PromptEng.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/Study2023/chatGPT_PromptEng.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/Study23/mysqlForDatasourceOfGrafana.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/Study2023/mysqlForDatasourceOfGrafana.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/Study23/mysqldExporterForPrometheus.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/Study2023/mysqldExporterForPrometheus.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/underslow/starthere/checkSfJdbcConns.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/underslow/starthere/checkSfJdbcConns.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/scripts/test" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/Study2023/OC_FinOps_Study_Plan_230716_interReport.pptx" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,24 +32,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "/Users/doogie/DevOps/jvPalm/scripts",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "project.structure.last.edited": "Artifacts",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "preferences.lookFeel",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/doogie/DevOps/jvPalm/scripts&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Artifacts&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/scripts" />
@@ -96,6 +70,7 @@
       <workItem from="1689122594768" duration="364000" />
       <workItem from="1689122980190" duration="18180000" />
       <workItem from="1689577702374" duration="379000" />
+      <workItem from="1689749686730" duration="320000" />
     </task>
     <servers />
   </component>
