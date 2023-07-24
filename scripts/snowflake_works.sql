@@ -53,8 +53,9 @@ WHERE   START_TIME >= to_TIMESTAMP('2023-07-06 00:00:00')
 GROUP BY WAREHOUSE_NAME
 ;
 
-select * --count(*)
+select QUERY_TEXT -- * --count(*)
 from SNOWFLAKE.ACCOUNT_USAGE.QUERY_HISTORY
+WHERE USER_NAME = 'PALMADMIN'
 order by start_time DESC
 LIMIT 100;
 ;
@@ -124,7 +125,6 @@ ORDER BY START_TIME DESC
 ;
 
 
-
 --
 -- create table at mysql-style for SF.query_history
 QUERY_ID        varchar(256) primary key,
@@ -161,3 +161,13 @@ CHILD_QUERIES_WAIT_TIME		decimal(38,0),
 ROLE_TYPE			varchar(256)
 --
 -- EOF
+
+SELECT *
+FROM SNOWFLAKE.ACCOUNT_USAGE.USERS
+WHERE DELETED_ON IS NULL
+ORDER BY USER_ID 
+-- WHERE EMAIL <> 'NULL'
+;
+
+
+

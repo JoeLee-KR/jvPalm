@@ -87,7 +87,7 @@ SUBDATE( now(), interval -1 day),
 --
 -- select table
 
-select * -- count(*)
+select query_text -- * -- count(*)
 from palmdb.sf_query_history
 order by start_time desc 
 ;
@@ -182,3 +182,133 @@ select now(), @@system_time_zone, @@Global.time_zone, @@session.time_zone;
 
 --
 --
+SELECT 
+	STARTTIME,
+	USER_NAME, 
+	WAREHOUSE_NAME,
+	sum(TOTAL_ELAPSED_TIME)/1000 as TT,
+	sum(EXECUTION_TIME)/1000 as TE,
+	sum(COMPILATION_TIME)/1000 as TC,
+	sum(CHILD_QUERIES_WAIT_TIME)/1000 as TW,
+	sum(BYTES_SCANNED) as Scan,
+	COUNT(*)
+from PALMDB.SF_QUERY_HISTORY
+where start_time >= adddate(timestamp(now()), interval -24 hour)
+	and start_time < adddate(timestamp(now()), interval 0 day)
+group by STARTTIME, USER_NAME, WAREHOUSE_NAME
+order by STARTTIME DESC
+-- limit 10
+;
+
+SELECT  
+	STARTTIME,
+	USER_NAME,
+	-- ROLE_NAME,
+	COUNT(*)
+from PALMDB.SF_QUERY_HISTORY
+-- where start_time >= adddate(timestamp(now()), interval -2 hour)
+--	and start_time < adddate(timestamp(now()), interval 0 day)
+group by STARTTIME, USER_NAME
+order by STARTTIME DESC
+limit 1000
+;
+
+SELECT  
+	STARTTIME,
+	-- USER_NAME,
+	COUNT(*) AS OTHERS
+from PALMDB.SF_QUERY_HISTORY
+ where USER_NAME not in ('MSTR_PRD', 'WEB_EXA_PRD', 'CDC_PRD', 'MDWDBA', 'PRD_DEVELOPER1', 'DQMADMIN')
+group by STARTTIME
+order by STARTTIME DESC
+-- order by STARTTIME
+;
+SELECT  
+	STARTTIME,
+	USER_NAME,
+	COUNT(*) AS OTHERS
+from PALMDB.SF_QUERY_HISTORY
+-- where STARTTIME = timestamp('2023-07-21 08:30:00')
+ where USER_NAME not in ('MSTR_PRD', 'WEB_EXA_PRD', 'CDC_PRD', 'MDWDBA', 'PRD_DEVELOPER1', 'DQMADMIN', 'SYSTEM')
+group by STARTTIME, USER_NAME
+order by STARTTIME DESC
+
+select * -- count(*)
+from PALMDB.SF_QUERY_HISTORY
+where START_TIME >=('2023-07-21 08:00:00')
+	and START_TIME <('2023-07-21 08:10:00')
+	and TOTAL_ELAPSED_TIME > 30000
+order by start_time asc
+	;
+
+--
+-- pivot
+select *
+from (
+	select STARTTIME, USER_NAME, TOTAL_ELAPSED_TIME as QCNT from PALMDB.SF_QUERY_HISTORY group by STARTTIME, USER_NAME order by STARTTIME desc
+) as result
+pivot (
+	sum(TOTAL_ELAPSED_TIME) for USER_NAME in ('MSTR_PRD', 'PRD_DEVELOPER1', 'PALMADMIN')
+) as pivot_result
+order by starttime 
+;
+
+--
+-- pivot
+
+select 
+	starttime,
+	sum(MSTR) 		as MSTRS,
+	sum(DEVELOPER)	as DEVELOPERS,
+	sum(DQMADMIN)	as DQMADMINS,
+	sum(PALMADMIN)	as PALMADMINS,
+	sum(ALLUSERS)	as ALLUSERS
+from (
+	select
+		STARTTIME,
+		case when USER_NAME = 'MSTR_PRD' then 1
+			else 0
+			end MSTR,
+		case when USER_NAME = 'PRD_DEVELOPER1' then 1
+			else 0
+			end DEVELOPER,
+		case when USER_NAME = 'DQMADMIN' then 1
+			else 0
+			end DQMADMIN,
+		case when USER_NAME = 'PALMADMIN' then 1
+			else 0
+			end PALMADMIN,
+		case when USER_NAME <> 'NULL' then 1
+			else 0
+			end ALLUSERS
+	from PALMDB.SF_QUERY_HISTORY
+) result
+group by STARTTIME
+order by STARTTIME desc
+;
+
+select 
+	starttime,
+	sum(MSTR) 		as MSTR,
+	sum(DEVELOPER)	as DEVELOPER,
+	sum(DQMADMIN)	as DQMADMIN,
+	sum(PALMADMIN)	as PALMADMIN
+from (
+	select
+		STARTTIME,
+		case when USER_NAME = 'MSTR_PRD' then TOTAL_ELAPSED_TIME
+			else 0
+			end MSTR,
+		case when USER_NAME = 'PRD_DEVELOPER1' then TOTAL_ELAPSED_TIME
+			else 0
+			end DEVELOPER,
+		case when USER_NAME = 'DQMADMIN' then TOTAL_ELAPSED_TIME
+			else 0
+			end DQMADMIN,
+		case when USER_NAME = 'PALMADMIN' then TOTAL_ELAPSED_TIME
+			else 0
+			end PALMADMIN
+	from PALMDB.SF_QUERY_HISTORY
+) result
+group by STARTTIME
+;
