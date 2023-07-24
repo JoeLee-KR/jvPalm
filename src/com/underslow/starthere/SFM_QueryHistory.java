@@ -30,10 +30,10 @@ public class SFM_QueryHistory {
 
     // FOR INTERNET
     //String sfjdbcUrl = "jdbc:snowflake://jx75304.ap-northeast-2.aws.snowflakecomputing.com/";
-    String sfjdbcUrl = "jdbc:snowflake://atixoaj-skbroadband.snowflakecomputing.com/";
+    //String sfjdbcUrl = "jdbc:snowflake://atixoaj-skbroadband.snowflakecomputing.com/";
 
     // FOR SKB INTERNAL
-    //String sfjdbcUrl = "jdbc:snowflake://atixoaj-skbroadband.privatelink.snowflakecomputing.com/";
+    String sfjdbcUrl = "jdbc:snowflake://atixoaj-skbroadband.privatelink.snowflakecomputing.com/";
     String sfUser = "palmadmin";
     String sfPswd = "VNgkgk007";
     String sfAccount = "atixoaj-skbroadband";
@@ -197,7 +197,7 @@ public class SFM_QueryHistory {
             sfConn = DriverManager.getConnection( sfjdbcUrl, properties);
             //System.out.println("\tJOE::Connection SF established, connection id : " + sfConn);
 
-            sfStmt = sfConn.createStatement();
+            //sfStmt = sfConn.createStatement();
             //sfStmt.executeQuery("ALTER SESSION SET JDBC_QUERY_RESULT_FORMAT='JSON'");
             //System.out.println("\tJOE::Alter Session > JSON statement, object-id : " + sfStmt);
 
@@ -215,12 +215,16 @@ public class SFM_QueryHistory {
     }
     public void closeConnection() {
         try{
+            sfpStmt.close();
             sfRS.close();
-            sfStmt.close();
+            // remark for processQuery00
+            //sfStmt.close();
             sfConn.close();
 
-            myRS.close();
-            myStmt.close();
+            mypStmt.close();
+            // remark for processQuery00
+            //myRS.close();
+            //myStmt.close();
             myConn.close();
 
         }catch(Exception e){
@@ -436,7 +440,7 @@ public class SFM_QueryHistory {
             my.setQueries();
             my.setConnProperties();
             my.getConnection();
-            my.getProcessQuery00();
+            // my.getProcessQuery00();
             my.getProcessQuery01();
             my.closeConnection();
         } // args

@@ -10,8 +10,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="21c8fc54-c20e-4ad5-9bc8-9442f1565984" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/scripts/test" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/Study2023/OC_FinOps_Study_Plan_230716_interReport.pptx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/underslow/starthere/SFM_QueryHistory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/underslow/starthere/SFM_QueryHistory.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,11 +72,22 @@
       <workItem from="1689122980190" duration="18180000" />
       <workItem from="1689577702374" duration="379000" />
       <workItem from="1689749686730" duration="320000" />
+      <workItem from="1690182039950" duration="1598000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.NullPointerException" package="java.lang" />
+          <option name="timeStamp" value="1" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
