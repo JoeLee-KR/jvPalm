@@ -30,10 +30,10 @@ public class SFM_QueryHistory {
 
     // FOR INTERNET
     //String sfjdbcUrl = "jdbc:snowflake://jx75304.ap-northeast-2.aws.snowflakecomputing.com/";
-    //String sfjdbcUrl = "jdbc:snowflake://atixoaj-skbroadband.snowflakecomputing.com/";
+    String sfjdbcUrl = "jdbc:snowflake://atixoaj-skbroadband.snowflakecomputing.com/";
 
     // FOR SKB INTERNAL
-    String sfjdbcUrl = "jdbc:snowflake://atixoaj-skbroadband.privatelink.snowflakecomputing.com/";
+    //String sfjdbcUrl = "jdbc:snowflake://atixoaj-skbroadband.privatelink.snowflakecomputing.com/";
     String sfUser = "palmadmin";
     String sfPswd = "VNgkgk007";
     String sfAccount = "atixoaj-skbroadband";

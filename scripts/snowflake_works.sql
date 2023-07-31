@@ -45,6 +45,42 @@ LIMIT 100
 ;
 
 --
+-- create table inform at mysql-style for SF.query_history
+QUERY_ID        varchar(256) primary key,
+QUERY_TEXT      text,				-- other varchar(4096)
+DATABASE_NAME   varchar(256),
+SCHEMA_NAME     varchar(256),
+QUERY_TYPE      varchar(256),
+
+SESSION_ID      decimal(38,0),    -- BigDecimal@java 16 digits
+USER_NAME       varchar(256),
+ROLE_NAME		varchar(256),
+WAREHOUSE_NAME		varchar(256),
+WAREHOUSE_SIZE		varchar(256),
+
+WAREHOUSE_TYPE		varchar(256),
+CLUSTER_NUMBER		decimal(38,0),
+EXECUTION_STATUS	varchar(256),
+ERROR_CODE			varchar(256),
+ERROR_MESSAGE		varchar(256),
+
+START_TIME			timestamp,
+END_TIME			timestamp,
+TOTAL_ELAPSED_TIME	decimal(38,0),
+BYTES_SCANNED		decimal(38,0),
+PERCENTAGE_SCANNED_FROM_CACHE	DOUBLE,   -- must double AT SF
+
+COMPILATION_TIME	decimal(38,0),
+EXECUTION_TIME		decimal(38,0),
+CREDITS_USED_CLOUD_SERVICES		DOUBLE,		-- must double AT SF
+RELEASE_VERSION		varchar(256),
+TRANSACTION_ID		decimal(38,0),	-- BigDecimal@java
+
+CHILD_QUERIES_WAIT_TIME		decimal(38,0),
+ROLE_TYPE			varchar(256)
+
+
+--
 -- some selects
 SELECT * -- count(*)
 FROM SNOWFLAKE.ACCOUNT_USAGE.QUERY_HISTORY
@@ -64,8 +100,8 @@ LIMIT 100;
 select QUERY_ID, START_TIME, USER_NAME, COMPILATION_TIME, EXECUTION_TIME, CREDITS_USED_CLOUD_SERVICES 
 from SNOWFLAKE.ACCOUNT_USAGE.QUERY_HISTORY
 where 	start_time >= to_timestamp( date(CURRENT_TIMESTAMP()) )
-	and start_time < to_timestamp( dateadd( DAY, 1, date(CURRENT_TIMESTAMP()) ) )
-	and start_time >= to_timestamp( dateadd( minute, -60, CURRENT_TIMESTAMP())  )
+	-- and start_time < to_timestamp( dateadd( DAY, 1, date(CURRENT_TIMESTAMP()) ) )
+	and start_time >= to_timestamp( dateadd( minute, -20, CURRENT_TIMESTAMP())  )
 order by start_time desc
 limit 100
 ;
@@ -125,47 +161,12 @@ ORDER BY START_TIME DESC
 ;
 
 
---
--- create table at mysql-style for SF.query_history
-QUERY_ID        varchar(256) primary key,
-QUERY_TEXT      text,				-- other varchar(4096)
-DATABASE_NAME   varchar(256),
-SCHEMA_NAME     varchar(256),
-QUERY_TYPE      varchar(256),
 
-SESSION_ID      decimal(38,0),    -- BigDecimal@java 16 digits
-USER_NAME       varchar(256),
-ROLE_NAME		varchar(256),
-WAREHOUSE_NAME		varchar(256),
-WAREHOUSE_SIZE		varchar(256),
-
-WAREHOUSE_TYPE		varchar(256),
-CLUSTER_NUMBER		decimal(38,0),
-EXECUTION_STATUS	varchar(256),
-ERROR_CODE			varchar(256),
-ERROR_MESSAGE		varchar(256),
-
-START_TIME			timestamp,
-END_TIME			timestamp,
-TOTAL_ELAPSED_TIME	decimal(38,0),
-BYTES_SCANNED		decimal(38,0),
-PERCENTAGE_SCANNED_FROM_CACHE	DOUBLE,   -- must double AT SF
-
-COMPILATION_TIME	decimal(38,0),
-EXECUTION_TIME		decimal(38,0),
-CREDITS_USED_CLOUD_SERVICES		DOUBLE,		-- must double AT SF
-RELEASE_VERSION		varchar(256),
-TRANSACTION_ID		decimal(38,0),	-- BigDecimal@java
-
-CHILD_QUERIES_WAIT_TIME		decimal(38,0),
-ROLE_TYPE			varchar(256)
---
--- EOF
 
 SELECT *
 FROM SNOWFLAKE.ACCOUNT_USAGE.USERS
 WHERE DELETED_ON IS NULL
-ORDER BY USER_ID 
+ORDER BY USER_ID DESC
 -- WHERE EMAIL <> 'NULL'
 ;
 

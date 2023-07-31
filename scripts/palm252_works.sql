@@ -233,12 +233,16 @@ from PALMDB.SF_QUERY_HISTORY
 group by STARTTIME, USER_NAME
 order by STARTTIME DESC
 
+
 select * -- count(*)
 from PALMDB.SF_QUERY_HISTORY
-where START_TIME >=('2023-07-21 08:00:00')
-	and START_TIME <('2023-07-21 08:10:00')
-	and TOTAL_ELAPSED_TIME > 30000
-order by start_time asc
+where START_TIME >=('2023-07-21 11:00:00')
+	and START_TIME <('2023-07-21 12:00:00')
+	-- and TOTAL_ELAPSED_TIME > 30000
+	and user_name = 'DQMADMIN'
+	and cluster_number=2
+-- order by start_time asc
+	order by start_time, TOTAL_ELAPSED_TIME desc
 	;
 
 --
@@ -281,10 +285,10 @@ from (
 		case when USER_NAME <> 'NULL' then 1
 			else 0
 			end ALLUSERS
-	from PALMDB.SF_QUERY_HISTORY
+	from palmdb.sf_query_history
 ) result
-group by STARTTIME
-order by STARTTIME desc
+group by starttime
+order by starttime desc
 ;
 
 select 
