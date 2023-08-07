@@ -60,6 +60,7 @@ public class SFM_QueryHistory {
     Timestamp selectFromTS;
     Timestamp selectToTS;
     int tsRange;
+    Boolean flagDupProcess;
 
     //default constructor
     public SFM_QueryHistory() {
@@ -359,8 +360,10 @@ public class SFM_QueryHistory {
                         sfRS.getTimestamp("NOWTS")
                     );
                     */
-                    progressMark--;
-                    break;
+                    if ( !flagDupProcess ) {
+                        progressMark--;
+                        break;
+                    }
                 }
             } //while
             mypStmt.close();
@@ -394,12 +397,14 @@ public class SFM_QueryHistory {
                 tsRange = 15;
                 selectFromTS = Timestamp.valueOf(makeTS( LocalDateTime.now() ).toLocalDateTime().plusMinutes(-tsRange) );
                 selectToTS = makeTS( LocalDateTime.now() );
+                flagDupProcess = false;
                 break;
             case 1: // minutes now -m
                 try {
                     tsRange = Integer.parseInt( args[0] );
                     selectFromTS = Timestamp.valueOf(makeTS( LocalDateTime.now() ).toLocalDateTime().plusMinutes(-tsRange) );
                     selectToTS = makeTS( LocalDateTime.now() );
+                    flagDupProcess = true;
                     break;
                 } catch (Exception e) {
                     //System.out.println("JOE NUMNER FORMAT ERROR:" + e);
@@ -415,6 +420,7 @@ public class SFM_QueryHistory {
                         selectFromTS = makeTS( args[0] );
                         selectToTS = Timestamp.valueOf(makeTS( args[0] ).toLocalDateTime().plusDays(1) );
                     }
+                    flagDupProcess = true;
                     break;
                 } catch (Exception e) {
                     //System.out.println("JOE:" + e);
@@ -434,8 +440,8 @@ public class SFM_QueryHistory {
 
         if ( my.getArgs(args) == -1) {
             System.out.println("Usage_: Command {minutes} | {Date Hour}");
-            System.out.println("\tnull args is 15 minutes for default, or 1 args minutes and break at DUP");
-            System.out.println("\tDate Hour(0..23,24), 24 means hole day and not break at DUP");
+            System.out.println("\tnull args is 15 minutes for default, or 1 args mean arg minutes, and at DUP");
+            System.out.println("\tDate & Hour(0..23,24) args, 24 means hole day and not break at DUP");
         } else {
             my.setQueries();
             my.setConnProperties();
