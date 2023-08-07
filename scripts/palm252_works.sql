@@ -213,14 +213,21 @@ order by STARTTIME DESC
 limit 1000
 ;
 
+select date( now() ) as TDATE,
+	user_name,
+	count(*) as TCOUNT
+from palmdb.sf_query_history 
+where date( start_time ) = date( now() )
+group by user_name
+order by TCOUNT DESC
+;
+
 SELECT  
-	STARTTIME,
-	-- USER_NAME,
 	COUNT(*) AS OTHERS
-from PALMDB.SF_QUERY_HISTORY
- where USER_NAME not in ('MSTR_PRD', 'WEB_EXA_PRD', 'CDC_PRD', 'MDWDBA', 'PRD_DEVELOPER1', 'DQMADMIN')
-group by STARTTIME
-order by STARTTIME DESC
+from palmdb.sf_query_history 
+where USER_NAME not in ('MSTR_PRD', 'WEB_EXA_PRD', 'CDC_PRD', 'MDWDBA', 'PRD_DEVELOPER1', 'DQMADMIN') 
+	and date( start_time ) = date( now() )
+
 -- order by STARTTIME
 ;
 SELECT  
@@ -262,57 +269,106 @@ order by starttime
 
 select 
 	starttime,
-	sum(MSTR) 		as MSTRS,
-	sum(DEVELOPER)	as DEVELOPERS,
+	sum(ALLUSERS)	as ALLUSERS,
 	sum(DQMADMIN)	as DQMADMINS,
-	sum(PALMADMIN)	as PALMADMINS,
-	sum(ALLUSERS)	as ALLUSERS
+	sum(INSYSTEM)	as SYSTEMS,
+	sum(DEVELOPER)	as DEVELOPERS,
+	sum(MSTR) 		as MSTRS
 from (
 	select
 		STARTTIME,
-		case when USER_NAME = 'MSTR_PRD' then 1
-			else 0
-			end MSTR,
-		case when USER_NAME = 'PRD_DEVELOPER1' then 1
-			else 0
-			end DEVELOPER,
 		case when USER_NAME = 'DQMADMIN' then 1
 			else 0
 			end DQMADMIN,
-		case when USER_NAME = 'PALMADMIN' then 1
+		case when USER_NAME = 'SYSTEM'  then 1
+			-- when USER_NAME = 'PALMADMIN' then 1
+			when USER_NAME = 'CDC_PRD' then 1
+			when USER_NAME = 'WEB_EXA_PRD' then 1
 			else 0
-			end PALMADMIN,
+			end INSYSTEM,
+		case when USER_NAME = 'PRD_DEVELOPER1' then 1
+			when USER_NAME = 'DEV_DEVELOPER1' then 1
+			else 0
+			end DEVELOPER,
+		case when USER_NAME = 'MSTR_PRD' then 1
+			else 0
+			end MSTR,
 		case when USER_NAME <> 'NULL' then 1
 			else 0
 			end ALLUSERS
-	from palmdb.sf_query_history
+	from PALMDB.SF_QUERY_HISTORY
 ) result
-group by starttime
-order by starttime desc
+group by STARTTIME
+order by STARTTIME desc
 ;
 
 select 
 	starttime,
-	sum(MSTR) 		as MSTR,
-	sum(DEVELOPER)	as DEVELOPER,
-	sum(DQMADMIN)	as DQMADMIN,
-	sum(PALMADMIN)	as PALMADMIN
+  	sum(ALLUSERS) /1000	as ALLUSERS,
+	sum(DQMADMIN) /1000	as DQMADMINS,
+	sum(PALMADMIN) /1000 as PALMADMINS,
+	sum(DEVELOPER) /1000 as DEVELOPERS,
+	sum(MSTR) /1000		as MSTRS
 from (
 	select
 		STARTTIME,
-		case when USER_NAME = 'MSTR_PRD' then TOTAL_ELAPSED_TIME
-			else 0
-			end MSTR,
-		case when USER_NAME = 'PRD_DEVELOPER1' then TOTAL_ELAPSED_TIME
-			else 0
-			end DEVELOPER,
 		case when USER_NAME = 'DQMADMIN' then TOTAL_ELAPSED_TIME
 			else 0
 			end DQMADMIN,
 		case when USER_NAME = 'PALMADMIN' then TOTAL_ELAPSED_TIME
 			else 0
-			end PALMADMIN
-	from PALMDB.SF_QUERY_HISTORY
+			end PALMADMIN,
+		case when USER_NAME = 'PRD_DEVELOPER1' then TOTAL_ELAPSED_TIME
+			else 0
+			end DEVELOPER,
+		case when USER_NAME = 'MSTR_PRD' then TOTAL_ELAPSED_TIME
+			else 0
+			end MSTR,
+		case when USER_NAME <> 'NULL' then TOTAL_ELAPSED_TIME
+			else 0
+			end ALLUSERS
+	from palmdb.sf_query_history sqh
 ) result
 group by STARTTIME
+order by STARTTIME desc
 ;
+
+--
+-- WH_PRD_LOAD_XS, WH_PRD_XS, WH_DEV_XS, WH_DEV_DQM_TEST
+--
+SELECT 
+  START_TIME,
+  CLUSTER_NUMBER as WH_PRD_LOAD_XS,
+  WAREHOUSE_NAME 
+FROM palmdb.sf_query_history
+WHERE WAREHOUSE_NAME='WH_PRD_LOAD_XS'
+;
+
+select 
+	start_time,
+	CNWH_DQM as WH_DQM,
+	CNWH_DEV as WH_DEV,
+	CNWH_LOAD as WH_LOAD,
+	CNWH_PRD	as WH_PRD
+from (
+	select
+		start_TIME,
+		case when WAREHOUSE_NAME = 'WH_DEV_DQM_TEST' then CLUSTER_NUMBER
+			else 0
+			end CNWH_DQM,
+		case when WAREHOUSE_NAME = 'WH_DEV_XS' then CLUSTER_NUMBER
+			else 0
+			end CNWH_DEV,
+		case when WAREHOUSE_NAME = 'WH_PRD_LOAD_XS' then CLUSTER_NUMBER
+			else 0
+			end CNWH_LOAD,
+		case when WAREHOUSE_NAME = 'WH_PRD_XS' then CLUSTER_NUMBER
+			else 0
+			end CNWH_PRD
+	from palmdb.sf_query_history sqh
+) result
+-- group by START_TIME
+order by START_TIME desc
+;
+
+
