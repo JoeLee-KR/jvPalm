@@ -10,12 +10,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="21c8fc54-c20e-4ad5-9bc8-9442f1565984" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/mvSf01m_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/mvSf01m_jar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jvHello.iml" beforeDir="false" afterPath="$PROJECT_DIR$/jvPalm.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/underslow/starthere/SFM_QueryHistory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/underslow/starthere/SFM_QueryHistory.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -91,7 +86,7 @@
       <workItem from="1689577702374" duration="379000" />
       <workItem from="1689749686730" duration="320000" />
       <workItem from="1690182039950" duration="1598000" />
-      <workItem from="1690189120215" duration="5076000" />
+      <workItem from="1690189120215" duration="5674000" />
     </task>
     <servers />
   </component>
