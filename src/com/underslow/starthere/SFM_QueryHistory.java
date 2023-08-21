@@ -28,12 +28,13 @@ public class SFM_QueryHistory {
     String classNameJdbcMysql = "com.mysql.cj.jdbc.Driver";
     String classNameJdbcSnowflake = "net.snowflake.client.jdbc.SnowflakeDriver";
 
+    String sfjdbcUrl;
     // FOR INTERNET
     //String sfjdbcUrl = "jdbc:snowflake://jx75304.ap-northeast-2.aws.snowflakecomputing.com/";
-    String sfjdbcUrl = "jdbc:snowflake://atixoaj-skbroadband.snowflakecomputing.com/";
+    String sfjdbcUrl00 = "jdbc:snowflake://atixoaj-skbroadband.snowflakecomputing.com/";
 
-    // FOR SKB INTERNAL
-    //String sfjdbcUrl = "jdbc:snowflake://atixoaj-skbroadband.privatelink.snowflakecomputing.com/";
+    // FOR SKB INTERNAL PRIVATE
+    String sfjdbcUrl01 = "jdbc:snowflake://atixoaj-skbroadband.privatelink.snowflakecomputing.com/";
     String sfUser = "palmadmin";
     String sfPswd = "VNgkgk007";
     String sfAccount = "atixoaj-skbroadband";
@@ -393,15 +394,26 @@ public class SFM_QueryHistory {
         }
         */
         switch(args.length){
-            case 0: // minutes now -15
+            case 0: // minutes now -15, with default URL
+                sfjdbcUrl = sfjdbcUrl00;
                 tsRange = 15;
                 selectFromTS = Timestamp.valueOf(makeTS( LocalDateTime.now() ).toLocalDateTime().plusMinutes(-tsRange) );
                 selectToTS = makeTS( LocalDateTime.now() );
                 flagDupProcess = false;
                 break;
-            case 1: // minutes now -m
+            case 1: // minutes now -15, with URL
+                if ( Integer.parseInt( args[0] ) == 0 ) sfjdbcUrl = sfjdbcUrl00;
+                else sfjdbcUrl = sfjdbcUrl01;
+                tsRange = 15;
+                selectFromTS = Timestamp.valueOf(makeTS( LocalDateTime.now() ).toLocalDateTime().plusMinutes(-tsRange) );
+                selectToTS = makeTS( LocalDateTime.now() );
+                flagDupProcess = false;
+                break;
+            case 2: // minutes now -m
+                if ( Integer.parseInt( args[0] ) == 0 ) sfjdbcUrl = sfjdbcUrl00;
+                else sfjdbcUrl = sfjdbcUrl01;
                 try {
-                    tsRange = Integer.parseInt( args[0] );
+                    tsRange = Integer.parseInt( args[1] );
                     selectFromTS = Timestamp.valueOf(makeTS( LocalDateTime.now() ).toLocalDateTime().plusMinutes(-tsRange) );
                     selectToTS = makeTS( LocalDateTime.now() );
                     flagDupProcess = true;
@@ -410,15 +422,17 @@ public class SFM_QueryHistory {
                     //System.out.println("JOE NUMNER FORMAT ERROR:" + e);
                     return(-1);
                 }
-            case 2:
+            case 3:
+                if ( Integer.parseInt( args[0] ) == 0 ) sfjdbcUrl = sfjdbcUrl00;
+                else sfjdbcUrl = sfjdbcUrl01;
                 try {
-                    tsRange = Integer.parseInt( args[1] );
-                    if (tsRange<24) {   // range 1 hour
-                        selectFromTS = Timestamp.valueOf(makeTS( args[0] ).toLocalDateTime().plusHours(tsRange) );
-                        selectToTS = Timestamp.valueOf(makeTS( args[0] ).toLocalDateTime().plusHours(tsRange+1) );
+                    tsRange = Integer.parseInt( args[2] );
+                    if ( tsRange<24 ) {   // range 1 hour
+                        selectFromTS = Timestamp.valueOf(makeTS( args[1] ).toLocalDateTime().plusHours(tsRange) );
+                        selectToTS = Timestamp.valueOf(makeTS( args[1] ).toLocalDateTime().plusHours(tsRange+1) );
                     } else {            // range 24 hour, 1day
-                        selectFromTS = makeTS( args[0] );
-                        selectToTS = Timestamp.valueOf(makeTS( args[0] ).toLocalDateTime().plusDays(1) );
+                        selectFromTS = makeTS( args[1] );
+                        selectToTS = Timestamp.valueOf(makeTS( args[1] ).toLocalDateTime().plusDays(1) );
                     }
                     flagDupProcess = true;
                     break;
@@ -439,9 +453,10 @@ public class SFM_QueryHistory {
         SFM_QueryHistory my = new SFM_QueryHistory();
 
         if ( my.getArgs(args) == -1) {
-            System.out.println("Usage_: Command {minutes} | {Date Hour}");
-            System.out.println("\tnull args is 15 minutes for default, or 1 args mean arg minutes, and at DUP");
-            System.out.println("\tDate & Hour(0..23,24) args, 24 means hole day and not break at DUP");
+            System.out.println("Usage_: Command [0..1] (minutes | Date Hour)");
+            System.out.println("\tFirst 1 Arg is must Conn option: 0:Internet, 1:Private");
+            System.out.println("\t2nd arg is 15 minutes for default, or arg 1 mean arg minutes, and break at DUP");
+            System.out.println("\t2nd & 3rd Args are Date & Hour(0..23,24) args, 24 means hole day and not break at DUP");
         } else {
             my.setQueries();
             my.setConnProperties();

@@ -11,6 +11,9 @@
   <component name="ChangeListManager">
     <list default="true" id="21c8fc54-c20e-4ad5-9bc8-9442f1565984" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/underslow/starthere/SFM_QueryHistory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/underslow/starthere/SFM_QueryHistory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/underslow/starthere/jvHello.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/underslow/starthere/jvHello.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,6 +62,19 @@
     </key>
   </component>
   <component name="RunManager">
+    <configuration name="jvHello" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.underslow.starthere.jvHello" />
+      <module name="jvPalm" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.underslow.starthere.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration default="true" type="JetRunConfigurationType">
       <module name="jvPalm" />
       <method v="2">
@@ -72,6 +88,11 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.jvHello" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -86,7 +107,7 @@
       <workItem from="1689577702374" duration="379000" />
       <workItem from="1689749686730" duration="320000" />
       <workItem from="1690182039950" duration="1598000" />
-      <workItem from="1690189120215" duration="5674000" />
+      <workItem from="1690189120215" duration="12547000" />
     </task>
     <servers />
   </component>
