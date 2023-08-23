@@ -1,14 +1,14 @@
 /*
 Title:
  */
-package com.underslow.starthere;
+package jvPalm.sf2my;
 
 import java.time.*;
 import java.sql.*;
 import java.util.Properties;
 
 //class definition
-public class SnowflakeJDBC03 {
+public class testSfJdbcConn01 {
     // Static Fixed Variables
     public class sfLine {
         public Connection sfConn;
@@ -50,7 +50,7 @@ public class SnowflakeJDBC03 {
     String insertQueryHistory;
 
     //default constructor
-    public SnowflakeJDBC03() {
+    public testSfJdbcConn01() {
         properties = new Properties();
         //sfLine sfline = new sfLine();
         //nowDT = new LocalDateTime();
@@ -279,7 +279,7 @@ public class SnowflakeJDBC03 {
         nowDT = LocalDateTime.now();
         System.out.println("Oasis.snowflake.dump.2palm.start---" + nowDT);
         //properties object
-        SnowflakeJDBC03 my = new SnowflakeJDBC03();
+        testSfJdbcConn01 my = new testSfJdbcConn01();
 
         my.setQueries();
         my.setConnProperties();

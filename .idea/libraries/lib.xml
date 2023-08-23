@@ -4,6 +4,7 @@
       <root url="jar://$PROJECT_DIR$/lib/mysql-connector-j-8.0.33.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/mariadb-java-client-3.1.4.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/snowflake-jdbc-3.13.33.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/gson-2.8.9.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

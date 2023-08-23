@@ -4,7 +4,7 @@ Title: Fetch data at Snowflake, and dump to mysql
  - snowflake.query_history dump
  - allow args: {min} & {date + hour }
  */
-package com.underslow.starthere;
+package jvPalm.sf2my;
 
 import java.sql.*;
 import java.time.LocalDate;
@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
 import java.util.Properties;
 
 //class definition
-public class SFM_QueryHistory_test {
+public class mvSFM_QueryHistory {
     // Static Fixed Variables
     Connection sfConn;
     Statement sfStmt;
@@ -27,18 +27,20 @@ public class SFM_QueryHistory_test {
     // general jdbc variables
     String classNameJdbcMysql = "com.mysql.cj.jdbc.Driver";
     String classNameJdbcSnowflake = "net.snowflake.client.jdbc.SnowflakeDriver";
-    //"oracle.jdbc.driver.OracleDriver"
-    //"com.snowflake.client.jdbc.SnowflakeDriver"
+
+    String sfjdbcUrl;
     // FOR INTERNET
-    //String sfjdbcUrl = "jdbc:snowflake://atixoaj-skbroadband.snowflakecomputing.com/";
-    // FOR SKB INTERNAL
-    String sfjdbcUrl = "jdbc:snowflake://atixoaj-skbroadband.privatelink.snowflakecomputing.com/";
-    String sfUser = "xjoelee@sk.com";
-    String sfPswd = "VNgkgk00";
+    //String sfjdbcUrl = "jdbc:snowflake://jx75304.ap-northeast-2.aws.snowflakecomputing.com/";
+    String sfjdbcUrl00 = "jdbc:snowflake://atixoaj-skbroadband.snowflakecomputing.com/";
+
+    // FOR SKB INTERNAL PRIVATE
+    String sfjdbcUrl01 = "jdbc:snowflake://atixoaj-skbroadband.privatelink.snowflakecomputing.com/";
+    String sfUser = "palmadmin";
+    String sfPswd = "VNgkgk007";
     String sfAccount = "atixoaj-skbroadband";
     String sfWarehouse = "WH_PRD_XS";
-    String sfDB = "SKB_PRD";
-    String sfSchema = "ANLY_OWN";
+    String sfDB = "SNOWFLAKE";
+    String sfSchema = "ACCOUNT_USAGE";
     String sfRole = "ACCOUNTADMIN";
 
     //String myjdbcUrl = "jdbc:mysql://palmmysqldb:3306/palmdb";
@@ -59,9 +61,10 @@ public class SFM_QueryHistory_test {
     Timestamp selectFromTS;
     Timestamp selectToTS;
     int tsRange;
+    Boolean flagDupProcess;
 
     //default constructor
-    public SFM_QueryHistory_test() {
+    public mvSFM_QueryHistory() {
         properties = new Properties();
 
         try{
@@ -114,7 +117,7 @@ public class SFM_QueryHistory_test {
         "WHERE  START_TIME >= to_TIMESTAMP( ? ) " +
                 "AND START_TIME < to_TIMESTAMP( ? ) "+
         "ORDER BY START_TIME DESC " +
-        "LIMIT 12";
+        "-- LIMIT 12";
 
         /*
         selectQueryHistory02_day =
@@ -196,14 +199,14 @@ public class SFM_QueryHistory_test {
             sfConn = DriverManager.getConnection( sfjdbcUrl, properties);
             //System.out.println("\tJOE::Connection SF established, connection id : " + sfConn);
 
-            sfStmt = sfConn.createStatement();
+            //sfStmt = sfConn.createStatement();
             //sfStmt.executeQuery("ALTER SESSION SET JDBC_QUERY_RESULT_FORMAT='JSON'");
             //System.out.println("\tJOE::Alter Session > JSON statement, object-id : " + sfStmt);
 
         } catch (SQLException exp) {
             exp.printStackTrace();
         }
-/*
+
         try {
             myConn = DriverManager.getConnection(myjdbcUrl, myUser, myPswd);
             //System.out.println("\tJOE::Connection MYSQL established, connection id : " + myConn);
@@ -211,27 +214,29 @@ public class SFM_QueryHistory_test {
         } catch (SQLException exp) {
             exp.printStackTrace();
         }
-
-*/
     }
     public void closeConnection() {
         try{
+            sfpStmt.close();
             sfRS.close();
-            sfStmt.close();
+            // remark for processQuery00
+            //sfStmt.close();
             sfConn.close();
-/*
-            myRS.close();
-            myStmt.close();
+
+            mypStmt.close();
+            // remark for processQuery00
+            //myRS.close();
+            //myStmt.close();
             myConn.close();
-*/
+
         }catch(Exception e){
             e.printStackTrace();
-        } // try
+        }
     }
 
     public void getProcessQuery00() {
         //System.out.println("\tJOE::selectSQL = " + sfselectSQL);
-
+        //try-catch block
         try {
             sfStmt = sfConn.createStatement();
             //System.out.println("\tJoe::Got the SF statement object, object-id : " + sfStmt);
@@ -244,11 +249,9 @@ public class SFM_QueryHistory_test {
         } catch (SQLException exp) {
             exp.printStackTrace();
         }
-/*
+
         try {
-
             myStmt = myConn.createStatement();
-
             //System.out.println("\tJoe::Got the MYSQL statement object, object-id : " + myStmt);
 
             myRS = myStmt.executeQuery(myselectSQL);
@@ -256,12 +259,9 @@ public class SFM_QueryHistory_test {
                 //following rs.getXXX should also change as per your select query
                 System.out.println("\tmysql CURRENT_VERSION(): " + myRS.getString("fromJAVA"));
             }
-
         } catch (SQLException exp) {
             exp.printStackTrace();
-        } // try
-
- */
+        }
     }
     public void getProcessQuery01() {
         int progressMark = 0;
@@ -275,10 +275,10 @@ public class SFM_QueryHistory_test {
             sfpStmt.setTimestamp(2, selectToTS );
 
             sfRS = sfpStmt.executeQuery();
-/*
+
             // make insertQueryString with ResultSet of select
             mypStmt = myConn.prepareStatement(insertQueryHistory);
-*/
+
             //System.out.println("\tJoe::Got the statement object, object-id : " + sfpStmt);
             System.out.println("::DB dump start: " + LocalDateTime.now() );
 
@@ -290,7 +290,7 @@ public class SFM_QueryHistory_test {
                 if ( progressMark % 1000 == 0) System.out.println(":" + progressMark);
                 //following rs.getXXX should also change as per your select query
 
-
+                /*
                 System.out.print("\t>>getting Row is:");
                 System.out.print("|" + sfRS.getString("QUERY_ID") );
                 System.out.print("|" + sfRS.getTimestamp("START_TIME") );
@@ -299,14 +299,11 @@ public class SFM_QueryHistory_test {
                 System.out.print("|" + sfRS.getInt("COMPILATION_TIME") );
                 System.out.print("|" + sfRS.getTimestamp("NOWTS") );
                 System.out.println();
-
+                */
 
                 // insert to mysql & with collision handle
-
-                //try {
+                try {
                     // make pstmt for insertSQL
-                    progressSuccessCount =0 ;
-/*
                     mypStmt.setString(1,    sfRS.getString("QUERY_ID"));
                     mypStmt.setString(2,    sfRS.getString("QUERY_TEXT"));
                     mypStmt.setString(3,    sfRS.getString("DATABASE_NAME"));
@@ -344,7 +341,7 @@ public class SFM_QueryHistory_test {
                     mypStmt.setTimestamp(28,sfRS.getTimestamp("NOWTS")); // =INSERTION_TIME
                     mypStmt.setTimestamp(29,sfRS.getTimestamp("START_TIME") );
                     // timestamp( date_format(now(), "%Y-%m-%d %H:%i:00")
-*/
+
                     //LOG insert one row...
                     /*
                     System.out.println("\t\t>>End at Insert Row:"+sfRS.getString("QUERY_ID")+"|"+
@@ -352,10 +349,8 @@ public class SFM_QueryHistory_test {
                             sfRS.getBigDecimal("CREDITS_USED_CLOUD_SERVICES")
                     );
                     */
-/*
                     mypStmt.executeUpdate();
- */
-                //} catch (SQLException exp) {
+                } catch (SQLException exp) {
                     // case with args
                     // case 3 now : break
                     // case 1,2 day or day-hour : no break
@@ -366,13 +361,13 @@ public class SFM_QueryHistory_test {
                         sfRS.getTimestamp("NOWTS")
                     );
                     */
-                    progressMark--;
-                    //break;
-                //} // try for mysql
+                    if ( !flagDupProcess ) {
+                        progressMark--;
+                        break;
+                    }
+                }
             } //while
-/*
             mypStmt.close();
- */
             sfpStmt.close();
 
             System.out.println();
@@ -399,31 +394,47 @@ public class SFM_QueryHistory_test {
         }
         */
         switch(args.length){
-            case 0: // minutes now -15
+            case 0: // minutes now -15, with default URL
+                sfjdbcUrl = sfjdbcUrl00;
                 tsRange = 15;
                 selectFromTS = Timestamp.valueOf(makeTS( LocalDateTime.now() ).toLocalDateTime().plusMinutes(-tsRange) );
                 selectToTS = makeTS( LocalDateTime.now() );
+                flagDupProcess = false;
                 break;
-            case 1: // minutes now -m
+            case 1: // minutes now -15, with URL
+                if ( Integer.parseInt( args[0] ) == 0 ) sfjdbcUrl = sfjdbcUrl00;
+                else sfjdbcUrl = sfjdbcUrl01;
+                tsRange = 15;
+                selectFromTS = Timestamp.valueOf(makeTS( LocalDateTime.now() ).toLocalDateTime().plusMinutes(-tsRange) );
+                selectToTS = makeTS( LocalDateTime.now() );
+                flagDupProcess = false;
+                break;
+            case 2: // minutes now -m
+                if ( Integer.parseInt( args[0] ) == 0 ) sfjdbcUrl = sfjdbcUrl00;
+                else sfjdbcUrl = sfjdbcUrl01;
                 try {
-                    tsRange = Integer.parseInt( args[0] );
+                    tsRange = Integer.parseInt( args[1] );
                     selectFromTS = Timestamp.valueOf(makeTS( LocalDateTime.now() ).toLocalDateTime().plusMinutes(-tsRange) );
                     selectToTS = makeTS( LocalDateTime.now() );
+                    flagDupProcess = true;
                     break;
                 } catch (Exception e) {
                     //System.out.println("JOE NUMNER FORMAT ERROR:" + e);
                     return(-1);
                 }
-            case 2:
+            case 3:
+                if ( Integer.parseInt( args[0] ) == 0 ) sfjdbcUrl = sfjdbcUrl00;
+                else sfjdbcUrl = sfjdbcUrl01;
                 try {
-                    tsRange = Integer.parseInt( args[1] );
-                    if (tsRange<24) {   // range 1 hour
-                        selectFromTS = Timestamp.valueOf(makeTS( args[0] ).toLocalDateTime().plusHours(tsRange) );
-                        selectToTS = Timestamp.valueOf(makeTS( args[0] ).toLocalDateTime().plusHours(tsRange+1) );
+                    tsRange = Integer.parseInt( args[2] );
+                    if ( tsRange<24 ) {   // range 1 hour
+                        selectFromTS = Timestamp.valueOf(makeTS( args[1] ).toLocalDateTime().plusHours(tsRange) );
+                        selectToTS = Timestamp.valueOf(makeTS( args[1] ).toLocalDateTime().plusHours(tsRange+1) );
                     } else {            // range 24 hour, 1day
-                        selectFromTS = makeTS( args[0] );
-                        selectToTS = Timestamp.valueOf(makeTS( args[0] ).toLocalDateTime().plusDays(1) );
+                        selectFromTS = makeTS( args[1] );
+                        selectToTS = Timestamp.valueOf(makeTS( args[1] ).toLocalDateTime().plusDays(1) );
                     }
+                    flagDupProcess = true;
                     break;
                 } catch (Exception e) {
                     //System.out.println("JOE:" + e);
@@ -439,17 +450,18 @@ public class SFM_QueryHistory_test {
     public static void main(String[] args) {
         System.out.println("Oasis.snowflake.dump.2palm.start---"+ LocalDateTime.now());
 
-        SFM_QueryHistory_test my = new SFM_QueryHistory_test();
+        mvSFM_QueryHistory my = new mvSFM_QueryHistory();
 
         if ( my.getArgs(args) == -1) {
-            System.out.println("Usage_: Command {minutes} | {Date Hour}");
-            System.out.println("\tnull args is 15 minutes for default, or 1 args minutes and break at DUP");
-            System.out.println("\tDate Hour(0..23,24), 24 means hole day and not break at DUP");
+            System.out.println("Usage_: Command [0..1] (minutes | Date Hour)");
+            System.out.println("\tFirst 1 Arg is must Conn option: 0:Internet, 1:Private");
+            System.out.println("\t2nd arg is 15 minutes for default, or arg 1 mean arg minutes, and break at DUP");
+            System.out.println("\t2nd & 3rd Args are Date & Hour(0..23,24) args, 24 means hole day and not break at DUP");
         } else {
             my.setQueries();
             my.setConnProperties();
             my.getConnection();
-            my.getProcessQuery00();
+            // my.getProcessQuery00();
             my.getProcessQuery01();
             my.closeConnection();
         } // args

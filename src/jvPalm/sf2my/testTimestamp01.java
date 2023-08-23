@@ -1,10 +1,10 @@
-package com.underslow.starthere;
+package jvPalm.sf2my;
 
 import java.time.*;
 import java.sql.*;
 //import jargs.gnu
 
-public class keyHellos {
+public class testTimestamp01 {
     Timestamp selectFromTS;
     Timestamp selectToTS;
     int tsRange;
@@ -148,7 +148,7 @@ public class keyHellos {
     }
 
     public static void main(String[] args) {
-        keyHellos hello = new keyHellos();
+        testTimestamp01 hello = new testTimestamp01();
         //hello.testTime1();
         //hello.testTime2();
         //hello.testTime3();

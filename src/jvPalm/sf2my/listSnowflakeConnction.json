@@ -16,3 +16,5 @@
   {"host":"app.snowflake.com","port":443,"type":"SNOWSIGHT_DEPLOYMENT"},
   {"host":"apps-api.c1.ap-northeast-2.aws.app.snowflake.com","port":443,"type":"SNOWSIGHT_DEPLOYMENT"}
 ]
+
+// bellow, other private links
