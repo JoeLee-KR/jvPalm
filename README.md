@@ -7,11 +7,12 @@ Prometheus & Grafana study sandbox for private...
 - current work2:
   - java basic study...
 
+### toDo
+- agent to handle snowflake credit, storage table
+
 ### Remarks
 - Depot/promBook: Prometheus Book workbook
 - Depot/promSUNI: mySuni workbook 
 - Solve, jvPalm git pull problem, refer git-memo@notion
-- agent to handle snowflake credit, storage table
-- hello
 
 +==
