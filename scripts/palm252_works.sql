@@ -105,11 +105,18 @@ order by start_time desc
 limit 10
 ;
 
-select QUERY_ID, START_TIME, EXECUTION_TIME, COMPILATION_TIME, USER_NAME, INSERTION_TIME
+select QUERY_ID, START_TIME, STARTTIME, EXECUTION_TIME, COMPILATION_TIME, USER_NAME, INSERTION_TIME
+
+select count(*)
 from palmdb.sf_query_history 
-order by start_time desc 
-limit 10
+where start_time >= ('2023-07-15 00:00:00')
+  and start_time < ('2023-07-15 01:00:00')
+order by start_time desc
 ;
+
+delete from palmdb.sf_query_history 
+where start_time >= ('2023-07-15 00:00:00')
+  and start_time < ('2023-07-15 00:02:00')
 
 select count(*), date_format( starttime, "%Y-%m-%d %H:%i")  from palmdemo
 group by date_format( starttime, "%Y-%m-%d %H:%i");

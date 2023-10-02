@@ -10,38 +10,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="21c8fc54-c20e-4ad5-9bc8-9442f1565984" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/artifacts/jvPalm_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/validation.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/joe/jvHello/javaBasicUtil/Person.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/joe/jvHello/javaBasicUtil/testGson.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/joe/jvHello/javaBasicUtil/testRandom.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/joe/jvHello/javaPolyAbstract/Animal.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/joe/jvHello/javaPolyAbstract/Cat.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/joe/jvHello/javaPolyAbstract/Dog.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/joe/jvHello/javaPolyAbstract/testPloy.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/joe/jvHello/javaPolyInterface/RCU.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/joe/jvHello/javaPolyInterface/Radio.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/joe/jvHello/javaPolyInterface/TV.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/joe/jvHello/javaPolyInterface/testInterface.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/jvPalm/sf2my/checkMysqlJdbcConn.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/mvSf01m_jar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/lib.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/lib.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/underslow/starthere/SFM_QueryHistory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jvPalm/sf2my/mvSFM_QueryHistory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/underslow/starthere/SFM_QueryHistory_test.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/underslow/starthere/SnowflakeJDBC03.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jvPalm/sf2my/testSfJdbcConn01.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/underslow/starthere/argParser4jHello.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jvPalm/sf2my/argParser4jHello.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/underslow/starthere/checkMysqlJdbcConn.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jvPalm/sf2my/rscMysqlJdbcConn.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/underslow/starthere/checkSfJdbcConn01.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/underslow/starthere/checkSfJdbcConns.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jvPalm/sf2my/checkSfJdbcConn.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/underslow/starthere/jvHello.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jvPalm/sf2my/jvPalm.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/underslow/starthere/keyHellos.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jvPalm/sf2my/testTimestamp01.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/underslow/starthere/list.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/jvPalm/sf2my/listSnowflakeConnction.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lambda/lambdatest01.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/src/joe/lambda/lambdatest01.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lambda/lambdatest02.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/src/joe/lambda/lambdatest02.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/palm252_works.sql" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/palm252_works.sql" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,29 +38,29 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "/Users/doogie/DevOps/jvPalm/src/joe/jvHello/javaPoly00",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "project.structure.last.edited": "Libraries",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "MavenSettings",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/doogie/DevOps/jvPalm/src/joe/jvHello/javaPoly00&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;MavenSettings&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File": [
-      "JAVA"
+  &quot;keyToStringList&quot;: {
+    &quot;com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File&quot;: [
+      &quot;JAVA&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/joe/jvHello/javaPoly00" />
@@ -103,7 +72,7 @@
       <recent name="com.underslow.starthere" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.checkMysqlJdbcConn">
     <configuration name="checkMysqlJdbcConn" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="joe.sf2my.checkMysqlJdbcConn" />
       <module name="jvPalm" />
@@ -146,6 +115,7 @@
       <workItem from="1690182039950" duration="1598000" />
       <workItem from="1690189120215" duration="12547000" />
       <workItem from="1692582372472" duration="22993000" />
+      <workItem from="1693899912805" duration="90000" />
     </task>
     <servers />
   </component>
