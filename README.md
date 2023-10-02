@@ -9,7 +9,7 @@ Prometheus & Grafana study sandbox for private...
 
 ### Remarks
 - Depot/promBook: Prometheus Book workbook
-- Depot/promSUNI: mySUNI workbook 
+- Depot/promSUNI: mySuni workbook 
 - Solve, jvPalm git pull problem, refer git-memo@notion
 
 +==
