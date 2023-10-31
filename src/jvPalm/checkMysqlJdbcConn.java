@@ -1,4 +1,4 @@
-package jvPalm.sf2my;
+package jvPalm;
 
 public class checkMysqlJdbcConn {
 
@@ -10,7 +10,7 @@ public class checkMysqlJdbcConn {
             if (aMySS.selectJdbcUrl(args) != -1) {
                 aMySS.getData01();
             } else aMySS.printUsage01();
-        } else System.out.println("\tUsage: must use one arg.");
+        } else System.out.println("\t*Usage: must use one arg.");
         System.out.println("JOE::Mysql JDBC check test end...");
     }
 }

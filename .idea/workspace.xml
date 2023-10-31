@@ -10,7 +10,33 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="21c8fc54-c20e-4ad5-9bc8-9442f1565984" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/scripts/palm252_works.sql" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/palm252_works.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/lib.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/lib.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jvPalm.iml" beforeDir="false" afterPath="$PROJECT_DIR$/jvPalm.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/joe/jvHello/javaBasicUtil/Person.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/joe/jvHello/javaBasicUtil/testGsonToJson.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/joe/jvHello/javaBasicUtil/testRandom.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/joe/jvHello/javaPolyAbstract/Animal.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/joe/jvHello/javaPolyAbstract/Cat.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/joe/jvHello/javaPolyAbstract/Dog.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/joe/jvHello/javaPolyAbstract/testPloy.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/joe/jvHello/javaPolyInterface/RCU.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/joe/jvHello/javaPolyInterface/Radio.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/joe/jvHello/javaPolyInterface/TV.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/joe/jvHello/javaPolyInterface/testInterface.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/joe/lambda/lambdatest01.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/joe/lambda/lambdatest02.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/jvPalm/sf2my/argParser4jHello.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jvPalm/argParser4jHello.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/jvPalm/sf2my/checkMysqlJdbcConn.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jvPalm/checkMysqlJdbcConn.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/jvPalm/sf2my/checkSfJdbcConn.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jvPalm/checkSfJdbcConn.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/jvPalm/sf2my/jvPalm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jvPalm/jvPalm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/jvPalm/sf2my/listSnowflakeConnction.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/jvPalm/listSnowflakeConnction.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/jvPalm/sf2my/mvSFM_QueryHistory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jvPalm/mvSFM_QueryHistory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/jvPalm/sf2my/rscMysqlJdbcConn.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jvPalm/rscMysqlJdbcConn.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/jvPalm/sf2my/testSfJdbcConn01.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jvPalm/testSfJdbcConn01.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/jvPalm/sf2my/testTimestamp01.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jvPalm/testTimestamp01.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,29 +64,30 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/doogie/DevOps/jvPalm/src/joe/jvHello/javaPoly00&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;MavenSettings&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "/Users/doogie/DevOps/jvPalm/src/joe/jvHello/javaPoly00",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "project.structure.last.edited": "Artifacts",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "configurable.group.build",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File&quot;: [
-      &quot;JAVA&quot;
+  "keyToStringList": {
+    "com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File": [
+      "JAVA"
     ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/joe/jvHello/javaPoly00" />
@@ -72,14 +99,14 @@
       <recent name="com.underslow.starthere" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.checkMysqlJdbcConn">
+  <component name="RunManager">
     <configuration name="checkMysqlJdbcConn" type="Application" factoryName="Application" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="joe.sf2my.checkMysqlJdbcConn" />
+      <option name="MAIN_CLASS_NAME" value="jvPalm.checkMysqlJdbcConn" />
       <module name="jvPalm" />
       <option name="PROGRAM_PARAMETERS" value="0" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.joe.sf2my.*" />
+          <option name="PATTERN" value="jvPalm.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -87,18 +114,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="checkSfJdbcConns" type="Application" factoryName="Application">
-      <option name="MAIN_CLASS_NAME" value="joe.sf2my.checkSfJdbcConn" />
-      <module name="jvPalm" />
-      <option name="PROGRAM_PARAMETERS" value="0" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <list>
-      <item itemvalue="Application.checkMysqlJdbcConn" />
-      <item itemvalue="Application.checkSfJdbcConns" />
-    </list>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -116,6 +131,8 @@
       <workItem from="1690189120215" duration="12547000" />
       <workItem from="1692582372472" duration="22993000" />
       <workItem from="1693899912805" duration="90000" />
+      <workItem from="1698725759883" duration="103000" />
+      <workItem from="1698725981255" duration="3010000" />
     </task>
     <servers />
   </component>
@@ -138,6 +155,9 @@
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/jvHello$keyHellos.ic" NAME="keyHellos Coverage Results" MODIFIED="1689049341177" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/jvPalm$jvPalm_checkMysqlJdbcConn.ic" NAME="jvPalm.checkMysqlJdbcConn Coverage Results" MODIFIED="1698732973047" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>jvPalm.*</FILTER>
+    </SUITE>
     <SUITE FILE_PATH="coverage/jvPalm$checkMysqlJdbcConn.ic" NAME="checkMysqlJdbcConn Coverage Results" MODIFIED="1692598857630" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>com.joe.sf2my.*</FILTER>
     </SUITE>

@@ -1,4 +1,4 @@
-package jvPalm.sf2my;
+package jvPalm;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

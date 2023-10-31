@@ -1,4 +1,4 @@
-package joe.jvHello.javaPolyAbstract;
+package jvTest.jvHello.javaPolyAbstract;
 
 public abstract class Animal {
     String name="...animal";

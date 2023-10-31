@@ -4,7 +4,7 @@ Title: Fetch data at Snowflake, and dump to mysql
  - snowflake.query_history dump
  - allow args: {min} & {date + hour }
  */
-package jvPalm.sf2my;
+package jvPalm;
 
 import java.sql.*;
 import java.time.LocalDate;

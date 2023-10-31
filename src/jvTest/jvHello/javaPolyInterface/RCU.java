@@ -1,4 +1,4 @@
-package joe.jvHello.javaPolyInterface;
+package jvTest.jvHello.javaPolyInterface;
 
 public interface RCU {
     public static int MAXCH=99;

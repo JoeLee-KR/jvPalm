@@ -1,7 +1,7 @@
 /*
 Title:
  */
-package jvPalm.sf2my;
+package jvPalm;
 
 import java.time.*;
 import java.sql.*;

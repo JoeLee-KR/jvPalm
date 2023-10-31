@@ -1,4 +1,4 @@
-package jvPalm.sf2my;
+package jvPalm;
 
 public class jvPalm {
     String[] msgs = new String[] {

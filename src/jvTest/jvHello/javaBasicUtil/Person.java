@@ -1,4 +1,4 @@
-package joe.jvHello.javaBasicUtil;
+package jvTest.jvHello.javaBasicUtil;
 
 public class Person {
     private String pName;

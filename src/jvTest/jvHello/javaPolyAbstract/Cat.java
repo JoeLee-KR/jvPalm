@@ -1,4 +1,4 @@
-package joe.jvHello.javaPolyAbstract;
+package jvTest.jvHello.javaPolyAbstract;
 
 public class Cat extends Animal {
     String name = "...Mery";

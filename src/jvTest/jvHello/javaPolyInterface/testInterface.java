@@ -1,4 +1,4 @@
-package joe.jvHello.javaPolyInterface;
+package jvTest.jvHello.javaPolyInterface;
 
 public class testInterface {
     public static void main(String[] args) {
