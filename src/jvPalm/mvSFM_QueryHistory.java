@@ -403,7 +403,8 @@ public class mvSFM_QueryHistory {
                 break;
             case 1: // minutes now -15, with URL
                 if ( Integer.parseInt( args[0] ) == 0 ) sfjdbcUrl = sfjdbcUrl00;
-                else sfjdbcUrl = sfjdbcUrl01;
+                else if ( Integer.parseInt( args[0] ) == 1 ) sfjdbcUrl = sfjdbcUrl01;
+                else return(-1);
                 tsRange = 15;
                 selectFromTS = Timestamp.valueOf(makeTS( LocalDateTime.now() ).toLocalDateTime().plusMinutes(-tsRange) );
                 selectToTS = makeTS( LocalDateTime.now() );
@@ -453,8 +454,8 @@ public class mvSFM_QueryHistory {
         mvSFM_QueryHistory my = new mvSFM_QueryHistory();
 
         if ( my.getArgs(args) == -1) {
-            System.out.println("Usage_: Command [0..1] (minutes | Date Hour)");
-            System.out.println("\tFirst 1 Arg is must Conn option: 0:Internet, 1:Private");
+            System.out.println("Usage_: mvSFM_QueryHistory { [0..1] { (minutes | Date Hour)} }");
+            System.out.println("\tFirst 1 Arg is must Conn option: 0:Internet, 1:Private, other is this help.");
             System.out.println("\t2nd arg is 15 minutes for default, or arg 1 mean arg minutes, and break at DUP");
             System.out.println("\t2nd & 3rd Args are Date & Hour(0..23,24) args, 24 means hole day and not break at DUP");
         } else {
