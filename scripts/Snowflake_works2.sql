@@ -1,5 +1,41 @@
 --
--- using set of query_history
+-- Oasis Palm, works
+-- Oct 2023
+--
+-- using set of snowflake.account_usage.metering_daily_history 
+
+-- DAILY LOG
+DESC TABLE snowflake.account_usage.metering_daily_history ;
+SELECT *
+FROM snowflake.account_usage.metering_daily_history 
+ORDER BY USAGE_DATE DESC ;
+
+-- DAILY LOG
+DESC TABLE snowflake.account_usage.storage_usage;
+SELECT *
+FROM snowflake.account_usage.storage_usage 
+ORDER BY USAGE_DATE DESC ;
+
+-- HOURLY LOG
+DESC TABLE snowflake.account_usage.WAREHOUSE_METERING_HISTORY ;
+SELECT *
+FROM snowflake.account_usage.WAREHOUSE_METERING_HISTORY 
+WHERE WAREHOUSE_ID <> 0
+ORDER BY START_TIME DESC ;
+
+-- SELECT date(START_TIME), SUM(CREDITS_USED) AS S1, SUM(CREDITS_USED_COMPUTE) AS S2, SUM(CREDITS_USED_CLOUD_SERVICES) AS S3, S2+S3
+SELECT date(END_TIME), SUM(CREDITS_USED) , SUM(CREDITS_USED_COMPUTE) , SUM(CREDITS_USED_CLOUD_SERVICES)
+FROM snowflake.account_usage.WAREHOUSE_METERING_HISTORY 
+WHERE WAREHOUSE_ID <> 0
+GROUP BY date(END_TIME)
+ORDER BY date(END_TIME) DESC ;
+
+
+
+
+
+
+
 SELECT 
 	QUERY_ID,
 	QUERY_TEXT,
