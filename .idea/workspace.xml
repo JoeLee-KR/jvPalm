@@ -10,12 +10,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="21c8fc54-c20e-4ad5-9bc8-9442f1565984" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/jvTest/jvHello/OOP_Keyword" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/jvTest/jvHello/javaPolyBasic/MethodOverriding01.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/jvTest/jvHello/javaPolyBasic/MethodOverriding02.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/jvTest/jvHello/doit_ch10_classpoly/MethodOverriding02.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/jvTest/jvHello/doit_ch10_classpoly/MethodOverriding03.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/jvTest/jvHello/doit_ch10_classpoly/MethodOverriding04.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/jvTest/jvHello/doit_ch10_classpoly/MethodOverriding05.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/jvTest/jvHello/doit_ch10_classpoly/MethodOverriding06.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/jvTest/jvHello/doit_ch10_classpoly/OOP_Keyword" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/jvTest/jvHello/doit_ch11_abstract/FA01.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/jvTest/jvHello/javaPolyAbstract/Cat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jvTest/jvHello/javaPolyAbstract/Cat.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/jvTest/jvHello/javaPolyAbstract/testPloy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jvTest/jvHello/javaPolyAbstract/testPloy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/jvTest/jvHello/OOP_Keyword" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/jvTest/jvHello/javaPolyBasic/MethodOverriding01.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jvTest/jvHello/doit_ch10_classpoly/MethodOverriding01.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/jvTest/jvHello/javaPolyBasic/MethodOverriding02.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,36 +48,39 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "/Users/doogie/DevOps/jvPalm/src/jvTest/jvHello/javaPolyBasic",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "project.structure.last.edited": "Artifacts",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "advanced.settings",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/doogie/DevOps/jvPalm/src/jvTest/jvHello/javaPolyBasic&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Artifacts&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;advanced.settings&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File": [
-      "JAVA"
+  &quot;keyToStringList&quot;: {
+    &quot;com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File&quot;: [
+      &quot;JAVA&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/jvTest/jvHello/javaPolyBasic" />
       <recent name="$PROJECT_DIR$/src/joe/jvHello/javaPoly00" />
       <recent name="$PROJECT_DIR$/scripts" />
       <recent name="$PROJECT_DIR$/scripts/Study23" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/jvTest/jvHello/javaPolyBasic" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="joe.jvHello.javaPoly00" />
@@ -147,6 +155,8 @@
       <workItem from="1698905189310" duration="782000" />
       <workItem from="1698907795594" duration="4002000" />
       <workItem from="1698973431829" duration="19086000" />
+      <workItem from="1700455481867" duration="10017000" />
+      <workItem from="1705458568506" duration="3749000" />
     </task>
     <servers />
   </component>

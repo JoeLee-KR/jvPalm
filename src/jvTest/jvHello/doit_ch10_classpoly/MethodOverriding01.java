@@ -1,10 +1,10 @@
-package jvTest.jvHello.javaPolyBasic;
+package jvTest.jvHello.doit_ch10_classpoly;
 
 // Fruit <- Apple <- FineApple, Fruit <- Beat
 
 class Fruit {
     public void color()  {
-        System.out.println("U MUST OVERRIDE THIS METHOD.");
+        System.out.println("color: U MUST OVERRIDE THIS METHOD.");
     }
 }
 
@@ -43,30 +43,26 @@ public class MethodOverriding01 {
         Apple a1 = new Apple();
         Fruit f4 = a1;
         a1.color();
-        f4.color();   // allow, upcast, alloc Dog
+        f4.color();   // allow, upcast, alloc Apple
 
         System.out.println("===== polymorphism downcast");
         Fruit f5 = (Beat) f2;   // f2 alloced Beat class
-        // Fruit f5 = (Beat) f1;    // cannot downcast, f1 is Fruit class
-        // Fruit f5 = (Apple) f1;   // cannot downcast, f1 is Fruit class
-        // Fruit f5 = (Apple) f2;   // cannot changecast to other class, f2 is Beat class
         f5.color();
+        // Fruit f5_1 = (Beat) f1;    // cannot downcast, f1 is Fruit class
+        // Beat f5_2 = (Beat) f1;    // cannot downcast, f1 is Fruit class
 
-        Fruit f6 = (Beat) f5;   // to re-downcast with same new Beat();
-        f6.color();
+        Beat f6_1 = (Beat) f5;   // to re-downcast with same new Beat();
+        f6_1.color();
+        Fruit f6_2 = (Beat) f5;   // to re-downcast with same new Beat();
+        f6_2.color();
 
-        System.out.println("===== instanceof");
+        System.out.println("===== test instanceof");
         Fruit f7 = new Apple();
         Fruit f8 = new FineApple();
         f7.color();
         f8.color();
 
         System.out.println(f8 instanceof Fruit);
-        System.out.println(f7 instanceof Fruit);
-        System.out.println(f4 instanceof Fruit);
-        System.out.println(f5 instanceof Fruit);
-        System.out.println(f4 instanceof Fruit);
-        System.out.println(a1 instanceof Fruit);
         System.out.println(f8 instanceof FineApple);
         System.out.println(f7 instanceof FineApple);
     }
