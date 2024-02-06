@@ -2,27 +2,43 @@
 -- Oasis Palm, works
 -- July 2023
 --
+show variables like 'lower_case_table_names';
 -- mysql general
 show variables;
-use performance_schema;
-show tables;
-select version() as fromJAVA;
-select * from users;
+show grants for root@localhost;
+show grants for root@'%';
+show grants for palmadm@localhost;
+show grants for palmadm@'%';
+select user,host,authentication_string from mysql.user;
+-- alter user root@'%' identified with mysql_native_password by 'prom0909!!';
+-- alter user root@'localhost' identified with mysql_native_password by 'prom0909!!';
+flush privileges;
+
+select version() as fromJAVAa;
 select * from mysql.user;
 
-delete from palmdemo;
+show databases;
+show tables;
+use palmdb;
+show tables;
+
+-- 
+-- create demo table
+-- 
+CREATE TABLE palmdb.palmdemo (
+STIME			timestamp,
+SCORE			decimal(12,0)
+);
+-- delete from palmdemo;
 select * from palmdemo;
 insert into palmdemo values (now(), 55);
 commit;
 
-show databases;
-show tables;
-
---
+-- 
 -- create table at mysql-style for SF.query_history
 -- and handle index 
 -- and handle drop, delete
---
+-- 
 CREATE TABLE palmdb.sf_query_history (
 QUERY_ID        varchar(256) not null primary key,
 QUERY_TEXT      text,				-- QUERY_TEXT, or varchar(4096),
@@ -68,11 +84,11 @@ drop index starttime_ix
 on palmdb.sf_query_history;
 
 drop table palmdb.sf_query_history;
-
 delete from palmdb.sf_query_history ;
 
 -- 
--- insert something to table
+-- insert demo data to sf_query_history
+-- 
 insert into palmdb.sf_query_history 
 (CREDITS_USED_CLOUD_SERVICES, QUERY_ID, START_TIME, INSERTION_TIME,EXECUTION_TIME )
 values (
@@ -82,11 +98,13 @@ SUBDATE( now(), interval 1 day),
 SUBDATE( now(), interval -1 day),
 123
 );
+select CREDITS_USED_CLOUD_SERVICES, QUERY_ID, START_TIME, INSERTION_TIME,EXECUTION_TIME
+from palmdb.sf_query_history sqh ;
 
 
---
--- select table
-
+-- 
+-- select examples for sf_query_history table
+-- 
 select query_text -- * -- count(*)
 from palmdb.sf_query_history
 order by start_time desc 
@@ -105,8 +123,6 @@ order by start_time desc
 limit 10
 ;
 
-select QUERY_ID, START_TIME, STARTTIME, EXECUTION_TIME, COMPILATION_TIME, USER_NAME, INSERTION_TIME
-
 select count(*)
 from palmdb.sf_query_history 
 where start_time >= ('2023-07-15 00:00:00')
@@ -118,11 +134,11 @@ delete from palmdb.sf_query_history
 where start_time >= ('2023-07-15 00:00:00')
   and start_time < ('2023-07-15 00:02:00')
 
-select count(*), date_format( starttime, "%Y-%m-%d %H:%i")  from palmdemo
-group by date_format( starttime, "%Y-%m-%d %H:%i");
+select count(*), date_format( stime, "%Y-%m-%d %H:%i")  from palmdemo
+group by date_format( stime, "%Y-%m-%d %H:%i");
 
 --
--- using data, time at mysql
+-- example using data, time at mysql
 --
 
 select date(now()), 
@@ -130,6 +146,7 @@ select date(now()),
 	timestamp( date(now()) ),
 	adddate( timestamp( date(now()) ), interval 1 day) 
 ;
+
 select timestamp( now() )
 	, adddate( timestamp( date(now()) ), interval 1 day) as "x+1d"
 	, adddate( timestamp( date(now()) ), interval 1 hour) as "x+1h"
@@ -199,7 +216,9 @@ SELECT
 	sum(CHILD_QUERIES_WAIT_TIME)/1000 as TW,
 	sum(BYTES_SCANNED) as Scan,
 	COUNT(*)
-from PALMDB.SF_QUERY_HISTORY
+-- from PALMDB.SF_QUERY_HISTORY
+FROM palmdb.sf_query_history sqh 
+-- from palmdb.sf_query_history sqh 
 where start_time >= adddate(timestamp(now()), interval -24 hour)
 	and start_time < adddate(timestamp(now()), interval 0 day)
 group by STARTTIME, USER_NAME, WAREHOUSE_NAME

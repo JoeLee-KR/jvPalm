@@ -1,11 +1,12 @@
 --
--- mysql general
+-- mysql general 
 show variables;
 use performance_schema;
 show tables;
 select version() as fromJAVA;
-select * from users;
-select * from mysql.user;
+select * from MYSQL.USER;
+select * from USER;
+select * from mysql.USER;
 
 use palmdb;
 select * from palmdemo;
