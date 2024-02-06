@@ -16,8 +16,9 @@ Prometheus & Grafana study sandbox for private...
 - ...Solve, jvPalm git pull problem, refer git-memo@notion
 
 ### git pull toruble
-$ git pull --no-ff
+```
+$ git pull --no-ff 
 $ gac
 $ git push
-
+```
 +==

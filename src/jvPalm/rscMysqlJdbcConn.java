@@ -26,7 +26,7 @@ public class rscMysqlJdbcConn {
     Statement stmt;
     ResultSet rs;
 
-    String checkSql01 = "select starttime, metric_score from palmdb.palmdemo limit 10";
+    String checkSql01 = "select stime, score from palmdb.palmdemo limit 10";
 
     public void getConnection(){
         System.out.print("Connectio Info:" + this.toString() );
@@ -93,8 +93,8 @@ public class rscMysqlJdbcConn {
                 default:
                     return (-1);
             }
-            System.out.println("[Select]: " + args[0] + "[Using JDBC url]:" + url
-                    + "Using Driver]:" + driverClassName );
+            System.out.println("[Select]: " + args[0] + ", [Using JDBC url]:" + url
+                    + ", [Using Driver]:" + driverClassName );
             return (0);
         } catch ( Exception e ) {
             e.printStackTrace();
@@ -110,8 +110,8 @@ public class rscMysqlJdbcConn {
 
             while(rs.next()){
                 //출력
-                System.out.print("\tStartTime: " + rs.getString("starttime"));
-                System.out.println("\tMetricScore: " + rs.getString("metric_score"));
+                System.out.print("\tStartTime: " + rs.getString("stime"));
+                System.out.println("\tMetricScore: " + rs.getString("score"));
             }
             closeConnection();
         }catch(Exception e){

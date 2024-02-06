@@ -35,6 +35,7 @@ public class mvSFM_QueryHistory {
 
     // FOR SKB INTERNAL PRIVATE
     String sfjdbcUrl01 = "jdbc:snowflake://atixoaj-skbroadband.privatelink.snowflakecomputing.com/";
+
     String sfUser = "palmadmin";
     String sfPswd = "VNgkgk007";
     String sfAccount = "atixoaj-skbroadband";

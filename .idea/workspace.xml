@@ -10,7 +10,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="21c8fc54-c20e-4ad5-9bc8-9442f1565984" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/jvPalm_jar.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jvPalm.iml" beforeDir="false" afterPath="$PROJECT_DIR$/jvPalm.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/jvPalm/checkSfJdbcConn.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jvPalm/checkSfJdbcConn.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/jvPalm/mvSFM_QueryHistory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jvPalm/mvSFM_QueryHistory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/jvPalm/rscMysqlJdbcConn.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jvPalm/rscMysqlJdbcConn.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,13 +54,14 @@
     "Application.checkMysqlJdbcConn.executor": "Run",
     "Application.checkSfJdbcConn.executor": "Run",
     "Application.testTimestamp01.executor": "Run",
+    "git-widget-placeholder": "main",
     "last_opened_file_path": "/Volumes/macSSD/DevOps/jvPalm",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Libraries",
+    "project.structure.last.edited": "Artifacts",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
     "settings.editor.selected.configurable": "preferences.pluginManager",
@@ -80,7 +88,7 @@
       <recent name="com.underslow.starthere" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.checkSfJdbcConn">
+  <component name="RunManager" selected="Application.checkMysqlJdbcConn">
     <configuration name="checkMysqlJdbcConn" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="jvPalm.checkMysqlJdbcConn" />
       <module name="jvPalm" />
