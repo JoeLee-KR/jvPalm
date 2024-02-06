@@ -99,7 +99,8 @@ SUBDATE( now(), interval -1 day),
 123
 );
 select CREDITS_USED_CLOUD_SERVICES, QUERY_ID, START_TIME, INSERTION_TIME,EXECUTION_TIME
-from palmdb.sf_query_history sqh ;
+-- from palmdb.sf_query_history sqh ;
+from palmdb.SF_QUERY_HISTORY SQH;
 
 
 -- 
