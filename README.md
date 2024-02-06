@@ -15,4 +15,9 @@ Prometheus & Grafana study sandbox for private...
 - Depot/promSUNI: mySuni workbook 
 - ...Solve, jvPalm git pull problem, refer git-memo@notion
 
+### git pull toruble
+$ git pull --no-ff
+$ gac
+$ git push
+
 +==
