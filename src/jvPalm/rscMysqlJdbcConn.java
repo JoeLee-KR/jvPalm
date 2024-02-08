@@ -9,10 +9,12 @@ public class rscMysqlJdbcConn {
     // for MySQL
     String driverClassName00 = "com.mysql.cj.jdbc.Driver";
     String url00 = "jdbc:mysql://palmmysqldb:3306/palmdb";
+    String url02 = "jdbc:mysql://palmmysqldb:9306/palmdb";
 
     // for MARIADB
     String driverClassName01 = "org.mariadb.jdbc.Driver";
     String url01 = "jdbc:mariadb://palmmysqldb:3306/";
+    String url03 = "jdbc:mariadb://palmmysqldb:9306/";
 
     //Class.forName("oracle.jdbc.driver.OracleDriver");    //oracle
 
@@ -75,8 +77,10 @@ public class rscMysqlJdbcConn {
 
     public void printUsage01(){
         System.out.println("Usage: need one arguments");
-        System.out.println("0 : use MysqlDB Driver ");
-        System.out.println("1 : use MariaDB Driver ");
+        System.out.println("0 : use MysqlDB Driver w3306");
+        System.out.println("1 : use MariaDB Driver w3306");
+        System.out.println("2 : use MysqlDB Driver w9306");
+        System.out.println("3 : use MariaDB Driver w9306");
     }
 
     int selectJdbcUrl(String[] args){
@@ -88,6 +92,14 @@ public class rscMysqlJdbcConn {
                     break;
                 case 1: // selected
                     url = url01;
+                    driverClassName = driverClassName01;
+                    break;
+                case 2: // selected
+                    url = url02;
+                    driverClassName = driverClassName00;
+                    break;
+                case 3: // selected
+                    url = url03;
                     driverClassName = driverClassName01;
                     break;
                 default:

@@ -10,12 +10,19 @@ public class jvPalm {
             "included methods are bellow:",
             "  >> jvPalm.checkMysqlJdbcConn [0..1]",
             "     0: mysql://palmmysqldb:3306, 1: mariadb://palmmysqldb:3306",
+            "     2: mysql://palmmysqldb:9306, 3: mariadb://palmmysqldb:9306",
             "  >> jvPalm.checkSfJdbcConn [0..3]",
-            "     0,1: Internet atixoaj,jx75304, 2,3: Private atixoaj,jx75304",
+            "     0: Internet atixoaj, 1: Internet jx75304",
+            "     2: Private atixoaj,  3: Private jx75304",
             "  >> jvPalm.mvSFM_QueryHistory [0..1] (minutes | Date Hour)",
-            "     First 1 Arg is must Conn option: 0:Internet, 1:Private",
-            "     2nd arg is 15 minutes for default, or arg 1 mean arg minutes, and break at DUP",
-            "     2nd & 3rd Args are Date & Hour(0..23,24) args, 24 means hole day and not break at DUP"
+            "     no arg: this help message" ,
+            "     1 arg: now-15 min getting" ,
+            "       1st arg: 0:SF-Internet-3306, 1:SF-Private-3306, 2:SF-Internet-9306, 3:SF-Private-9306",
+            "     2 args: now-X min getting",
+            "       1st arg + 2nd arg: -X is minute range, w/overDUP",
+            "     3 args: at target day and with hourly",
+            "       1st arg + 2nd arg: target yyyy-mm-dd, 3rd arg: hourly(0..23) & 24 is hole day, w/overDUP",
+            "..."
     };
 
     public void printout(String[] mmm){

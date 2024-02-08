@@ -1,0 +1,1777 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": {
+          "type": "grafana",
+          "uid": "-- Grafana --"
+        },
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "description": "QueryHistory 231103 update",
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 0,
+  "id": 21,
+  "links": [],
+  "liveNow": false,
+  "panels": [
+    {
+      "collapsed": false,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "id": 2,
+      "panels": [],
+      "title": "Snowflake Query History",
+      "type": "row"
+    },
+    {
+      "datasource": {
+        "type": "mysql",
+        "uid": "fa079983-6189-4f6f-9db6-ee96b50ea0c2"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "fixedColor": "purple",
+            "mode": "fixed"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "T"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "green",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 5,
+        "w": 4,
+        "x": 0,
+        "y": 1
+      },
+      "id": 3,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "center",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "/.*/",
+          "values": false
+        },
+        "textMode": "value"
+      },
+      "pluginVersion": "10.0.2",
+      "targets": [
+        {
+          "datasource": {
+            "type": "mysql",
+            "uid": "fa079983-6189-4f6f-9db6-ee96b50ea0c2"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "hide": false,
+          "rawQuery": true,
+          "rawSql": "-- Grafana DB Connection Base is +00:00\n-- therefore, to Presented a HOUR, use +offset \nSELECT date_format(  adddate(START_TIME, interval 9 hour), \"%H:%i:%s\") as T\nFROM palmdb.sf_query_history\nORDER BY START_TIME DESC\nLIMIT 1",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        },
+        {
+          "datasource": {
+            "type": "mysql",
+            "uid": "fa079983-6189-4f6f-9db6-ee96b50ea0c2"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "hide": false,
+          "rawQuery": true,
+          "rawSql": "SELECT date_format(START_TIME, \"%m-%d\") AS D\nFROM palmdb.sf_query_history\nORDER BY START_TIME DESC\nLIMIT 1",
+          "refId": "B",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        }
+      ],
+      "title": "Last Fetched",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "mysql",
+        "uid": "fa079983-6189-4f6f-9db6-ee96b50ea0c2"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "blue",
+                "value": 100
+              },
+              {
+                "color": "dark-yellow",
+                "value": 200
+              },
+              {
+                "color": "dark-orange",
+                "value": 400
+              },
+              {
+                "color": "dark-red",
+                "value": 800
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 5,
+        "w": 8,
+        "x": 4,
+        "y": 1
+      },
+      "id": 4,
+      "options": {
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showThresholdLabels": false,
+        "showThresholdMarkers": true
+      },
+      "pluginVersion": "10.0.2",
+      "targets": [
+        {
+          "dataset": "palmdb",
+          "datasource": {
+            "type": "mysql",
+            "uid": "fa079983-6189-4f6f-9db6-ee96b50ea0c2"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "SELECT count(*) as \"-10min\"\nfrom palmdb.sf_query_history\nWHERE start_time >= adddate( timestamp( now() ), interval -10 minute )",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [
+                  {
+                    "name": "*",
+                    "type": "functionParameter"
+                  }
+                ],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          },
+          "table": "palmdemo"
+        },
+        {
+          "datasource": {
+            "type": "mysql",
+            "uid": "fa079983-6189-4f6f-9db6-ee96b50ea0c2"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "hide": false,
+          "rawQuery": true,
+          "rawSql": "SELECT count(*) as \"-20min\"\nfrom palmdb.sf_query_history\nWHERE start_time >= adddate( timestamp( now() ), interval -20 minute )\n  and start_time < adddate( timestamp( now() ), interval -10 minute )",
+          "refId": "B",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        },
+        {
+          "datasource": {
+            "type": "mysql",
+            "uid": "fa079983-6189-4f6f-9db6-ee96b50ea0c2"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "hide": false,
+          "rawQuery": true,
+          "rawSql": "SELECT count(*) as \"-30min\"\nfrom palmdb.sf_query_history\nWHERE start_time >= adddate( timestamp( now() ), interval -30 minute )\n  and start_time < adddate( timestamp( now() ), interval -20 minute )",
+          "refId": "C",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        },
+        {
+          "datasource": {
+            "type": "mysql",
+            "uid": "fa079983-6189-4f6f-9db6-ee96b50ea0c2"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "hide": false,
+          "rawQuery": true,
+          "rawSql": "SELECT count(*) as \"-40min\"\nfrom palmdb.sf_query_history\nWHERE start_time >= adddate( timestamp( now() ), interval -40 minute )\n    and start_time < adddate( timestamp( now() ), interval -30 minute )",
+          "refId": "D",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        }
+      ],
+      "title": "Queries / past each 10min",
+      "type": "gauge"
+    },
+    {
+      "datasource": {
+        "type": "mysql",
+        "uid": "fa079983-6189-4f6f-9db6-ee96b50ea0c2"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "stepAfter",
+            "lineStyle": {
+              "fill": "solid"
+            },
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "WH_PRD"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "semi-dark-red",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "WH_DEV"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "semi-dark-blue",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "WH_LOAD"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "semi-dark-green",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "WH_DQM"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "dark-yellow",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 5,
+        "w": 12,
+        "x": 12,
+        "y": 1
+      },
+      "id": 10,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "mysql",
+            "uid": "fa079983-6189-4f6f-9db6-ee96b50ea0c2"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "select \n\tstart_time,\n\tCNWH_DQM as WH_DQM,\n\tCNWH_LOAD as WH_LOAD,\n\tCNWH_DEV as WH_DEV,\n\tCNWH_PRD\tas WH_PRD\nfrom (\n\tselect\n\t\tstart_TIME,\n\t\tcase when WAREHOUSE_NAME = 'WH_DEV_DQM_TEST' then CLUSTER_NUMBER\n\t\t\telse 0\n\t\t\tend CNWH_DQM,\n\t\tcase when WAREHOUSE_NAME = 'WH_PRD_LOAD_XS' then CLUSTER_NUMBER\n\t\t\telse 0\n\t\t\tend CNWH_LOAD,\n\t\tcase when WAREHOUSE_NAME = 'WH_DEV_XS' then CLUSTER_NUMBER\n\t\t\telse 0\n\t\t\tend CNWH_DEV,\n\t\tcase when WAREHOUSE_NAME = 'WH_PRD_XS' then CLUSTER_NUMBER\n\t\t\telse 0\n\t\t\tend CNWH_PRD\n\tfrom palmdb.sf_query_history sqh\n) result\n-- group by START_TIME\norder by START_TIME desc\nlimit 40000",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        }
+      ],
+      "title": "Clusters by WH",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "mysql",
+        "uid": "fa079983-6189-4f6f-9db6-ee96b50ea0c2"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic-by-name"
+          },
+          "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "MSTRS"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "semi-dark-red",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "DEVELOPERS"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "blue",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "DQMADMINS"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "light-green",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "SYSTEMS"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "dark-green",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "ALLUSERS"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "#b4acac",
+                  "mode": "fixed"
+                }
+              },
+              {
+                "id": "custom.lineStyle",
+                "value": {
+                  "fill": "solid"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "OPSUSER"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "semi-dark-purple",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 5,
+        "w": 12,
+        "x": 0,
+        "y": 6
+      },
+      "id": 7,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "mysql",
+            "uid": "fa079983-6189-4f6f-9db6-ee96b50ea0c2"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "select \n\tstart_time,\n  sum(ALLUSERS)\tas ALLUSERS,\n\tsum(OPSUSER) as OPSUSER,\n\tsum(DQMADMIN)\tas DQM,\n\tsum(INSYSTEM)\tas SYSTEMS,\n\tsum(DEVELOPER)\tas DEVS,\n\tsum(MSTR) \t\tas MSTRS\nfrom (\n\tselect\n\t\tSTART_TIME,\n\t\tcase when USER_NAME = 'DQMADMIN' then 1\n\t\t\telse 0\n\t\t\tend DQMADMIN,\n\t\tcase when USER_NAME = 'SYSTEM'  then 1\n\t\t\twhen USER_NAME = 'PALMADMIN' then 1\n\t\t\twhen USER_NAME = 'CDC_PRD' then 1\n\t\t\twhen USER_NAME = 'WEB_EXA_PRD' then 1\n\t\t\telse 0\n\t\t\tend INSYSTEM,\n\t\tcase when USER_NAME = 'PRD_DEVELOPER1' then 1\n\t\t\twhen USER_NAME = 'DEV_DEVELOPER1' then 1\n\t\t\telse 0\n\t\t\tend DEVELOPER,\n\t\tcase when USER_NAME = 'MSTR_PRD' then 1\n\t\t\telse 0\n\t\t\tend MSTR,\n\t\tcase when USER_NAME like 'Z%' then 1\n\t\t  when USER_NAME like 'TS%' then 1\n\t\t  else 0\n\t\t\tend OPSUSER,\n\t\tcase when USER_NAME <> 'MSTR_PRD'\n\t\t  and USER_NAME <> 'SYSTEM'\n\t\t\tand USER_NAME <> 'PRD_DEVELOPER1' \n\t\t\tand USER_NAME <> 'DEV_DEVELOPER1' \n\t\t\tand USER_NAME <> 'DQMADMIN'\n\t\t\tand USER_NAME <> 'PALMADMIN' \n\t\t\tand USER_NAME <> 'CDC_PRD' \n\t\t\tand USER_NAME <> 'WEB_EXA_PRD' \n\t\t\tand USER_NAME NOT LIKE 'Z%'\n\t\t\tand USER_NAME NOT LIKE 'TS%'\n\t\t\tthen 1\n\t\t\telse 0\n\t\t\tend ALLUSERS\n\tfrom palmdb.sf_query_history sqh\n) result\ngroup by START_TIME\norder by START_TIME desc\nlimit 30000",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        }
+      ],
+      "title": "Count / sec / User - start_time",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "mysql",
+        "uid": "fa079983-6189-4f6f-9db6-ee96b50ea0c2"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic-by-name"
+          },
+          "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "WH_PRD"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "semi-dark-red",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "WH_DEV"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "blue",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "WH_LOAD"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "semi-dark-yellow",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "WH_DQM"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "dark-green",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "WH_X"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "#b4acac",
+                  "mode": "fixed"
+                }
+              },
+              {
+                "id": "custom.lineStyle",
+                "value": {
+                  "fill": "solid"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "OPSUSER"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "semi-dark-purple",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 5,
+        "w": 12,
+        "x": 12,
+        "y": 6
+      },
+      "id": 13,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "mysql",
+            "uid": "fa079983-6189-4f6f-9db6-ee96b50ea0c2"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "select \n\tstart_time,\n  sum(WH_X)\tas WH_X,\n\tsum(WH_DQM) as WH_DQM,\n\tsum(WH_LOAD)\tas WH_LOAD,\n\tsum(WH_DEV)\tas WH_DEV,\n\tsum(WH_PRD)\tas WH_PRD\nfrom (\n\tselect\n\t\tSTART_TIME,\n\t\tcase when WAREHOUSE_NAME = 'WH_DEV_DQM_TEST' then 1\n\t\t\telse 0\n\t\t\tend WH_DQM,\n\t\tcase when WAREHOUSE_NAME = 'WH_PRD_XS'  then 1\n\t\t\twhen WAREHOUSE_NAME = 'WH_PRD_MSTR' then 1\n\t\t\telse 0\n\t\t\tend WH_PRD,\n\t\tcase when WAREHOUSE_NAME = 'WH_DEV_XS' then 1\n\t\t\telse 0\n\t\t\tend WH_DEV,\n\t\tcase when WAREHOUSE_NAME = 'WH_PRD_LOAD_XS' then 1\n\t\t\telse 0\n\t\t\tend WH_LOAD,\n\t\tcase when WAREHOUSE_NAME <> 'WH_PRD_LOAD_XS'\n\t\t  and WAREHOUSE_NAME <> 'WH_DEV_XS'\n\t\t\tand WAREHOUSE_NAME <> 'WH_PRD_MSTR' \n\t\t\tand WAREHOUSE_NAME <> 'WH_PRD_XS' \n\t\t\tand WAREHOUSE_NAME <> 'WH_DEV_DQM_TEST'\n\t\t\tthen 1\n\t\t\telse 0\n\t\t\tend WH_X\n\tfrom palmdb.sf_query_history sqh\n) result\ngroup by START_TIME\norder by START_TIME desc\nlimit 30000",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        }
+      ],
+      "title": "Count / sec / WH - start_time",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "mysql",
+        "uid": "fa079983-6189-4f6f-9db6-ee96b50ea0c2"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic-by-name"
+          },
+          "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "MSTRS"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "semi-dark-red",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "DEVELOPERS"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "blue",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "DQMADMINS"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "light-green",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "SYSTEMS"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "dark-green",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "ALLUSERS"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "#b4acac",
+                  "mode": "fixed"
+                }
+              },
+              {
+                "id": "custom.lineStyle",
+                "value": {
+                  "fill": "solid"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "OPSUSER"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "semi-dark-purple",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 5,
+        "w": 12,
+        "x": 0,
+        "y": 11
+      },
+      "id": 12,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "mysql",
+            "uid": "fa079983-6189-4f6f-9db6-ee96b50ea0c2"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "select \n\tstart_time,\n  sum(ALLUSERS)\t/1000 as ALLUSERS,\n\tsum(OPSUSER) /1000 as OPSUSER,\n\tsum(DQMADMIN)\t/1000 as DQM,\n\tsum(INSYSTEM)\t/1000 as SYSTEMS,\n\tsum(DEVELOPER) /1000 \tas DEVS,\n\tsum(MSTR) /1000 as MSTRS\nfrom (\n\tselect\n\t\tSTART_TIME,\n\t\tcase when USER_NAME = 'DQMADMIN' then EXECUTION_TIME\n\t\t\telse 0\n\t\t\tend DQMADMIN,\n\t\tcase when USER_NAME = 'SYSTEM'  then EXECUTION_TIME\n\t\t\twhen USER_NAME = 'PALMADMIN' then EXECUTION_TIME\n\t\t\twhen USER_NAME = 'CDC_PRD' then EXECUTION_TIME\n\t\t\twhen USER_NAME = 'WEB_EXA_PRD' then EXECUTION_TIME\n\t\t\telse 0\n\t\t\tend INSYSTEM,\n\t\tcase when USER_NAME = 'PRD_DEVELOPER1' then EXECUTION_TIME\n\t\t\twhen USER_NAME = 'DEV_DEVELOPER1' then EXECUTION_TIME\n\t\t\telse 0\n\t\t\tend DEVELOPER,\n\t\tcase when USER_NAME = 'MSTR_PRD' then EXECUTION_TIME\n\t\t\telse 0\n\t\t\tend MSTR,\n\t\tcase when USER_NAME like 'Z%' then EXECUTION_TIME\n\t\t  when USER_NAME like 'TS%' then EXECUTION_TIME\n\t\t  else 0\n\t\t\tend OPSUSER,\n\t\tcase when USER_NAME <> 'MSTR_PRD'\n\t\t  and USER_NAME <> 'SYSTEM'\n\t\t\tand USER_NAME <> 'PRD_DEVELOPER1' \n\t\t\tand USER_NAME <> 'DEV_DEVELOPER1' \n\t\t\tand USER_NAME <> 'DQMADMIN'\n\t\t\tand USER_NAME <> 'PALMADMIN' \n\t\t\tand USER_NAME <> 'CDC_PRD' \n\t\t\tand USER_NAME <> 'WEB_EXA_PRD' \n\t\t\tand USER_NAME NOT LIKE 'Z%'\n\t\t\tand USER_NAME NOT LIKE 'TS%'\n\t\t\tthen EXECUTION_TIME\n\t\t\telse 0\n\t\t\tend ALLUSERS\n\tfrom palmdb.sf_query_history sqh\n) result\ngroup by START_TIME\norder by START_TIME desc\nlimit 30000",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        }
+      ],
+      "title": "ExcuTime / sec / User - start_time",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "mysql",
+        "uid": "fa079983-6189-4f6f-9db6-ee96b50ea0c2"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic-by-name"
+          },
+          "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "WH_PRD"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "semi-dark-red",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "WH_DEV"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "blue",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "WH_LOAD"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "semi-dark-yellow",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "WH_DQM"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "dark-green",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "WH_X"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "#b4acac",
+                  "mode": "fixed"
+                }
+              },
+              {
+                "id": "custom.lineStyle",
+                "value": {
+                  "fill": "solid"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "OPSUSER"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "semi-dark-purple",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 5,
+        "w": 12,
+        "x": 12,
+        "y": 11
+      },
+      "id": 14,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "mysql",
+            "uid": "fa079983-6189-4f6f-9db6-ee96b50ea0c2"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "select \n\tstart_time,\n  sum(WH_X)\t/1000 as WH_X,\n\tsum(WH_DQM) /1000 as WH_DQM,\n\tsum(WH_LOAD)/1000 as WH_LOAD,\n\tsum(WH_DEV)\t/1000 as WH_DEV,\n\tsum(WH_PRD)\t/1000 as WH_PRD\nfrom (\n\tselect\n\t\tSTART_TIME,\n\t\tcase when WAREHOUSE_NAME = 'WH_DEV_DQM_TEST' then EXECUTION_TIME\n\t\t\telse 0\n\t\t\tend WH_DQM,\n\t\tcase when WAREHOUSE_NAME = 'WH_PRD_XS'  then EXECUTION_TIME\n\t\t\twhen WAREHOUSE_NAME = 'WH_PRD_MSTR' then EXECUTION_TIME\n\t\t\telse 0\n\t\t\tend WH_PRD,\n\t\tcase when WAREHOUSE_NAME = 'WH_DEV_XS' then EXECUTION_TIME\n\t\t\telse 0\n\t\t\tend WH_DEV,\n\t\tcase when WAREHOUSE_NAME = 'WH_PRD_LOAD_XS' then EXECUTION_TIME\n\t\t\telse 0\n\t\t\tend WH_LOAD,\n\t\tcase when WAREHOUSE_NAME <> 'WH_PRD_LOAD_XS'\n\t\t  and WAREHOUSE_NAME <> 'WH_DEV_XS'\n\t\t\tand WAREHOUSE_NAME <> 'WH_PRD_MSTR' \n\t\t\tand WAREHOUSE_NAME <> 'WH_PRD_XS' \n\t\t\tand WAREHOUSE_NAME <> 'WH_DEV_DQM_TEST'\n\t\t\tthen EXECUTION_TIME\n\t\t\telse 0\n\t\t\tend WH_X\n\tfrom palmdb.sf_query_history sqh\n) result\ngroup by START_TIME\norder by START_TIME desc\nlimit 30000",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        }
+      ],
+      "title": "ExcuTime / sec / WH - start_time",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "mysql",
+        "uid": "fa079983-6189-4f6f-9db6-ee96b50ea0c2"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic-by-name"
+          },
+          "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "MSTRS"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "semi-dark-red",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "DEVELOPERS"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "blue",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "DQMADMINS"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "light-green",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "SYSTEMS"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "dark-green",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "ALLUSERS"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "#b4acac",
+                  "mode": "fixed"
+                }
+              },
+              {
+                "id": "custom.lineStyle",
+                "value": {
+                  "fill": "solid"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "OPSUSER"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "semi-dark-purple",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 5,
+        "w": 12,
+        "x": 0,
+        "y": 16
+      },
+      "id": 11,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "mysql",
+            "uid": "fa079983-6189-4f6f-9db6-ee96b50ea0c2"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "select \n\tstart_time,\n  sum(ALLUSERS)\t/1000 as ALLUSERS,\n\tsum(OPSUSER) /1000 as OPSUSER,\n\tsum(DQMADMIN)\t/1000 as DQM,\n\tsum(INSYSTEM)\t/1000 as SYSTEMS,\n\tsum(DEVELOPER) /1000 \tas DEVS,\n\tsum(MSTR) /1000 as MSTRS\nfrom (\n\tselect\n\t\tSTART_TIME,\n\t\tcase when USER_NAME = 'DQMADMIN' then COMPILATION_TIME\n\t\t\telse 0\n\t\t\tend DQMADMIN,\n\t\tcase when USER_NAME = 'SYSTEM'  then COMPILATION_TIME\n\t\t\twhen USER_NAME = 'PALMADMIN' then COMPILATION_TIME\n\t\t\twhen USER_NAME = 'CDC_PRD' then COMPILATION_TIME\n\t\t\twhen USER_NAME = 'WEB_EXA_PRD' then COMPILATION_TIME\n\t\t\telse 0\n\t\t\tend INSYSTEM,\n\t\tcase when USER_NAME = 'PRD_DEVELOPER1' then COMPILATION_TIME\n\t\t\twhen USER_NAME = 'DEV_DEVELOPER1' then COMPILATION_TIME\n\t\t\telse 0\n\t\t\tend DEVELOPER,\n\t\tcase when USER_NAME = 'MSTR_PRD' then COMPILATION_TIME\n\t\t\telse 0\n\t\t\tend MSTR,\n\t\tcase when USER_NAME like 'Z%' then COMPILATION_TIME\n\t\t  when USER_NAME like 'TS%' then COMPILATION_TIME\n\t\t  else 0\n\t\t\tend OPSUSER,\n\t\tcase when USER_NAME <> 'MSTR_PRD'\n\t\t  and USER_NAME <> 'SYSTEM'\n\t\t\tand USER_NAME <> 'PRD_DEVELOPER1' \n\t\t\tand USER_NAME <> 'DEV_DEVELOPER1' \n\t\t\tand USER_NAME <> 'DQMADMIN'\n\t\t\tand USER_NAME <> 'PALMADMIN' \n\t\t\tand USER_NAME <> 'CDC_PRD' \n\t\t\tand USER_NAME <> 'WEB_EXA_PRD' \n\t\t\tand USER_NAME NOT LIKE 'Z%'\n\t\t\tand USER_NAME NOT LIKE 'TS%'\n\t\t\tthen COMPILATION_TIME\n\t\t\telse 0\n\t\t\tend ALLUSERS\n\tfrom palmdb.sf_query_history sqh\n) result\ngroup by START_TIME\norder by START_TIME desc\nlimit 30000",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        }
+      ],
+      "title": "CompTime / sec / User - start_time",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "mysql",
+        "uid": "fa079983-6189-4f6f-9db6-ee96b50ea0c2"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic-by-name"
+          },
+          "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "WH_PRD"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "semi-dark-red",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "WH_DEV"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "blue",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "WH_LOAD"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "semi-dark-yellow",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "WH_DQM"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "dark-green",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "WH_X"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "#b4acac",
+                  "mode": "fixed"
+                }
+              },
+              {
+                "id": "custom.lineStyle",
+                "value": {
+                  "fill": "solid"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "OPSUSER"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "semi-dark-purple",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 5,
+        "w": 12,
+        "x": 12,
+        "y": 16
+      },
+      "id": 15,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "mysql",
+            "uid": "fa079983-6189-4f6f-9db6-ee96b50ea0c2"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "select \n\tstart_time,\n  sum(WH_X)\t/1000 as WH_X,\n\tsum(WH_DQM) /1000 as WH_DQM,\n\tsum(WH_LOAD)/1000 as WH_LOAD,\n\tsum(WH_DEV)\t/1000 as WH_DEV,\n\tsum(WH_PRD)\t/1000 as WH_PRD\nfrom (\n\tselect\n\t\tSTART_TIME,\n\t\tcase when WAREHOUSE_NAME = 'WH_DEV_DQM_TEST' then COMPILATION_TIME\n\t\t\telse 0\n\t\t\tend WH_DQM,\n\t\tcase when WAREHOUSE_NAME = 'WH_PRD_XS'  then COMPILATION_TIME\n\t\t\twhen WAREHOUSE_NAME = 'WH_PRD_MSTR' then COMPILATION_TIME\n\t\t\telse 0\n\t\t\tend WH_PRD,\n\t\tcase when WAREHOUSE_NAME = 'WH_DEV_XS' then COMPILATION_TIME\n\t\t\telse 0\n\t\t\tend WH_DEV,\n\t\tcase when WAREHOUSE_NAME = 'WH_PRD_LOAD_XS' then COMPILATION_TIME\n\t\t\telse 0\n\t\t\tend WH_LOAD,\n\t\tcase when WAREHOUSE_NAME <> 'WH_PRD_LOAD_XS'\n\t\t  and WAREHOUSE_NAME <> 'WH_DEV_XS'\n\t\t\tand WAREHOUSE_NAME <> 'WH_PRD_MSTR' \n\t\t\tand WAREHOUSE_NAME <> 'WH_PRD_XS' \n\t\t\tand WAREHOUSE_NAME <> 'WH_DEV_DQM_TEST'\n\t\t\tthen COMPILATION_TIME\n\t\t\telse 0\n\t\t\tend WH_X\n\tfrom palmdb.sf_query_history sqh\n) result\ngroup by START_TIME\norder by START_TIME desc\nlimit 30000",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        }
+      ],
+      "title": "CompTime / sec / WH - start_time",
+      "type": "timeseries"
+    }
+  ],
+  "refresh": "",
+  "schemaVersion": 38,
+  "style": "dark",
+  "tags": [],
+  "templating": {
+    "list": []
+  },
+  "time": {
+    "from": "now-3h",
+    "to": "now"
+  },
+  "timepicker": {},
+  "timezone": "",
+  "title": "02.1.Snowflake_231103",
+  "uid": "f6c2bd2d-5ebd-4985-b82b-67802eba0b4a",
+  "version": 7,
+  "weekStart": ""
+}

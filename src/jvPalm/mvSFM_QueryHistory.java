@@ -46,7 +46,9 @@ public class mvSFM_QueryHistory {
 
     //String myjdbcUrl = "jdbc:mysql://palmmysqldb:3306/palmdb";
     // FOR SKB INTERNAL
-    String myjdbcUrl = "jdbc:mysql://palmmysqldb:3306/palmdb";
+    String myjdbcUrl;
+    String myjdbcUrl01 = "jdbc:mysql://palmmysqldb:3306/palmdb";
+    String myjdbcUrl02 = "jdbc:mysql://palmmysqldb:9306/palmdb";
     String myUser = "palmadm";
     String myPswd = "prom3306!!";
 
@@ -385,6 +387,26 @@ public class mvSFM_QueryHistory {
         return Timestamp.valueOf( staticDT );
     }
 
+    public int setSFandMyURL(String x){
+        if ( Integer.parseInt( x ) == 0 )         { sfjdbcUrl = sfjdbcUrl00; myjdbcUrl=myjdbcUrl01;}
+        else if ( Integer.parseInt( x ) == 1 )    { sfjdbcUrl = sfjdbcUrl01; myjdbcUrl=myjdbcUrl01;}
+        else if ( Integer.parseInt( x ) == 2 )    { sfjdbcUrl = sfjdbcUrl00; myjdbcUrl=myjdbcUrl02;}
+        else if ( Integer.parseInt( x ) == 3 )    { sfjdbcUrl = sfjdbcUrl01; myjdbcUrl=myjdbcUrl02;}
+        else return(-1);
+        return(0);
+    }
+
+    public void printHelp01(){
+        System.out.println("Usage_: mvSFM_QueryHistory { [0..1] { (minutes | Date Hour)} }");
+        System.out.println("\tno arg: this help message");
+        System.out.println("\t1 arg: now-15 min getting");
+        System.out.println("\t\t1st arg: 0:SF-Internet-3306, 1:SF-Private-3306, 2:SF-Internet-9306, 3:SF-Private-9306");
+        System.out.println("\t2 args: now-X min getting");
+        System.out.println("\t\t1st arg + 2nd arg: -X is minute range, w/overDUP");
+        System.out.println("\t3 args: at target day and with hourly");
+        System.out.println("\t\t1st arg + 2nd arg: target yyyy-mm-dd, 3rd arg: hourly(0..23) & 24 is hole day, w/overDUP");
+    }
+
     public int getArgs(String[] args) {
         /*
         System.out.println("<<arg Parsing start----: args.length:" + args.length );
@@ -396,37 +418,37 @@ public class mvSFM_QueryHistory {
         */
         switch(args.length){
             case 0: // minutes now -15, with default URL
-                sfjdbcUrl = sfjdbcUrl00;
-                tsRange = 15;
-                selectFromTS = Timestamp.valueOf(makeTS( LocalDateTime.now() ).toLocalDateTime().plusMinutes(-tsRange) );
-                selectToTS = makeTS( LocalDateTime.now() );
-                flagDupProcess = false;
-                break;
-            case 1: // minutes now -15, with URL
-                if ( Integer.parseInt( args[0] ) == 0 ) sfjdbcUrl = sfjdbcUrl00;
-                else if ( Integer.parseInt( args[0] ) == 1 ) sfjdbcUrl = sfjdbcUrl01;
-                else return(-1);
-                tsRange = 15;
-                selectFromTS = Timestamp.valueOf(makeTS( LocalDateTime.now() ).toLocalDateTime().plusMinutes(-tsRange) );
-                selectToTS = makeTS( LocalDateTime.now() );
-                flagDupProcess = false;
-                break;
-            case 2: // minutes now -m
-                if ( Integer.parseInt( args[0] ) == 0 ) sfjdbcUrl = sfjdbcUrl00;
-                else sfjdbcUrl = sfjdbcUrl01;
+                // printHelp01();
+                return(-1);
+            case 1: // 1 arg: minutes now -15, with URL2SF & MySQL
+                if ( setSFandMyURL( args[0] ) == -1 ) return(-1);
+                try {
+                    tsRange = 15;
+                    selectFromTS = Timestamp.valueOf(makeTS( LocalDateTime.now() ).toLocalDateTime().plusMinutes(-tsRange) );
+                    selectToTS = makeTS( LocalDateTime.now() );
+                    flagDupProcess = false;
+                    System.out.println(">>do:1, now-15min, setURL: " + sfjdbcUrl + ":" + myjdbcUrl +"<<");
+                    System.out.println(">>do:1, "+selectFromTS+" > "+selectToTS+", no overDUP<<");
+                    break;
+                } catch ( Exception e ) {
+                    return(-1);
+                }
+            case 2: // 2 args: minutes now -m, 1st:URL, 2nd:m
+                if ( setSFandMyURL( args[0] ) == -1 ) return(-1);
                 try {
                     tsRange = Integer.parseInt( args[1] );
                     selectFromTS = Timestamp.valueOf(makeTS( LocalDateTime.now() ).toLocalDateTime().plusMinutes(-tsRange) );
                     selectToTS = makeTS( LocalDateTime.now() );
                     flagDupProcess = true;
+                    System.out.println(">>do:2, now-" + tsRange + "min, setURL: " + sfjdbcUrl + ":" + myjdbcUrl +"<<");
+                    System.out.println(">>do:2, "+selectFromTS+" > "+selectToTS+", w/overDUP<<");
                     break;
                 } catch (Exception e) {
                     //System.out.println("JOE NUMNER FORMAT ERROR:" + e);
                     return(-1);
                 }
-            case 3:
-                if ( Integer.parseInt( args[0] ) == 0 ) sfjdbcUrl = sfjdbcUrl00;
-                else sfjdbcUrl = sfjdbcUrl01;
+            case 3: // 3 args: 1st:URL, 2nd: target yyyy-mm-dd, 3rd: Hourly or 24-all
+                if ( setSFandMyURL( args[0] ) == -1 ) return(-1);
                 try {
                     tsRange = Integer.parseInt( args[2] );
                     if ( tsRange<24 ) {   // range 1 hour
@@ -437,6 +459,8 @@ public class mvSFM_QueryHistory {
                         selectToTS = Timestamp.valueOf(makeTS( args[1] ).toLocalDateTime().plusDays(1) );
                     }
                     flagDupProcess = true;
+                    System.out.println(">>do:3, " + tsRange + "oclock+1hour, setURL: " + sfjdbcUrl + ":" + myjdbcUrl +"<<");
+                    System.out.println(">>do:3, "+selectFromTS+" > "+selectToTS+", w/overDUP <<");
                     break;
                 } catch (Exception e) {
                     //System.out.println("JOE:" + e);
@@ -455,17 +479,16 @@ public class mvSFM_QueryHistory {
         mvSFM_QueryHistory my = new mvSFM_QueryHistory();
 
         if ( my.getArgs(args) == -1) {
-            System.out.println("Usage_: mvSFM_QueryHistory { [0..1] { (minutes | Date Hour)} }");
-            System.out.println("\tFirst 1 Arg is must Conn option: 0:Internet, 1:Private, other is this help.");
-            System.out.println("\t2nd arg is 15 minutes for default, or arg 1 mean arg minutes, and break at DUP");
-            System.out.println("\t2nd & 3rd Args are Date & Hour(0..23,24) args, 24 means hole day and not break at DUP");
+            my.printHelp01();
         } else {
+
             my.setQueries();
             my.setConnProperties();
             my.getConnection();
             // my.getProcessQuery00();
             my.getProcessQuery01();
             my.closeConnection();
+
         } // args
 
         System.out.println("Oasis.snowflake.dump.2palm.end---"+ LocalDateTime.now());
