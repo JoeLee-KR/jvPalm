@@ -11,13 +11,6 @@
   <component name="ChangeListManager">
     <list default="true" id="21c8fc54-c20e-4ad5-9bc8-9442f1565984" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jvPalm.iml" beforeDir="false" afterPath="$PROJECT_DIR$/jvPalm.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/Snowflake-2nd.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/jvPalm/checkMysqlJdbcConn.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jvPalm/checkMysqlJdbcConn.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/jvPalm/jvPalm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jvPalm/jvPalm.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/jvPalm/mvSFM_QueryHistory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jvPalm/mvSFM_QueryHistory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/jvPalm/rscMysqlJdbcConn.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jvPalm/rscMysqlJdbcConn.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/toDos" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -175,7 +168,7 @@
       <workItem from="1706899997744" duration="39000" />
       <workItem from="1706900041802" duration="163000" />
       <workItem from="1707024860548" duration="324000" />
-      <workItem from="1707258268791" duration="8372000" />
+      <workItem from="1707258268791" duration="8693000" />
     </task>
     <servers />
   </component>
