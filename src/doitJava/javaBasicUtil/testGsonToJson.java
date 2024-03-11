@@ -1,4 +1,4 @@
-package jvTest.jvHello.javaBasicUtil;
+package doitJava.javaBasicUtil;
 import com.google.gson.*;
 
 public class testGsonToJson {

@@ -1,4 +1,4 @@
-package jvTest.jvHello.javaPolyInterface;
+package doitJava.javaPolyInterface;
 
 public class Radio implements RCU {
     String name;

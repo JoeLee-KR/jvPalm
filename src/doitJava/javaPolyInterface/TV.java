@@ -1,4 +1,4 @@
-package jvTest.jvHello.javaPolyInterface;
+package doitJava.javaPolyInterface;
 
 public class TV implements RCU{
     private int currentCh=95;

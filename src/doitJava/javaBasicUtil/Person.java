@@ -1,4 +1,4 @@
-package jvTest.jvHello.javaBasicUtil;
+package doitJava.javaBasicUtil;
 
 public class Person {
     private String pName;

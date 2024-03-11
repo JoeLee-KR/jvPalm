@@ -1,4 +1,4 @@
-package jvTest.jvHello.doit_ch10_classpoly;
+package doitJava.doit_ch10_classpoly;
 
 class Joe {
     int a=111;

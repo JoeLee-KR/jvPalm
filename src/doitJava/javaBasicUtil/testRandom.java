@@ -1,4 +1,4 @@
-package jvTest.jvHello.javaBasicUtil;
+package doitJava.javaBasicUtil;
 import java.util.*;
 
 public class testRandom {

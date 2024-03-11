@@ -1,4 +1,4 @@
-package jvTest.jvHello;
+package doitJava;
 
 class A{
     int m=3;

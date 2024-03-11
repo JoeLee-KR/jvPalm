@@ -1,4 +1,4 @@
-package jvTest.jvHello.javaPolyAbstract;
+package doitJava.javaPolyAbstract;
 
 public class testPloy {
     public static void main(String[] args) {
