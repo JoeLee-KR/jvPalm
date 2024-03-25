@@ -11,26 +11,7 @@
   <component name="ChangeListManager">
     <list default="true" id="21c8fc54-c20e-4ad5-9bc8-9442f1565984" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/jvTest/jvHello/doit_ch10_classpoly/MethodOverriding01.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/doitJava/doit_ch10_classpoly/MethodOverriding01.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/jvTest/jvHello/doit_ch10_classpoly/MethodOverriding02.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/doitJava/doit_ch10_classpoly/MethodOverriding02.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/jvTest/jvHello/doit_ch10_classpoly/MethodOverriding03.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/doitJava/doit_ch10_classpoly/MethodOverriding03.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/jvTest/jvHello/doit_ch10_classpoly/MethodOverriding04.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/doitJava/doit_ch10_classpoly/MethodOverriding04.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/jvTest/jvHello/doit_ch10_classpoly/MethodOverriding05.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/doitJava/doit_ch10_classpoly/MethodOverriding05.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/jvTest/jvHello/doit_ch10_classpoly/MethodOverriding06.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/doitJava/doit_ch10_classpoly/MethodOverriding06.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/jvTest/jvHello/doit_ch10_classpoly/doit_ch10_OOP_Keyword" beforeDir="false" afterPath="$PROJECT_DIR$/src/doitJava/doit_ch10_classpoly/doit_ch10_OOP_Keyword" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/jvTest/jvHello/doit_ch11_abstract/FA01.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/doitJava/doit_ch11_abstract/FA01.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/jvTest/jvHello/javaBasicUtil/Person.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/doitJava/javaBasicUtil/Person.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/jvTest/jvHello/javaBasicUtil/testGsonToJson.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/doitJava/javaBasicUtil/testGsonToJson.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/jvTest/jvHello/javaBasicUtil/testRandom.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/doitJava/javaBasicUtil/testRandom.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/jvTest/jvHello/javaPolyAbstract/Animal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/doitJava/javaPolyAbstract/Animal.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/jvTest/jvHello/javaPolyAbstract/Cat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/doitJava/javaPolyAbstract/Cat.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/jvTest/jvHello/javaPolyAbstract/Dog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/doitJava/javaPolyAbstract/Dog.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/jvTest/jvHello/javaPolyAbstract/testPloy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/doitJava/javaPolyAbstract/testPloy.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/jvTest/jvHello/javaPolyInterface/RCU.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/doitJava/javaPolyInterface/RCU.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/jvTest/jvHello/javaPolyInterface/Radio.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/doitJava/javaPolyInterface/Radio.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/jvTest/jvHello/javaPolyInterface/TV.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/doitJava/javaPolyInterface/TV.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/jvTest/jvHello/javaPolyInterface/testInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/doitJava/javaPolyInterface/testInterface.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/jvTest/jvHello/shortTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/doitJava/shortTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/doitJava/doit_ch10_classpoly/doit_ch10_OOP_Keyword" beforeDir="false" afterPath="$PROJECT_DIR$/src/doitJava/doit_ch10_classpoly/doit_ch10_OOP_Keyword" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,6 +45,7 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "ASKED_ADD_EXTERNAL_FILES": "true",
+    "Application.MethodOverriding01.executor": "Run",
     "Application.checkMysqlJdbcConn.executor": "Run",
     "Application.checkSfJdbcConn.executor": "Run",
     "Application.testTimestamp01.executor": "Run",
@@ -103,7 +85,7 @@
       <recent name="com.underslow.starthere" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.checkMysqlJdbcConn">
+  <component name="RunManager">
     <configuration name="checkMysqlJdbcConn" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="jvPalm.checkMysqlJdbcConn" />
       <module name="jvPalm" />
@@ -188,7 +170,7 @@
       <workItem from="1706899997744" duration="39000" />
       <workItem from="1706900041802" duration="163000" />
       <workItem from="1707024860548" duration="324000" />
-      <workItem from="1707258268791" duration="9360000" />
+      <workItem from="1707258268791" duration="10562000" />
     </task>
     <servers />
   </component>
