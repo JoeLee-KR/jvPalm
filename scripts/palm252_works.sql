@@ -126,8 +126,8 @@ limit 10
 
 select count(*)
 from palmdb.sf_query_history 
-where start_time >= ('2023-07-15 00:00:00')
-  and start_time < ('2023-07-15 01:00:00')
+where start_time >= ('2024-02-08 00:00:00')
+  and start_time < ('2024-02-09 00:00:00')
 order by start_time desc
 ;
 
