@@ -1,17 +1,18 @@
 Chap 10. Class Inheritance, Polymorphism (MethodOverriding01.java)
-10.1. Inheritance(>) and Polymorphism(<)
-  - Inheritance: reduce code, use Polymorphism
+10.1. Inheritance(>forward) and Polymorphism(<backword)
+  - Inheritance & Polymorphism: reduce code by pollymorphism
   - class Fruit {}
   - class Apple extends Fruit {}
   - Fruit f1 = new Fruit();
-  - Fruit f2 = new Apple(); // polymorphism
+  - Fruit f2 = new Apple(); // POLYMORPHISM
   - Fruit[] f3 = { new Apple(), new Graph(), new Kiwi(), new Apple() };
 
-10.2. Object Type Casting (MethodOverriding01.java)
+10.2. Object Type Casting at Inheritance, Polymorphism
+  - e.g.) MethodOverriding01.java
   - up casting (to Parents) is every enable.
     - Apple a1 = new Apple();  // allow, normal
-    - Fruit f4 = a1;  // allow, upper casting & use Apple a1()
-  - down casting (to Childs) is sometime enable or disable.
+    - Fruit f4 = a1;  // allow, upper casting & use Apple a1() by f4
+  - down casting (to Child) is sometime enable or disable.
     - Fruit f5 = (Apple) f1;  // not allow, ClassCastException
     - Fruit f6 = f2;          // allow, already alloced apple()
     - Fruit f6 = (Apple) f2;  // allow, already alloced apple()
