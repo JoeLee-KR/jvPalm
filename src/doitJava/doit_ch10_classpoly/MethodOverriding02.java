@@ -35,16 +35,24 @@ public class MethodOverriding02 {
         System.out.println("===== downcast test");
         A a1 = new A(); a1.print();
         // B b1 = (B) a1; b1.print();  // Can not downcast
-
         A a2 = new B(); a2.print();
         ((A)a2).print();
-        A a3 = ((A)a2); a3.print();
-        B b2 = (B) a2; b2.print();
+
+        System.out.println("===== downcast test2");
+        A a3 = ((A) new B()); a3.print();
+        // A a4 = ((B) new A()); a4.print();  // can not downcast
+
+        A a5 = ((A)a1); a5.print();
+        A a6 = ((A)a2); a6.print();
+        // B b2 = ((B) a1); b2.print();  // can not downcast
+        B b3 = ((B) a2); b3.print();
         // C c2 = (C) a2; c2.print();  // Can not downcast
 
-        System.out.println("===== downcast test 2");
+        System.out.println("===== downcast test3");
         A ax1 = new B(); ax1.print();
         A ax2 = new C(); ax2.print();
         ((B)ax2).print();
     }
 }
+
+

@@ -22,6 +22,7 @@ Chap 10. Class Inheritance, Polymorphism (MethodOverriding01.java)
     - c instanceof B; // true
 
 10.3. Method overriding
+  - e.g.) MethodOverriding02.java
   - method overriding: to use overriding at child for parents method, with same arg. signature & return type.
     - Every print() is B.print()
         A ab = new B(); ab.print();
@@ -30,15 +31,19 @@ Chap 10. Class Inheritance, Polymorphism (MethodOverriding01.java)
   - method overloading: to use similar method name, but diff arg. signature & return type.
 
 10.4. Instance Field(=Member), Static Member(=Field), Static Method
+  - e.g.) MethodOverriding03.java, MethodOverriding04.java
   - overriding only use for Method overriding.
     - Instance Field(Member): can't overriding, follow Class Type: e.g. A ab = new B(); ab.m=33 (A.m=33)
     - Static Field(Member): can't overriding, follow Class Type: e.g. A ab = new B(); ab.m=33 (A.m=33)
     - Static Method: can't overriding, follow Class Type: e.g. A.print() is same ab.print();
   - Finally, Inheritance used only on Instance Method,
-    Not Instance Field, Static Field, Static Method.
+             Not inheritance to Instance Field, Static Field, Static Method.
 
 10.5. super()
+  - e.g.) MethodOverriding05.java
+
 10.6. Object Class
+  - e.g.) MethodOverriding06.java
   - Object.hashCode();
   - Object.toString();
   - Object.equals

@@ -11,6 +11,11 @@
   <component name="ChangeListManager">
     <list default="true" id="21c8fc54-c20e-4ad5-9bc8-9442f1565984" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/doitJava/doit_ch10_classpoly/MethodOverriding02.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/doitJava/doit_ch10_classpoly/MethodOverriding02.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/doitJava/doit_ch10_classpoly/MethodOverriding03.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/doitJava/doit_ch10_classpoly/MethodOverriding03.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/doitJava/doit_ch10_classpoly/MethodOverriding04.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/doitJava/doit_ch10_classpoly/MethodOverriding04.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/doitJava/doit_ch10_classpoly/MethodOverriding05.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/doitJava/doit_ch10_classpoly/MethodOverriding05.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/doitJava/doit_ch10_classpoly/MethodOverriding06.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/doitJava/doit_ch10_classpoly/MethodOverriding06.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/doitJava/doit_ch10_classpoly/doit_ch10_OOP_Keyword" beforeDir="false" afterPath="$PROJECT_DIR$/src/doitJava/doit_ch10_classpoly/doit_ch10_OOP_Keyword" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -46,13 +51,19 @@
   "keyToString": {
     "ASKED_ADD_EXTERNAL_FILES": "true",
     "Application.MethodOverriding01.executor": "Run",
+    "Application.MethodOverriding02.executor": "Run",
+    "Application.MethodOverriding03.executor": "Run",
+    "Application.MethodOverriding04.executor": "Run",
+    "Application.MethodOverriding05.executor": "Run",
+    "Application.MethodOverriding06.executor": "Run",
     "Application.checkMysqlJdbcConn.executor": "Run",
     "Application.checkSfJdbcConn.executor": "Run",
     "Application.testTimestamp01.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/Volumes/macSSD/DevOps/jvPalm",
+    "last_opened_file_path": "/Users/doogie/DevOps/jvPalm",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -61,7 +72,8 @@
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2797619",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "settings.editor.selected.configurable": "editor.preferences.fonts.default",
+    "settings.editor.splitter.proportion": "0.22670807",
     "vue.rearranger.settings.migration": "true"
   },
   "keyToStringList": {
@@ -132,7 +144,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="jdk-11.0.22-azul-11.0.22-4caba194b151-07bbde06" />
+        <option value="bundled-jdk-9f38398b9061-39b83d9b5494-intellij.indexing.shared.core-IU-241.15989.150" />
+        <option value="bundled-js-predefined-1d06a55b98c1-91d5c284f522-JavaScript-IU-241.15989.150" />
       </set>
     </attachedChunks>
   </component>
@@ -171,6 +184,9 @@
       <workItem from="1706900041802" duration="163000" />
       <workItem from="1707024860548" duration="324000" />
       <workItem from="1707258268791" duration="11090000" />
+      <workItem from="1716364267926" duration="1995000" />
+      <workItem from="1717479673163" duration="1151000" />
+      <workItem from="1717979297670" duration="5818000" />
     </task>
     <servers />
   </component>
