@@ -11,11 +11,6 @@
   <component name="ChangeListManager">
     <list default="true" id="21c8fc54-c20e-4ad5-9bc8-9442f1565984" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/doitJava/doit_ch10_classpoly/MethodOverriding02.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/doitJava/doit_ch10_classpoly/MethodOverriding02.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/doitJava/doit_ch10_classpoly/MethodOverriding03.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/doitJava/doit_ch10_classpoly/MethodOverriding03.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/doitJava/doit_ch10_classpoly/MethodOverriding04.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/doitJava/doit_ch10_classpoly/MethodOverriding04.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/doitJava/doit_ch10_classpoly/MethodOverriding05.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/doitJava/doit_ch10_classpoly/MethodOverriding05.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/doitJava/doit_ch10_classpoly/MethodOverriding06.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/doitJava/doit_ch10_classpoly/MethodOverriding06.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/doitJava/doit_ch10_classpoly/doit_ch10_OOP_Keyword" beforeDir="false" afterPath="$PROJECT_DIR$/src/doitJava/doit_ch10_classpoly/doit_ch10_OOP_Keyword" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -47,41 +42,41 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "Application.MethodOverriding01.executor": "Run",
-    "Application.MethodOverriding02.executor": "Run",
-    "Application.MethodOverriding03.executor": "Run",
-    "Application.MethodOverriding04.executor": "Run",
-    "Application.MethodOverriding05.executor": "Run",
-    "Application.MethodOverriding06.executor": "Run",
-    "Application.checkMysqlJdbcConn.executor": "Run",
-    "Application.checkSfJdbcConn.executor": "Run",
-    "Application.testTimestamp01.executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/Users/doogie/DevOps/jvPalm",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2797619",
-    "settings.editor.selected.configurable": "editor.preferences.fonts.default",
-    "settings.editor.splitter.proportion": "0.22670807",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;Application.MethodOverriding01.executor&quot;: &quot;Run&quot;,
+    &quot;Application.MethodOverriding02.executor&quot;: &quot;Run&quot;,
+    &quot;Application.MethodOverriding03.executor&quot;: &quot;Run&quot;,
+    &quot;Application.MethodOverriding04.executor&quot;: &quot;Run&quot;,
+    &quot;Application.MethodOverriding05.executor&quot;: &quot;Run&quot;,
+    &quot;Application.MethodOverriding06.executor&quot;: &quot;Run&quot;,
+    &quot;Application.checkMysqlJdbcConn.executor&quot;: &quot;Run&quot;,
+    &quot;Application.checkSfJdbcConn.executor&quot;: &quot;Run&quot;,
+    &quot;Application.testTimestamp01.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/doogie/DevOps/jvPalm&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2797619&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.fonts.default&quot;,
+    &quot;settings.editor.splitter.proportion&quot;: &quot;0.22670807&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File": [
-      "JAVA"
+  &quot;keyToStringList&quot;: {
+    &quot;com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File&quot;: [
+      &quot;JAVA&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/jvTest/jvHello/javaPolyBasic" />
@@ -97,7 +92,7 @@
       <recent name="com.underslow.starthere" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.checkMysqlJdbcConn">
     <configuration name="checkMysqlJdbcConn" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="jvPalm.checkMysqlJdbcConn" />
       <module name="jvPalm" />
@@ -144,8 +139,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9f38398b9061-39b83d9b5494-intellij.indexing.shared.core-IU-241.15989.150" />
-        <option value="bundled-js-predefined-1d06a55b98c1-91d5c284f522-JavaScript-IU-241.15989.150" />
+        <option value="bundled-jdk-9f38398b9061-39b83d9b5494-intellij.indexing.shared.core-IU-241.19416.15" />
+        <option value="bundled-js-predefined-1d06a55b98c1-0b3e54e931b4-JavaScript-IU-241.19416.15" />
       </set>
     </attachedChunks>
   </component>
@@ -187,6 +182,9 @@
       <workItem from="1716364267926" duration="1995000" />
       <workItem from="1717479673163" duration="1151000" />
       <workItem from="1717979297670" duration="5818000" />
+      <workItem from="1736328201309" duration="218000" />
+      <workItem from="1736328557602" duration="92000" />
+      <workItem from="1736740854463" duration="1072000" />
     </task>
     <servers />
   </component>

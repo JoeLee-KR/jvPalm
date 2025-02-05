@@ -2,7 +2,9 @@ Chap 10. Class Inheritance, Polymorphism (MethodOverriding01.java)
 10.1. Inheritance(>forward) and Polymorphism(<backword)
   - Inheritance & Polymorphism: reduce code by pollymorphism
   - class Fruit {}
-  - class Apple extends Fruit {}
+    class Apple extends Fruit {}
+    class Graph extends Fruit {}
+    class Kiwi extends Fruit {}
   - Fruit f1 = new Fruit();
   - Fruit f2 = new Apple(); // POLYMORPHISM
   - Fruit[] f3 = { new Apple(), new Graph(), new Kiwi(), new Apple() };
