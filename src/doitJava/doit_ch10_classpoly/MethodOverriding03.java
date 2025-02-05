@@ -1,14 +1,14 @@
 package doitJava.doit_ch10_classpoly;
 
 class AA {
-    public int m=1;
+    public int m=3;
     public void print() {
         System.out.println("class AA..." + m);
     }
 }
 
 class BB extends AA {
-    public int m=3;
+    public int m=4;
     public void print() {
         System.out.println("class BB..." + m);
     }

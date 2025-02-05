@@ -2,12 +2,12 @@ package doitJava.doit_ch10_classpoly;
 
 class Joe {
     int a=111;
-    int b=333;
 }
 
-class Jenny {
+class Jenny extends Joe{
     int a=111;
-    int b=222;
+    // int a=222; // for test
+    int b=333;
     public String toString() {
         return ( "Jenny has (a,b) = (" + a + "," + b + ")" + super.toString() );
     }
@@ -16,16 +16,16 @@ class Jenny {
     public boolean equals(Object obj) {
 
         if (obj instanceof Jenny){
-            System.out.println("Jenny Object: " + this.a +" and " + ((Jenny) obj).a );
+            System.out.println("  ==> Jenny Object in Jenny: " + this.a +" and " + ((Jenny) obj).a );
             if( this.a == ((Jenny) obj).a )
                 return true;
         }
         if (obj instanceof Joe) {
-            System.out.println("Joe Object: " + this.a +" and " + ((Joe) obj).a );
+            System.out.println("  ==> Joe Object in Jenny: " + this.a +" and " + ((Joe) obj).a );
             if( this.a == ((Joe) obj).a )
                 return true;
         }
-        //return super.equals(obj);
+        //return super.equals(this);
         return false;
     }
 }
@@ -33,21 +33,28 @@ class Jenny {
 public class MethodOverriding06 {
     public static void main(String[] args) {
         Joe aa = new Joe();
-        System.out.println(aa.hashCode());
-        System.out.printf("%x\n", aa.hashCode());
-        System.out.println(aa + "aa.a:" + aa.a );
-        System.out.println(aa.toString());
+        System.out.printf("Decimal: %d, Hex: %x\n", aa.hashCode(), aa.hashCode() );
+        System.out.println(aa            + ", and aa.a:" + aa.a );
+        System.out.println(aa.toString() + ", and aa.a:" + aa.a);
 
         Jenny bb = new Jenny();
-        Jenny bb2 = new Jenny();
-        System.out.println(bb.hashCode());
-        System.out.printf("%x\n", bb.hashCode());
-        System.out.println(bb + "bb.a:" + bb.a );
+        Joe bb2 = new Jenny();
+
+        System.out.println("==========");
+        System.out.printf("%d, %x\n", bb.hashCode(), bb.hashCode());
+        System.out.println(bb + ", and bb.a:" + bb.a );
         System.out.println(bb.toString());
 
-        System.out.println("aa.equals(bb):" + aa.equals(bb) );
-        System.out.println("bb.equals(aa):" + bb.equals(bb2) );
-        System.out.println("bb.equals(aa):" + bb.equals(aa) );
+        System.out.println("==========");
+        System.out.println("<Joe>aa.equals(<Jenny>bb):" + aa.equals(bb) );
+        System.out.println("==========");
+        System.out.println("<Jenny>bb.equals(<Joe>aa):" + bb.equals(aa) );
+        System.out.println("==========");
+        System.out.println("<Jenny>bb.equals(<Jenny>bb2):" + bb.equals(bb2) );
+        System.out.println("==========");
+        System.out.println("<Jenny>bb2.equals(<Joe>aa):" + bb2.equals(aa) );
+        System.out.println("==========");
+        System.out.println("bb2.equals(aa):" + bb2.equals(aa) );
     }
 }
 
