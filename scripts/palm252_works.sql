@@ -14,7 +14,7 @@ select user,host,authentication_string from mysql.user;
 -- alter user root@'localhost' identified with mysql_native_password by 'prom0909!!';
 flush privileges;
 
-select version() as fromJAVAa;
+select version() as fromJAVA;
 select * from mysql.user;
 
 show databases;
