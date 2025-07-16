@@ -1,255 +1,56 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="ArtifactsWorkspaceSettings">
-    <artifacts-to-build>
-      <artifact name="jvPalm:jar" />
-    </artifacts-to-build>
-  </component>
-  <component name="AutoImportSettings">
-    <option name="autoReloadType" value="SELECTIVE" />
-  </component>
   <component name="ChangeListManager">
-    <list default="true" id="21c8fc54-c20e-4ad5-9bc8-9442f1565984" name="Changes" comment="">
+    <list default="true" id="5fe8bbf0-1f1a-42bb-a2da-3d04ebe8e38a" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/jvTest/Hello.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jvTest/Hello.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="Class" />
-      </list>
-    </option>
-  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="MarkdownSettingsMigration">
-    <option name="stateVersion" value="1" />
-  </component>
-  <component name="ProjectColorInfo">{
-  &quot;associatedIndex&quot;: 0
-}</component>
-  <component name="ProjectId" id="2SRwF0XNsdlOSSysb0ghvdidQsL" />
-  <component name="ProjectLevelVcsManager">
-    <ConfirmationsSetting value="2" id="Add" />
-  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 0
+}]]></component>
+  <component name="ProjectId" id="2zwWEx5ohUmSif4er2MQ7TwME62" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-<<<<<<< HEAD
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "Application.Hello.executor": "Run",
-    "Application.MethodOverriding01.executor": "Run",
-    "Application.checkMysqlJdbcConn.executor": "Run",
-    "Application.checkSfJdbcConn.executor": "Run",
-    "Application.testPloy.executor": "Run",
-    "Application.testTimestamp01.executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/Users/doogie/DevOps/jvPalm",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2797619",
-    "settings.editor.selected.configurable": "profiler.calltree.filter",
     "vue.rearranger.settings.migration": "true"
-=======
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;Application.MethodOverriding01.executor&quot;: &quot;Run&quot;,
-    &quot;Application.MethodOverriding02.executor&quot;: &quot;Run&quot;,
-    &quot;Application.MethodOverriding03.executor&quot;: &quot;Run&quot;,
-    &quot;Application.MethodOverriding04.executor&quot;: &quot;Run&quot;,
-    &quot;Application.MethodOverriding05.executor&quot;: &quot;Run&quot;,
-    &quot;Application.MethodOverriding06.executor&quot;: &quot;Run&quot;,
-    &quot;Application.checkMysqlJdbcConn.executor&quot;: &quot;Run&quot;,
-    &quot;Application.checkSfJdbcConn.executor&quot;: &quot;Run&quot;,
-    &quot;Application.testTimestamp01.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/doogie/DevOps/jvPalm&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2797619&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.fonts.default&quot;,
-    &quot;settings.editor.splitter.proportion&quot;: &quot;0.22670807&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
->>>>>>> 20701d80ef0cae4f70bf2f3dc2faf6e5c2c546b6
-  },
-  &quot;keyToStringList&quot;: {
-    &quot;com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File&quot;: [
-      &quot;JAVA&quot;
-    ]
   }
-}</component>
-  <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/jvTest/jvHello/javaPolyBasic" />
-      <recent name="$PROJECT_DIR$/src/joe/jvHello/javaPoly00" />
-      <recent name="$PROJECT_DIR$/scripts" />
-      <recent name="$PROJECT_DIR$/scripts/Study23" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/jvTest/jvHello/javaPolyBasic" />
-    </key>
-    <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="joe.jvHello.javaPoly00" />
-      <recent name="com.underslow.starthere" />
-    </key>
-  </component>
-  <component name="RunManager" selected="Application.checkMysqlJdbcConn">
-    <configuration name="checkMysqlJdbcConn" type="Application" factoryName="Application" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="jvPalm.checkMysqlJdbcConn" />
-      <module name="jvPalm" />
-      <option name="PROGRAM_PARAMETERS" value="0" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="jvPalm.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="checkSfJdbcConn" type="Application" factoryName="Application" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="jvPalm.checkSfJdbcConn" />
-      <module name="jvPalm" />
-      <option name="PROGRAM_PARAMETERS" value="0" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="jvPalm.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="jvPalm" type="Application" factoryName="Application" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="jvPalm.jvPalm" />
-      <module name="jvPalm" />
-      <option name="PROGRAM_PARAMETERS" value="TestArgs 123" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="jvPalm.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-  </component>
+}]]></component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-<<<<<<< HEAD
-        <option value="bundled-jdk-9823dce3aa75-fdfe4dae3a2d-intellij.indexing.shared.core-IU-243.22562.218" />
-        <option value="bundled-js-predefined-d6986cc7102b-deb605915726-JavaScript-IU-243.22562.218" />
-=======
-        <option value="bundled-jdk-9f38398b9061-39b83d9b5494-intellij.indexing.shared.core-IU-241.19416.15" />
-        <option value="bundled-js-predefined-1d06a55b98c1-0b3e54e931b4-JavaScript-IU-241.19416.15" />
->>>>>>> 20701d80ef0cae4f70bf2f3dc2faf6e5c2c546b6
+        <option value="bundled-jdk-9823dce3aa75-a94e463ab2e7-intellij.indexing.shared.core-IU-243.26574.91" />
+        <option value="bundled-js-predefined-d6986cc7102b-1632447f56bf-JavaScript-IU-243.26574.91" />
       </set>
     </attachedChunks>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="21c8fc54-c20e-4ad5-9bc8-9442f1565984" name="Changes" comment="" />
-      <created>1689122593433</created>
+      <changelist id="5fe8bbf0-1f1a-42bb-a2da-3d04ebe8e38a" name="Changes" comment="" />
+      <created>1752642507797</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1689122593433</updated>
-      <workItem from="1689122594768" duration="364000" />
-      <workItem from="1689122980190" duration="18180000" />
-      <workItem from="1689577702374" duration="379000" />
-      <workItem from="1689749686730" duration="320000" />
-      <workItem from="1690182039950" duration="1598000" />
-      <workItem from="1690189120215" duration="12547000" />
-      <workItem from="1692582372472" duration="22993000" />
-      <workItem from="1693899912805" duration="90000" />
-      <workItem from="1698725759883" duration="103000" />
-      <workItem from="1698725981255" duration="4379000" />
-      <workItem from="1698886556535" duration="49000" />
-      <workItem from="1698886722742" duration="66000" />
-      <workItem from="1698890610070" duration="954000" />
-      <workItem from="1698905189310" duration="782000" />
-      <workItem from="1698907795594" duration="4002000" />
-      <workItem from="1698973431829" duration="19086000" />
-      <workItem from="1700455481867" duration="10017000" />
-      <workItem from="1705458568506" duration="3749000" />
-      <workItem from="1706443062977" duration="1125000" />
-      <workItem from="1706445320784" duration="988000" />
-      <workItem from="1706885590343" duration="427000" />
-      <workItem from="1706887450682" duration="77000" />
-      <workItem from="1706899974241" duration="18000" />
-      <workItem from="1706899997744" duration="39000" />
-      <workItem from="1706900041802" duration="163000" />
-      <workItem from="1707024860548" duration="324000" />
-      <workItem from="1707258268791" duration="11090000" />
-<<<<<<< HEAD
-      <workItem from="1735710617734" duration="74000" />
-      <workItem from="1735710695461" duration="290000" />
-=======
-      <workItem from="1716364267926" duration="1995000" />
-      <workItem from="1717479673163" duration="1151000" />
-      <workItem from="1717979297670" duration="5818000" />
-      <workItem from="1736328201309" duration="218000" />
-      <workItem from="1736328557602" duration="92000" />
-      <workItem from="1736740854463" duration="1072000" />
->>>>>>> 20701d80ef0cae4f70bf2f3dc2faf6e5c2c546b6
+      <updated>1752642507797</updated>
+      <workItem from="1752642508963" duration="87000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <breakpoint enabled="true" type="java-exception">
-          <properties class="java.lang.NullPointerException" package="java.lang" />
-          <option name="timeStamp" value="1" />
-        </breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
-  </component>
-  <component name="XSLT-Support.FileAssociations.UIState">
-    <expand />
-    <select />
-  </component>
-  <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/jvHello$keyHellos.ic" NAME="keyHellos Coverage Results" MODIFIED="1689049341177" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
-    <SUITE FILE_PATH="coverage/jvPalm$jvPalm_checkMysqlJdbcConn.ic" NAME="jvPalm.checkMysqlJdbcConn Coverage Results" MODIFIED="1698732973047" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>jvPalm.*</FILTER>
-    </SUITE>
-    <SUITE FILE_PATH="coverage/jvPalm$checkMysqlJdbcConn.ic" NAME="checkMysqlJdbcConn Coverage Results" MODIFIED="1698885700900" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>jvPalm.*</FILTER>
-    </SUITE>
   </component>
 </project>
