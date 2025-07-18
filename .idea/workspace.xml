@@ -34,7 +34,7 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "reference.settingsdialog.IDE.editor.colors.Console Font",
+    "settings.editor.selected.configurable": "reference.settingsdialog.IDE.editor.colors.Color Scheme Font",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -62,6 +62,7 @@
       <workItem from="1752846789446" duration="43000" />
       <workItem from="1752846900953" duration="99000" />
       <workItem from="1752847016228" duration="499000" />
+      <workItem from="1752847695701" duration="37000" />
     </task>
     <servers />
   </component>
