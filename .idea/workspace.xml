@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5fe8bbf0-1f1a-42bb-a2da-3d04ebe8e38a" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="5fe8bbf0-1f1a-42bb-a2da-3d04ebe8e38a" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -34,7 +32,7 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "MTCompactSettingsConfigurable",
+    "settings.editor.selected.configurable": "MTProjectTreeConfigurable",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -66,6 +64,7 @@
       <workItem from="1752847950747" duration="26000" />
       <workItem from="1752848645023" duration="336000" />
       <workItem from="1752849009694" duration="114000" />
+      <workItem from="1752849192584" duration="49000" />
     </task>
     <servers />
   </component>
