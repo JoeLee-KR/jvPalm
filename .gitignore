@@ -115,9 +115,10 @@ fabric.properties
 # Ignore everything but code style settings and run configurations
 # that are supposed to be shared within teams.
 
-#.idea/*
+.idea/*
 
 !.idea/codeStyles
 !.idea/runConfigurations
+!.idea/_*
 
 # End of https://www.toptal.com/developers/gitignore/api/intellij+all
