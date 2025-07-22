@@ -2,7 +2,7 @@
 
 public class Hello {
     public static void main(String[] args) {
-        System.out.println("Hello, Java...");
+        System.out.println("Hello, jvTest....and IJ...");
+        System.out.println("+==");
     }
-        //System.out.  ("Hello, jvTest....and IJ...");
 }
