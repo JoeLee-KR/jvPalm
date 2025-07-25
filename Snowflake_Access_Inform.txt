@@ -1,0 +1,31 @@
+SnowSQL Connection at DBeaver on CloudPC
+
+Host: atixoaj-skbroadband.privatelink.snowflakecomputing.com
+Host: jx75304.ap-northeast-2.aws.privatelink.snowflakecomputing.com
+{IP: 10.241.101.173, 10.241.101.58 }
+Port: 443
+Database: SNOWFLAKE
+Warehouse: WH_PROD_LOAD_XS
+Schema: ANLY_OWN
+Username: xjoelee@sk.com
+Passwd: VN-0@
+Role: ACCOUNTADMIN
+
+[connections.4palm]
+accountname = atixoaj-skbroadband.privatelink
+username = xjoelee@sk.com  
+password = VNgkgk00@@
+dbname = SKB_PRD
+warehousename = WH_PROD_LOAD_XS
+rolename = ACCOUNTADMIN
+
+
+#
+# Allowlist, Privlinks
+# July 2025
+# select system$allowlist();
+[{"host":"jx75304.ap-northeast-2.aws.snowflakecomputing.com","port":443,"type":"SNOWFLAKE_DEPLOYMENT"},{"host":"atixoaj-skbroadband.snowflakecomputing.com","port":443,"type":"SNOWFLAKE_DEPLOYMENT_REGIONLESS"},{"host":"sfc-kr-ds1-customer-stage.s3.amazonaws.com","port":443,"type":"STAGE"},{"host":"sfc-kr-ds1-customer-stage.s3.ap-northeast-2.amazonaws.com","port":443,"type":"STAGE"},{"host":"sfc-kr-ds1-customer-stage.s3-ap-northeast-2.amazonaws.com","port":443,"type":"STAGE"},{"host":"sfc-repo.snowflakecomputing.com","port":443,"type":"SNOWSQL_REPO"},{"host":"client-telemetry.snowflakecomputing.com","port":443,"type":"OUT_OF_BAND_TELEMETRY"},{"host":"ocsp.snowflakecomputing.com","port":80,"type":"OCSP_CACHE"},{"host":"api-9e33b144.duosecurity.com","port":443,"type":"DUO_SECURITY"},{"host":"uw2.devicemanagement.duosecurity.com","port":443,"type":"DUO_SECURITY"},{"host":"ec1.devicemanagement.duosecurity.com","port":443,"type":"DUO_SECURITY"},{"host":"ATIXOAJ-SKBROADBAND.registry.snowflakecomputing.com","port":443,"type":"SPCS_REGISTRY_REGIONLESS"},{"host":"ocsp.rootca1.amazontrust.com","port":80,"type":"OCSP_RESPONDER"},{"host":"ocsp.r2m01.amazontrust.com","port":80,"type":"OCSP_RESPONDER"},{"host":"ocsp.digicert.com","port":80,"type":"OCSP_RESPONDER"},{"host":"ocsp.r2m02.amazontrust.com","port":80,"type":"OCSP_RESPONDER"},{"host":"ocsp.sca1b.amazontrust.com","port":80,"type":"OCSP_RESPONDER"},{"host":"ocsp.rootg2.amazontrust.com","port":80,"type":"OCSP_RESPONDER"},{"host":"ocsp.r2m03.amazontrust.com","port":80,"type":"OCSP_RESPONDER"},{"host":"o.ss2.us","port":80,"type":"OCSP_RESPONDER"},{"host":"app.snowflake.com","port":443,"type":"SNOWSIGHT_DEPLOYMENT"},{"host":"apps-api.c1.ap-northeast-2.aws.app.snowflake.com","port":443,"type":"SNOWSIGHT_DEPLOYMENT"},{"host":"atixoaj-skbroadband.openflow.icnagu.snowflakecomputing.com","port":443,"type":"OPENFLOW"},{"host":"atixoaj-skbroadband.telemetry.icnagu.snowflakecomputing.com","port":443,"type":"EXTERNAL_TELEMETRY"}]
+
+# select system$allowlist_privatelink();
+[{"host":"jx75304.ap-northeast-2.privatelink.snowflakecomputing.com","port":443,"type":"SNOWFLAKE_DEPLOYMENT"},{"host":"atixoaj-skbroadband.privatelink.snowflakecomputing.com","port":443,"type":"SNOWFLAKE_DEPLOYMENT_REGIONLESS"},{"host":"sfc-kr-ds1-customer-stage.s3.amazonaws.com","port":443,"type":"STAGE"},{"host":"sfc-kr-ds1-customer-stage.s3.ap-northeast-2.amazonaws.com","port":443,"type":"STAGE"},{"host":"sfc-kr-ds1-customer-stage.s3-ap-northeast-2.amazonaws.com","port":443,"type":"STAGE"},{"host":"sfc-repo.snowflakecomputing.com","port":443,"type":"SNOWSQL_REPO"},{"host":"client-telemetry.snowflakecomputing.com","port":443,"type":"OUT_OF_BAND_TELEMETRY"},{"host":"ocsp.jx75304.ap-northeast-2.privatelink.snowflakecomputing.com","port":80,"type":"OCSP_CACHE"},{"host":"ocsp.atixoaj-skbroadband.privatelink.snowflakecomputing.com","port":80,"type":"OCSP_CACHE_REGIONLESS"},{"host":"api-9e33b144.duosecurity.com","port":443,"type":"DUO_SECURITY"},{"host":"uw2.devicemanagement.duosecurity.com","port":443,"type":"DUO_SECURITY"},{"host":"ec1.devicemanagement.duosecurity.com","port":443,"type":"DUO_SECURITY"},{"host":"app-atixoaj-skbroadband.privatelink.snowflakecomputing.com","port":443,"type":"SNOWSIGHT_DEPLOYMENT_REGIONLESS"},{"host":"app.ap-northeast-2.privatelink.snowflakecomputing.com","port":443,"type":"SNOWSIGHT_DEPLOYMENT"},{"host":"atixoaj-skbroadband.openflow.icnagu.privatelink.snowflakecomputing.com","port":443,"type":"OPENFLOW"},{"host":"atixoaj-skbroadband.telemetry.icnagu.ap-northeast-2.privatelink.snowflakecomputing.com","port":443,"type":"EXTERNAL_TELEMETRY"}]
+
