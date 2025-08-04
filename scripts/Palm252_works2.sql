@@ -1,4 +1,6 @@
 --
+-- Oasis Palm, works
+-- Aug 2023, Jul 2025
 -- mysql general 
 show variables;
 use performance_schema;
@@ -15,6 +17,19 @@ insert into palmdemo values (now(), 81);
 
 show databases;
 show tables;
+--
+-- create test table
+--
+CREATE TABLE palmdb.palmdemo (
+stime	timestamp not null,
+score	decimal(12,0)
+);
+
+show index from palmdb.palmdemo;
+create index stime_ix
+on palmdb.palmdemo(stime);
+
+drop table palmdb.palmdemo;
 
 --
 -- create table at mysql-style for SF.query_history
@@ -69,7 +84,7 @@ insert into palmdb.sf_query_history
 (CREDITS_USED_CLOUD_SERVICES, QUERY_ID, START_TIME, INSERTION_TIME,EXECUTION_TIME )
 values (
 0.0007,
-'2234123005', 
+'2234123007', 
 SUBDATE( now(), interval 1 day),
 SUBDATE( now(), interval -1 day),
 123
@@ -124,8 +139,17 @@ where 	start_time >= timestamp( date(now()) )
 order by start_time desc
 -- limit 1
 ;
+select count(*) as SIZE 
+from palmdb.sf_query_history
+where 	start_time >= timestamp( date(now()) )
+	and start_time < adddate( timestamp( date(now()) ), interval 1 day)
+;
 
 --
 -- EOF
+use mysql;
+select host,user 
+from mysql.user;
 
+-- EOF
 

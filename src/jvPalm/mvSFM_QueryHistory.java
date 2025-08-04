@@ -30,15 +30,18 @@ public class mvSFM_QueryHistory {
 
     String sfjdbcUrl;
     // FOR INTERNET
-    //String sfjdbcUrl = "jdbc:snowflake://jx75304.ap-northeast-2.aws.snowflakecomputing.com/";
-    String sfjdbcUrl00 = "jdbc:snowflake://atixoaj-skbroadband.snowflakecomputing.com/";
+    //String sfjdbcUrl00 = "jdbc:snowflake://jx75304.ap-northeast-2.aws.snowflakecomputing.com/";
+    String sfjdbcUrl00 = "jdbc:snowflake://jx75304.ap-northeast-2.aws.snowflakecomputing.com";
+    //String sfjdbcUrl00 = "jdbc:snowflake://atixoaj-skbroadband.snowflakecomputing.com/";
 
     // FOR SKB INTERNAL PRIVATE
-    String sfjdbcUrl01 = "jdbc:snowflake://atixoaj-skbroadband.privatelink.snowflakecomputing.com/";
+    String sfjdbcUrl01 = "jdbc:snowflake://jx75304.ap-northeast-2.privatelink.snowflakecomputing.com/";
+    //String sfjdbcUrl01 = "jdbc:snowflake://atixoaj-skbroadband.privatelink.snowflakecomputing.com/";
 
     String sfUser = "palmadmin";
     String sfPswd = "VNgkgk007";
-    String sfAccount = "atixoaj-skbroadband";
+    //String sfAccount = "atixoaj-skbroadband";
+    String sfAccount = "jx75304.ap-northeast-2.aws";
     String sfWarehouse = "WH_PRD_XS";
     String sfDB = "SNOWFLAKE";
     String sfSchema = "ACCOUNT_USAGE";
@@ -399,12 +402,12 @@ public class mvSFM_QueryHistory {
     public void printHelp01(){
         System.out.println("Usage_: mvSFM_QueryHistory { [0..1] { (minutes | Date Hour)} }");
         System.out.println("\tno arg: this help message");
-        System.out.println("\t1 arg: now-15 min getting");
-        System.out.println("\t\t1st arg: 0:SF-Internet-3306, 1:SF-Private-3306, 2:SF-Internet-9306, 3:SF-Private-9306");
-        System.out.println("\t2 args: now-X min getting");
-        System.out.println("\t\t1st arg + 2nd arg: -X is minute range, w/overDUP");
-        System.out.println("\t3 args: at target day and with hourly");
-        System.out.println("\t\t1st arg + 2nd arg: target yyyy-mm-dd, 3rd arg: hourly(0..23) & 24 is hole day, w/overDUP");
+        System.out.println("\t1 arg: (1)connMode (default now -15 min get");
+        System.out.println("\t2 args: (1)connMode, (2)now -X min get");
+        System.out.println("\t3 args: (1)connMode, (2)target day, (3)target a Hour (hourly(0..23) or 24 is hole day)");
+        System.out.println("\t---1st arg connMode codemap, with SF Locator URL(jx75304) ---");
+        System.out.println("\t0:SF-Internet-3306, 1:SF-Private-3306, 2:SF-Internet-9306, 3:SF-Private-9306");
+        System.out.println("\t---[250804,case] java -cp \"./*\" jvPalm.mvSFM_QueryHistory 1");
     }
 
     public int getArgs(String[] args) {
@@ -427,8 +430,8 @@ public class mvSFM_QueryHistory {
                     selectFromTS = Timestamp.valueOf(makeTS( LocalDateTime.now() ).toLocalDateTime().plusMinutes(-tsRange) );
                     selectToTS = makeTS( LocalDateTime.now() );
                     flagDupProcess = false;
-                    System.out.println(">>do:1, now-15min, setURL: " + sfjdbcUrl + ":" + myjdbcUrl +"<<");
-                    System.out.println(">>do:1, "+selectFromTS+" > "+selectToTS+", no overDUP<<");
+                    System.out.println(">>mode:1, now-15min, setURL: " + sfjdbcUrl + ":" + myjdbcUrl +"<<");
+                    System.out.println(">>mode:1, "+selectFromTS+" > "+selectToTS+", no overDUP<<");
                     break;
                 } catch ( Exception e ) {
                     return(-1);
@@ -440,8 +443,8 @@ public class mvSFM_QueryHistory {
                     selectFromTS = Timestamp.valueOf(makeTS( LocalDateTime.now() ).toLocalDateTime().plusMinutes(-tsRange) );
                     selectToTS = makeTS( LocalDateTime.now() );
                     flagDupProcess = true;
-                    System.out.println(">>do:2, now-" + tsRange + "min, setURL: " + sfjdbcUrl + ":" + myjdbcUrl +"<<");
-                    System.out.println(">>do:2, "+selectFromTS+" > "+selectToTS+", w/overDUP<<");
+                    System.out.println(">>mode:2, now-" + tsRange + "min, setURL: " + sfjdbcUrl + ":" + myjdbcUrl +"<<");
+                    System.out.println(">>mode:2, "+selectFromTS+" > "+selectToTS+", w/overDUP<<");
                     break;
                 } catch (Exception e) {
                     //System.out.println("JOE NUMNER FORMAT ERROR:" + e);
@@ -459,8 +462,8 @@ public class mvSFM_QueryHistory {
                         selectToTS = Timestamp.valueOf(makeTS( args[1] ).toLocalDateTime().plusDays(1) );
                     }
                     flagDupProcess = true;
-                    System.out.println(">>do:3, " + tsRange + "oclock+1hour, setURL: " + sfjdbcUrl + ":" + myjdbcUrl +"<<");
-                    System.out.println(">>do:3, "+selectFromTS+" > "+selectToTS+", w/overDUP <<");
+                    System.out.println(">>mode:3, " + tsRange + "oclock+1hour, setURL: " + sfjdbcUrl + ":" + myjdbcUrl +"<<");
+                    System.out.println(">>mode:3, "+selectFromTS+" > "+selectToTS+", w/overDUP <<");
                     break;
                 } catch (Exception e) {
                     //System.out.println("JOE:" + e);

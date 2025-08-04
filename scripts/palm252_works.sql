@@ -1,4 +1,5 @@
 --
+-- OLD pack
 -- Oasis Palm, works
 -- July 2023
 --
@@ -100,7 +101,7 @@ SUBDATE( now(), interval -1 day),
 );
 select CREDITS_USED_CLOUD_SERVICES, QUERY_ID, START_TIME, INSERTION_TIME,EXECUTION_TIME
 -- from palmdb.sf_query_history sqh ;
-from palmdb.SF_QUERY_HISTORY SQH;
+from palmdb.sf_query_history SQH;
 
 
 -- 

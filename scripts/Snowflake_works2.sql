@@ -1,6 +1,6 @@
 --
 -- Oasis Palm, works
--- Oct 2023
+-- Oct 2023, jul 2025
 --
 -- using set of snowflake.account_usage.metering_daily_history 
 

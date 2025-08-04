@@ -6,12 +6,12 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 
 public class rscMysqlJdbcConn {
-    // for MySQL
+    // for MySQL, 9306 is AP NAT
     String driverClassName00 = "com.mysql.cj.jdbc.Driver";
     String url00 = "jdbc:mysql://palmmysqldb:3306/palmdb";
     String url02 = "jdbc:mysql://palmmysqldb:9306/palmdb";
 
-    // for MARIADB
+    // for MARIADB, 9306 is AP NAT
     String driverClassName01 = "org.mariadb.jdbc.Driver";
     String url01 = "jdbc:mariadb://palmmysqldb:3306/";
     String url03 = "jdbc:mariadb://palmmysqldb:9306/";
@@ -23,15 +23,20 @@ public class rscMysqlJdbcConn {
 
     String id = "palmadm";
     String pw = "prom3306!!";
+    //String pw = "vka3306!!";
 
     Connection myConn;
     Statement stmt;
     ResultSet rs;
 
     String checkSql01 = "select stime, score from palmdb.palmdemo limit 10";
+    String checkSql02 = "select count(*) as SIZE \n" +
+            "from palmdb.sf_query_history\n" +
+            "where start_time >= timestamp( date(now()) )\n" +
+            "and start_time < adddate( timestamp( date(now()) ), interval 1 day)";
 
     public void getConnection(){
-        System.out.print("Connectio Info:" + this.toString() );
+        System.out.print("Connection Info:" + this.toString() );
 
         try{
             //드라이버 로딩 (Mysql 또는 Oracle 중에 선택하시면 됩니다.)
@@ -76,11 +81,11 @@ public class rscMysqlJdbcConn {
     }
 
     public void printUsage01(){
-        System.out.println("Usage: need one arguments");
-        System.out.println("0 : use MysqlDB Driver w3306");
-        System.out.println("1 : use MariaDB Driver w3306");
-        System.out.println("2 : use MysqlDB Driver w9306");
-        System.out.println("3 : use MariaDB Driver w9306");
+        System.out.println("Usage: Need one arguments");
+        System.out.println("0: " + url00);
+        System.out.println("1: " + url01);
+        System.out.println("2: " + url02);
+        System.out.println("3: " + url03);
     }
 
     int selectJdbcUrl(String[] args){
@@ -118,13 +123,20 @@ public class rscMysqlJdbcConn {
         try{
             getConnection();
             getCreateStmt();
-            runQuery( checkSql01 );
+            runQuery(  checkSql01 );
 
             while(rs.next()){
                 //출력
                 System.out.print("\tStartTime: " + rs.getString("stime"));
                 System.out.println("\tMetricScore: " + rs.getString("score"));
             }
+
+            runQuery(  checkSql02 );
+            while(rs.next()){
+                //출력
+                System.out.println("today count: " + rs.getString("SIZE"));
+            }
+
             closeConnection();
         }catch(Exception e){
             e.printStackTrace();

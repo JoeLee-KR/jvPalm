@@ -1,3 +1,4 @@
 #!/bin/bash
 # set ENV, MUST USE source command...
-export CLASSPATH="/Users/doogie/DevOps/jvPalm/out/production/jvPalm/:/Users/doogie/DevOps/jvPalm/lib/*"
+export CLASSPATH="/Users/doogie/DevOps/jvPalm/lib/*:\
+/Users/doogie/DevOps/jvPalm/out/production/jvPalm/"
