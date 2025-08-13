@@ -1,6 +1,6 @@
 --
 -- Oasis Palm, works
--- Oct 2023, jul 2025
+-- Oct 2023, jul 2025, Aug 2025
 --
 -- using set of snowflake.account_usage.metering_daily_history 
 
@@ -29,11 +29,6 @@ FROM snowflake.account_usage.WAREHOUSE_METERING_HISTORY
 WHERE WAREHOUSE_ID <> 0
 GROUP BY date(END_TIME)
 ORDER BY date(END_TIME) DESC ;
-
-
-
-
-
 
 
 SELECT 

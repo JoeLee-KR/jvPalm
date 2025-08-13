@@ -26,7 +26,7 @@ public class checkSfJdbcConn {
     String jdbcUrl00 = "jdbc:snowflake://atixoaj-skbroadband.snowflakecomputing.com/";
     String jdbcUrl01 = "jdbc:snowflake://jx75304.ap-northeast-2.aws.snowflakecomputing.com/";
     String jdbcUrl02 = "jdbc:snowflake://atixoaj-skbroadband.privatelink.snowflakecomputing.com/";
-    String jdbcUrl03 = "jdbc:snowflake://jx75304.ap-northeast-2.aws.privatelink.snowflakecomputing.com/";
+    String jdbcUrl03 = "jdbc:snowflake://jx75304.ap-northeast-2.privatelink.snowflakecomputing.com/";
     String sfUser = "palmadmin";
     String sfPswd = "VNgkgk007";
     // String sfPswd = "prom0909!!";

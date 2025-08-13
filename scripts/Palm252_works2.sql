@@ -1,14 +1,14 @@
 --
 -- Oasis Palm, works
--- Aug 2023, Jul 2025
--- mysql general 
+-- Aug 2023, Jul 2025, Aug 2025
+-- mysql general , 
 show variables;
 use performance_schema;
 show tables;
 select version() as fromJAVA;
 select * from MYSQL.USER;
 select * from USER;
-select * from mysql.USER;
+select * from mysql.user;
 
 use palmdb;
 select * from palmdemo;
@@ -114,7 +114,22 @@ order by start_time desc
 select QUERY_ID, START_TIME, EXECUTION_TIME, COMPILATION_TIME, USER_NAME, INSERTION_TIME
 from palmdb.sf_query_history 
 order by start_time desc 
-limit 10;
+limit 100
+;
+
+select count(*)
+from sf_query_history sqh 
+WHERE start_time >= '2025-08-10 00:00:00'
+  AND start_time <  '2025-08-11 01:00:00';
+;
+
+delete FROM sf_query_history 
+WHERE DATE(start_time) = '2025-08-12'
+;
+
+DELETE FROM sf_query_history
+WHERE start_time >= '2025-08-10 18:00:00'
+  AND start_time <  '2025-08-11 08:00:00';
 
 
 
@@ -123,6 +138,10 @@ limit 10;
 --
 select 
 adddate(now(), interval 1 day)
+;
+
+select 
+adddate(now(), 0)
 ;
 
 select date(now());
@@ -151,5 +170,39 @@ use mysql;
 select host,user 
 from mysql.user;
 
+select * from palmdb.palmdemo ;
+insert into palmdb.palmdemo(stime, score) values ("2023-05-29 01:23:42", 123);
+insert into palmdb.palmdemo(stime, score) values ( timestamp( date(now()) ), 126);
+insert into palmdb.palmdemo(stime, score) values ( adddate(now(), 0) , 126);
+
 -- EOF
+select 
+	start_time,
+	CNWH_DQM as WH_DQM,
+	CNWH_LOAD as WH_LOAD,
+	CNWH_DEV as WH_DEV,
+	CNWH_PRD	as WH_PRD
+from (
+	select
+		start_TIME,
+		case when WAREHOUSE_NAME = 'WH_DEV_DQM_TEST' then CLUSTER_NUMBER
+			else 0
+			end CNWH_DQM,
+		case when WAREHOUSE_NAME = 'WH_PRD_LOAD_XS' then CLUSTER_NUMBER
+			else 0
+			end CNWH_LOAD,
+		case when WAREHOUSE_NAME = 'WH_DEV_XS' then CLUSTER_NUMBER
+			else 0
+			end CNWH_DEV,
+		case when WAREHOUSE_NAME = 'WH_PRD_XS' then CLUSTER_NUMBER
+			else 0
+			end CNWH_PRD
+	from palmdb.sf_query_history sqh
+) result
+-- group by START_TIME
+-- WHERE start_time >= '2025-08-11 00:00:00'
+--  AND start_time <  '2025-08-11 01:00:00'
+order by START_TIME desc
+limit 40000;
+
 
