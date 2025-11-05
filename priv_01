@@ -1,0 +1,83 @@
+Performing 46 checks for 16 hosts
+
+Check for 10 hosts failed, display as follow: 
+==============================================
+Host: jx75304.ap-northeast-2.privatelink.snowflakecomputing.com 
+Port: 443 
+Type: SNOWFLAKE_DEPLOYMENT
+Failed Check: Certificate Check
+Error: certificate checker timeout 
+Suggestion: Check your connection to jx75304.ap-northeast-2.privatelink.snowflakecomputing.com
+
+==============================================
+Host: atixoaj-skbroadband.privatelink.snowflakecomputing.com 
+Port: 443 
+Type: SNOWFLAKE_DEPLOYMENT_REGIONLESS
+Failed Check: Certificate Check
+Error: certificate checker timeout 
+Suggestion: Check your connection to atixoaj-skbroadband.privatelink.snowflakecomputing.com
+
+==============================================
+Host: ocsp.jx75304.ap-northeast-2.privatelink.snowflakecomputing.com 
+Port: 80 
+Type: OCSP_CACHE
+Failed Check: HTTP checker
+Error: http check timeout 
+Suggestion: Check the connection to your http host or transparent Proxy
+
+==============================================
+Host: ocsp.atixoaj-skbroadband.privatelink.snowflakecomputing.com 
+Port: 80 
+Type: OCSP_CACHE_REGIONLESS
+Failed Check: HTTP checker
+Error: http check timeout 
+Suggestion: Check the connection to your http host or transparent Proxy
+
+==============================================
+Host: uw2.devicemanagement.duosecurity.com 
+Port: 443 
+Type: DUO_SECURITY
+Failed Check: HTTP checker
+Error: Invalid http code received: 404 Not Found 
+Suggestion: Check the connection to your http host or transparent Proxy
+
+==============================================
+Host: ec1.devicemanagement.duosecurity.com 
+Port: 443 
+Type: DUO_SECURITY
+Failed Check: HTTP checker
+Error: Invalid http code received: 404 Not Found 
+Suggestion: Check the connection to your http host or transparent Proxy
+
+==============================================
+Host: app-atixoaj-skbroadband.privatelink.snowflakecomputing.com 
+Port: 443 
+Type: SNOWSIGHT_DEPLOYMENT_REGIONLESS
+Failed Check: Certificate Check
+Error: certificate checker timeout 
+Suggestion: Check your connection to app-atixoaj-skbroadband.privatelink.snowflakecomputing.com
+
+==============================================
+Host: app.ap-northeast-2.privatelink.snowflakecomputing.com 
+Port: 443 
+Type: SNOWSIGHT_DEPLOYMENT
+Failed Check: Certificate Check
+Error: certificate checker timeout 
+Suggestion: Check your connection to app.ap-northeast-2.privatelink.snowflakecomputing.com
+
+==============================================
+Host: atixoaj-skbroadband.openflow.icnagu.privatelink.snowflakecomputing.com 
+Port: 443 
+Type: OPENFLOW
+Failed Check: Certificate Check
+Error: certificate checker timeout 
+Suggestion: Check your connection to atixoaj-skbroadband.openflow.icnagu.privatelink.snowflakecomputing.com
+
+==============================================
+Host: atixoaj-skbroadband.telemetry.icnagu.ap-northeast-2.privatelink.snowflakecomputing.com 
+Port: 443 
+Type: EXTERNAL_TELEMETRY
+Failed Check: Certificate Check
+Error: certificate checker timeout 
+Suggestion: Check your connection to atixoaj-skbroadband.telemetry.icnagu.ap-northeast-2.privatelink.snowflakecomputing.com
+

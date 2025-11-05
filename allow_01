@@ -1,0 +1,44 @@
+Performing 63 checks for 24 hosts
+Get "https://starfieldtech.com/": x509: certificate signed by unknown authority
+
+Check for 5 hosts failed, display as follow: 
+==============================================
+Host: uw2.devicemanagement.duosecurity.com 
+Port: 443 
+Type: DUO_SECURITY
+Failed Check: HTTP checker
+Error: Invalid http code received: 404 Not Found 
+Suggestion: Check the connection to your http host or transparent Proxy
+
+==============================================
+Host: ec1.devicemanagement.duosecurity.com 
+Port: 443 
+Type: DUO_SECURITY
+Failed Check: HTTP checker
+Error: Invalid http code received: 404 Not Found 
+Suggestion: Check the connection to your http host or transparent Proxy
+
+==============================================
+Host: ATIXOAJ-SKBROADBAND.registry.snowflakecomputing.com 
+Port: 443 
+Type: SPCS_REGISTRY_REGIONLESS
+Failed Check: HTTP checker
+Error: Invalid http code received: 401 Unauthorized 
+Suggestion: Check the connection to your http host or transparent Proxy
+
+==============================================
+Host: o.ss2.us 
+Port: 80 
+Type: OCSP_RESPONDER
+Failed Check: HTTP checker
+Error: x509: certificate signed by unknown authority 
+Suggestion: Likely you are using a proxy that intercepts the certificate. Please ask the network admin to pass through the certificate
+
+==============================================
+Host: atixoaj-skbroadband.telemetry.icnagu.snowflakecomputing.com 
+Port: 443 
+Type: EXTERNAL_TELEMETRY
+Failed Check: HTTP checker
+Error: Invalid http code received: 404 Not Found 
+Suggestion: Check the connection to your http host or transparent Proxy
+
