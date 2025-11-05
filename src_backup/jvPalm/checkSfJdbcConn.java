@@ -3,15 +3,8 @@
 package jvPalm;
 
 import java.sql.*;
-import java.util.Base64;
 import java.util.Properties;
 import java.lang.Integer;
-import java.io.File;
-import java.io.FileInputStream;
-import java.nio.file.Files;
-import java.security.KeyFactory;
-import java.security.PrivateKey;
-import java.security.spec.PKCS8EncodedKeySpec;
 
 //class definition
 public class checkSfJdbcConn {
@@ -28,27 +21,24 @@ public class checkSfJdbcConn {
     //change this below URL as per your snowflake instance
     //String jdbcUrl = "jdbc:snowflake://jx75304.ap-northeast-2.aws.snowflakecomputing.com/";
     //String jdbcUrl = "jdbc:snowflake://atixoaj-skbroadband.snowflakecomputing.com/";
-    // deprecate atixoaj Oct 2025, new SKB host EP skbsfog Oct 2025
-    //String jdbcUrl = "jdbc:snowflake://skbsfog-skbroadband.snowflakecomputing.com/";
     // FOR SKB INTERNAL
     public String jdbcUrl ;
-    String jdbcUrl00 = "jdbc:snowflake://skbsfog-skbroadband.snowflakecomputing.com/";
+    String jdbcUrl00 = "jdbc:snowflake://atixoaj-skbroadband.snowflakecomputing.com/";
     String jdbcUrl01 = "jdbc:snowflake://jx75304.ap-northeast-2.aws.snowflakecomputing.com/";
-    String jdbcUrl02 = "jdbc:snowflake://skbsfog-skbroadband.privatelink.snowflakecomputing.com/";
+    String jdbcUrl02 = "jdbc:snowflake://atixoaj-skbroadband.privatelink.snowflakecomputing.com/";
     String jdbcUrl03 = "jdbc:snowflake://jx75304.ap-northeast-2.privatelink.snowflakecomputing.com/";
     String sfUser = "palmadmin";
-    // String sfPswd = "VNgkgk007";
+    String sfPswd = "VNgkgk007";
     // String sfPswd = "prom0909!!";
     public String sfAccount ;
-    String sfAccount00 = "skbsfog-skbroadband";
-    String sfAccount01 = "jx75304";
-    String sfAccount02 = "skbsfog-skbroadband";
-    String sfAccount03 = "jx75304";
+    String sfAccount00 = "atixoaj-skbroadband";
+    String sfAccount01 = "jx75304.ap-northeast-2.aws";
+    String sfAccount02 = "atixoaj-skbroadband";
+    String sfAccount03 = "jx75304.ap-northeast-2.aws";
     String sfWarehouse = "WH_PRD_XS";
     String sfDB = "SNOWFLAKE";
     String sfSchema = "ACCOUNT_USAGE";
     String sfRole = "ACCOUNTADMIN";
-    //String sfRole = "PRD_USER";
     Properties properties;
 
     // Statis Using Variables
@@ -67,7 +57,7 @@ public class checkSfJdbcConn {
     public void setConnProperties() {
         //setting properties
         properties.put("user", sfUser);
-        //properties.put("password", sfPswd);
+        properties.put("password", sfPswd);
         properties.put("account", sfAccount); //account-id followed by cloud region.
         properties.put("warehouse", sfWarehouse);
         properties.put("db", sfDB);
@@ -75,14 +65,11 @@ public class checkSfJdbcConn {
         properties.put("role", sfRole);
         properties.put("ocspFailOpen", "true");
         properties.put("insecureMode", "true");
-
-        properties.put("private_key_file", "../../_keys/rsa_key_nocrypt.p8");
-
     }
 
     public void getConnection() {
         System.out.println("\t::driver:" + driverClassName );
-        System.out.println("\t::connUrl+sfAccount:" + jdbcUrl + "::" + sfAccount );
+        System.out.println("\t::connUrl:" + jdbcUrl );
         System.out.println("\t::checkSql:" + selectSQL );
         try {
             sfConn = DriverManager.getConnection(jdbcUrl, properties);
@@ -97,6 +84,14 @@ public class checkSfJdbcConn {
         }
     }
 
+    public void closeConnection() {
+        try{
+            sfConn.close();
+
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }
     public void getProcessQuery() {
         try {
             sfStmt = sfConn.createStatement();
@@ -118,21 +113,12 @@ public class checkSfJdbcConn {
         }
     }
 
-    public void closeConnection() {
-        try{
-            sfConn.close();
-
-        }catch(Exception e){
-            e.printStackTrace();
-        }
-    }
-
     void printUsage(){
         System.out.println("Usage: need one arguments");
-        System.out.println("0 public: " + jdbcUrl00 +"|"+ sfAccount00);
-        System.out.println("1 public: " + jdbcUrl01 +"|"+ sfAccount01);
-        System.out.println("2 private: " + jdbcUrl02 +"|"+ sfAccount02);
-        System.out.println("3 private: " + jdbcUrl03 +"|"+ sfAccount03);
+        System.out.println("0 : " + jdbcUrl00 +"|"+ sfAccount00);
+        System.out.println("1 : " + jdbcUrl01 +"|"+ sfAccount01);
+        System.out.println("2 : " + jdbcUrl02 +"|"+ sfAccount02);
+        System.out.println("3 : " + jdbcUrl03 +"|"+ sfAccount03);
     }
 
     int setupJdbcUrl(String[] args){
@@ -180,6 +166,6 @@ public class checkSfJdbcConn {
             } else my.printUsage();
         } else my.printUsage();
 
-        System.out.println("JOE::Snowflake JDBC check test end...");
+        System.out.println("JOE::Snoflake JDBC check test end...");
     }
 }

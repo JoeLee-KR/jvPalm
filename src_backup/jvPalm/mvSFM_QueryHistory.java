@@ -406,7 +406,7 @@ public class mvSFM_QueryHistory {
         System.out.println("\t2 args: (1)connMode, (2)now -X min get");
         System.out.println("\t3 args: (1)connMode, (2)target day, (3)target a Hour (hourly(0..23) or 24 is hole day)");
         System.out.println("\t---1st arg connMode codemap, with SF Locator URL(jx75304) ---");
-        System.out.println("\t0:SF-Public-3306, 1:SF-Private-3306, 2:SF-Public-9306, 3:SF-Private-9306");
+        System.out.println("\t0:SF-Internet-3306, 1:SF-Private-3306, 2:SF-Internet-9306, 3:SF-Private-9306");
         System.out.println("\t---[250804,case] java -cp \"./*\" jvPalm.mvSFM_QueryHistory 1");
     }
 

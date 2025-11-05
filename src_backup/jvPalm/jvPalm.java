@@ -13,17 +13,16 @@ public class jvPalm {
             "     0: mysql://palmmysqldb:3306, 1: mariadb://palmmysqldb:3306",
             "     2: mysql://palmmysqldb:9306, 3: mariadb://palmmysqldb:9306",
             "  >> jvPalm.checkSfJdbcConn [0..3]",
-            "     0: Public skbsfog, 1: Public jx75304",
-            "     2: Private skbsfog,  3: Private jx75304",
+            "     0: Internet atixoaj, 1: Internet jx75304",
+            "     2: Private atixoaj,  3: Private jx75304",
             "  >> mvSFM_QueryHistory { [0..1] { (minutes | Date Hour)} }",
             "     no arg: this help message" ,
             "     1 arg: (1)connMode (default now -15 min get" ,
             "     2 args: (1)connMode, (2)now -X min get",
             "     3 args: (1)connMode, (2)target day, (3)target a Hour (hourly(0..23) or 24 is hole day)",
             "     ---1st arg connMode codemap---",
-            "     0:SF-Pub.jx75304-3306, 1:SF-Pri.jx75304-3306, 2:SF-Pub.jx75304-9306, 3:SF-Pri.jx75304-9306",
-            "     4:SF-Pub.skbsfog-3306, 5:SF-Pri.skbsfog-3306, 6:SF-Pub.skbsfog-9306, 7:SF-Pri.skbsfog-9306",
-            "... v2, Nov 2025: change EP and RSA Key-Pair Connection for Snowflake."
+            "     0:SF-Internet-3306, 1:SF-Private-3306, 2:SF-Internet-9306, 3:SF-Private-9306",
+            "..+++...+++ v1...b"
     };
 
     public void printout(String[] mmm){

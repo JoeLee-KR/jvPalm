@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
 import java.util.Properties;
 
 //class definition
-public class mvSFM_QueryHistory {
+public class mvSFQH {
     // Static Fixed Variables
     Connection sfConn;
     Statement sfStmt;
@@ -29,19 +29,19 @@ public class mvSFM_QueryHistory {
     String classNameJdbcSnowflake = "net.snowflake.client.jdbc.SnowflakeDriver";
 
     String sfjdbcUrl;
-    // FOR INTERNET
-    //String sfjdbcUrl00 = "jdbc:snowflake://jx75304.ap-northeast-2.aws.snowflakecomputing.com/";
+    // FOR PUBLIC INTERNET
     String sfjdbcUrl00 = "jdbc:snowflake://jx75304.ap-northeast-2.aws.snowflakecomputing.com";
-    //String sfjdbcUrl00 = "jdbc:snowflake://atixoaj-skbroadband.snowflakecomputing.com/";
+    String sfjdbcUrl02 = "jdbc:snowflake://skbsfog-skbroadband.snowflakecomputing.com/";
 
-    // FOR SKB INTERNAL PRIVATE
+    // FOR SKB INTERNAL PRIVATE NETWORK
     String sfjdbcUrl01 = "jdbc:snowflake://jx75304.ap-northeast-2.privatelink.snowflakecomputing.com/";
-    //String sfjdbcUrl01 = "jdbc:snowflake://atixoaj-skbroadband.privatelink.snowflakecomputing.com/";
+    String sfjdbcUrl03 = "jdbc:snowflake://skbsfog-skbroadband.privatelink.snowflakecomputing.com/";
 
     String sfUser = "palmadmin";
-    String sfPswd = "VNgkgk007";
-    //String sfAccount = "atixoaj-skbroadband";
-    String sfAccount = "jx75304.ap-northeast-2.aws";
+    //String sfPswd = "VNgkgk007";
+    //String sfAccount = "skbsfog-skbroadband";
+    //String sfAccount = "skbsfog";
+    String sfAccount = "jx75304";
     String sfWarehouse = "WH_PRD_XS";
     String sfDB = "SNOWFLAKE";
     String sfSchema = "ACCOUNT_USAGE";
@@ -70,7 +70,7 @@ public class mvSFM_QueryHistory {
     Boolean flagDupProcess;
 
     //default constructor
-    public mvSFM_QueryHistory() {
+    public mvSFQH() {
         properties = new Properties();
 
         try{
@@ -191,13 +191,15 @@ public class mvSFM_QueryHistory {
     public void setConnProperties() {
         //setting properties
         properties.put("user", sfUser);
-        properties.put("password", sfPswd);
+        //properties.put("password", sfPswd);
         properties.put("account", sfAccount); //account-id followed by cloud region.
         properties.put("warehouse", sfWarehouse);
         properties.put("db", sfDB);
         properties.put("schema", sfSchema);
         properties.put("role", sfRole);
         properties.put("insecureMode", "true");
+
+        properties.put("private_key_file", "../../_keys/rsa_key_nocrypt.p8");
     }
 
     public void getConnection() {
@@ -395,6 +397,10 @@ public class mvSFM_QueryHistory {
         else if ( Integer.parseInt( x ) == 1 )    { sfjdbcUrl = sfjdbcUrl01; myjdbcUrl=myjdbcUrl01;}
         else if ( Integer.parseInt( x ) == 2 )    { sfjdbcUrl = sfjdbcUrl00; myjdbcUrl=myjdbcUrl02;}
         else if ( Integer.parseInt( x ) == 3 )    { sfjdbcUrl = sfjdbcUrl01; myjdbcUrl=myjdbcUrl02;}
+        else if ( Integer.parseInt( x ) == 4 )    { sfjdbcUrl = sfjdbcUrl02; myjdbcUrl=myjdbcUrl01;}
+        else if ( Integer.parseInt( x ) == 5 )    { sfjdbcUrl = sfjdbcUrl03; myjdbcUrl=myjdbcUrl02;}
+        else if ( Integer.parseInt( x ) == 6 )    { sfjdbcUrl = sfjdbcUrl02; myjdbcUrl=myjdbcUrl02;}
+        else if ( Integer.parseInt( x ) == 7 )    { sfjdbcUrl = sfjdbcUrl03; myjdbcUrl=myjdbcUrl02;}
         else return(-1);
         return(0);
     }
@@ -406,8 +412,11 @@ public class mvSFM_QueryHistory {
         System.out.println("\t2 args: (1)connMode, (2)now -X min get");
         System.out.println("\t3 args: (1)connMode, (2)target day, (3)target a Hour (hourly(0..23) or 24 is hole day)");
         System.out.println("\t---1st arg connMode codemap, with SF Locator URL(jx75304) ---");
-        System.out.println("\t0:SF-Public-3306, 1:SF-Private-3306, 2:SF-Public-9306, 3:SF-Private-9306");
-        System.out.println("\t---[250804,case] java -cp \"./*\" jvPalm.mvSFM_QueryHistory 1");
+        System.out.println("\t0:SF-Pub.jx75304-3306, 1:SF-Pri.jx75304-3306, 2:SF-Pub.jx75304-9306, 3:SF-Pri.jx75304-9306");
+        System.out.println("\t4:SF-Pub.skbsfog-3306, 5:SF-Pri.skbsfog-3306, 6:SF-Pub.skbsfog-9306, 7:SF-Pri.skbsfog-9306");
+        System.out.println("\t---[251103] java jvPalm.mvSFQH 2 or 6, for develeop notebook+EX-mysql");
+        System.out.println("\t---[251103] java jvPalm.mvSFQH 0 or 4, for develeop palm252 Server+IN-mysql");
+        System.out.println("\t---[251103] java jvPalm.mvSFQH 1 or 5, for opeation Serve+IN-mysql");
     }
 
     public int getArgs(String[] args) {
@@ -430,7 +439,7 @@ public class mvSFM_QueryHistory {
                     selectFromTS = Timestamp.valueOf(makeTS( LocalDateTime.now() ).toLocalDateTime().plusMinutes(-tsRange) );
                     selectToTS = makeTS( LocalDateTime.now() );
                     flagDupProcess = false;
-                    System.out.println(">>mode:1, now-15min, setURL: " + sfjdbcUrl + ":" + myjdbcUrl +"<<");
+                    System.out.println(">>mode:1, now-15min, setURL: " + sfjdbcUrl + ":" + myjdbcUrl + ":" + sfAccount +"<<");
                     System.out.println(">>mode:1, "+selectFromTS+" > "+selectToTS+", no overDUP<<");
                     break;
                 } catch ( Exception e ) {
@@ -479,7 +488,7 @@ public class mvSFM_QueryHistory {
     public static void main(String[] args) {
         System.out.println("Oasis.snowflake.dump.2palm.start---"+ LocalDateTime.now());
 
-        mvSFM_QueryHistory my = new mvSFM_QueryHistory();
+        mvSFQH my = new mvSFQH();
 
         if ( my.getArgs(args) == -1) {
             my.printHelp01();
