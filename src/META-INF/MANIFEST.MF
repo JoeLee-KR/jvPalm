@@ -1,5 +1,5 @@
 Manifest-Version: 1.0
 Main-Class: 
-Class-Path: gson-2.8.9.jar snowflake-jdbc-3.13.33.jar mysql-connector-j-
- 8.0.33.jar mariadb-java-client-3.1.4.jar
+Class-Path: gson-2.8.9.jar snowflake-jdbc-3.14.2.jar snowflake-jdbc-3.13
+ .33.jar mysql-connector-j-8.0.33.jar mariadb-java-client-3.1.4.jar
 

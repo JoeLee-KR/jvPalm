@@ -1,7 +1,7 @@
 ### IntelliJ IDEA ###
 ### JOE
 out/
-keys/
+_keys/
 !**/src/main/**/out/
 !**/src/test/**/out/
 

@@ -1,0 +1,7 @@
+#!/bin/bash
+# if u want to run at terminal as standalone app-start,
+# u 1st set ENV, MUST USE source command as source ./setClasspath, or . ./setClasspath
+export CLASSPATH="\
+/Users/doogie/DevOps/jvPalm/out/artifacts/jvPalm_jar_mf/*:\
+/Users/doogie/DevOps/jvPalm/lib/*\
+"

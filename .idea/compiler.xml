@@ -2,7 +2,8 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <excludeFromCompile>
-      <file url="file://$PROJECT_DIR$/src/jvPalm/argParser4jHello.java" />
+      <directory url="file://$PROJECT_DIR$/src_backup" includeSubdirectories="true" />
+      <directory url="file://$PROJECT_DIR$/src/jvTest" includeSubdirectories="true" />
     </excludeFromCompile>
   </component>
 </project>
