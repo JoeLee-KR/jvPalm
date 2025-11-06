@@ -3,7 +3,7 @@ Prometheus & Grafana study sandbox for private...
 - current work: 
   - with Zulu jdk11 for x64
   - relay data trasfer from  snowflake to mysql (query_history:mvSFQH)
-  - add key-pair to mvSFQH as v2
+  - add key-pair to mvSFQH as v2 (user PALMADMIN@snowflake)
 
 ### toDo
   - find more tables to monitoring... for snowflake
