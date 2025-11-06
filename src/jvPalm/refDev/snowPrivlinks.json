@@ -1,0 +1,82 @@
+[
+  {
+    "host": "jx75304.ap-northeast-2.privatelink.snowflakecomputing.com",
+    "port": 443,
+    "type": "SNOWFLAKE_DEPLOYMENT"
+  },
+  {
+    "host": "atixoaj-skbroadband.privatelink.snowflakecomputing.com",
+    "port": 443,
+    "type": "SNOWFLAKE_DEPLOYMENT_REGIONLESS"
+  },
+  {
+    "host": "sfc-kr-ds1-customer-stage.s3.amazonaws.com",
+    "port": 443,
+    "type": "STAGE"
+  },
+  {
+    "host": "sfc-kr-ds1-customer-stage.s3.ap-northeast-2.amazonaws.com",
+    "port": 443,
+    "type": "STAGE"
+  },
+  {
+    "host": "sfc-kr-ds1-customer-stage.s3-ap-northeast-2.amazonaws.com",
+    "port": 443,
+    "type": "STAGE"
+  },
+  {
+    "host": "sfc-repo.snowflakecomputing.com",
+    "port": 443,
+    "type": "SNOWSQL_REPO"
+  },
+  {
+    "host": "client-telemetry.snowflakecomputing.com",
+    "port": 443,
+    "type": "OUT_OF_BAND_TELEMETRY"
+  },
+  {
+    "host": "ocsp.jx75304.ap-northeast-2.privatelink.snowflakecomputing.com",
+    "port": 80,
+    "type": "OCSP_CACHE"
+  },
+  {
+    "host": "ocsp.atixoaj-skbroadband.privatelink.snowflakecomputing.com",
+    "port": 80,
+    "type": "OCSP_CACHE_REGIONLESS"
+  },
+  {
+    "host": "api-9e33b144.duosecurity.com",
+    "port": 443,
+    "type": "DUO_SECURITY"
+  },
+  {
+    "host": "uw2.devicemanagement.duosecurity.com",
+    "port": 443,
+    "type": "DUO_SECURITY"
+  },
+  {
+    "host": "ec1.devicemanagement.duosecurity.com",
+    "port": 443,
+    "type": "DUO_SECURITY"
+  },
+  {
+    "host": "app-atixoaj-skbroadband.privatelink.snowflakecomputing.com",
+    "port": 443,
+    "type": "SNOWSIGHT_DEPLOYMENT_REGIONLESS"
+  },
+  {
+    "host": "app.ap-northeast-2.privatelink.snowflakecomputing.com",
+    "port": 443,
+    "type": "SNOWSIGHT_DEPLOYMENT"
+  },
+  {
+    "host": "atixoaj-skbroadband.openflow.icnagu.privatelink.snowflakecomputing.com",
+    "port": 443,
+    "type": "OPENFLOW"
+  },
+  {
+    "host": "atixoaj-skbroadband.telemetry.icnagu.ap-northeast-2.privatelink.snowflakecomputing.com",
+    "port": 443,
+    "type": "EXTERNAL_TELEMETRY"
+  }
+]
