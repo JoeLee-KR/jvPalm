@@ -6,12 +6,10 @@ import java.sql.*;
 import java.util.Base64;
 import java.util.Properties;
 import java.lang.Integer;
-import java.io.File;
-import java.io.FileInputStream;
-import java.nio.file.Files;
-import java.security.KeyFactory;
-import java.security.PrivateKey;
-import java.security.spec.PKCS8EncodedKeySpec;
+
+import java.sql.Driver;
+import java.sql.DriverManager;
+import java.util.Enumeration;
 
 //class definition
 public class checkSfJdbcConn {
@@ -20,49 +18,67 @@ public class checkSfJdbcConn {
     Statement sfStmt;
     ResultSet sfRS;
 
-    // more classNames
+    // more some JDBC classNames
     // "com.mysql.cj.jdbc.Driver"
     // "com.snowflake.client.jdbc.SnowflakeDriver" - others snowflake
     // "oracle.jdbc.driver.OracleDriver"
     String driverClassName = "net.snowflake.client.jdbc.SnowflakeDriver";
-    //change this below URL as per your snowflake instance
+
+    // snowflake Endpoint URL: Account-EP
     //String jdbcUrl = "jdbc:snowflake://jx75304.ap-northeast-2.aws.snowflakecomputing.com/";
-    //String jdbcUrl = "jdbc:snowflake://atixoaj-skbroadband.snowflakecomputing.com/";
-    // deprecate atixoaj Oct 2025, new SKB host EP skbsfog Oct 2025
+    // snowflake Endpoint URL: ORG-EP
     //String jdbcUrl = "jdbc:snowflake://skbsfog-skbroadband.snowflakecomputing.com/";
-    // FOR SKB INTERNAL
-    public String jdbcUrl ;
+    // Recommand, use Account-EP URL
     String jdbcUrl00 = "jdbc:snowflake://skbsfog-skbroadband.snowflakecomputing.com/";
     String jdbcUrl01 = "jdbc:snowflake://jx75304.ap-northeast-2.aws.snowflakecomputing.com/";
     String jdbcUrl02 = "jdbc:snowflake://skbsfog-skbroadband.privatelink.snowflakecomputing.com/";
     String jdbcUrl03 = "jdbc:snowflake://jx75304.ap-northeast-2.privatelink.snowflakecomputing.com/";
-    String sfUser = "palmadmin";
-    // String sfPswd = "VNgkgk007";
-    // String sfPswd = "prom0909!!";
-    public String sfAccount ;
+    public String jdbcUrl ;
+
+    String sfUser = "PALMADMIN";
+    // String sfPswd = "SOME_PASSWORD";
+
+    // Recommand, use General Account Name, ACCOUNT_NAME differ to ACCOUNT_URL
+    // ACCOUNT_NAME is jx75304
     String sfAccount00 = "skbsfog-skbroadband";
     String sfAccount01 = "jx75304";
-    String sfAccount02 = "skbsfog-skbroadband";
-    String sfAccount03 = "jx75304";
+    public String sfAccount ;
+
     String sfWarehouse = "WH_PRD_XS";
     String sfDB = "SNOWFLAKE";
-    String sfSchema = "ACCOUNT_USAGE";
-    String sfRole = "ACCOUNTADMIN";
-    //String sfRole = "PRD_USER";
+    //String sfSchema = "ACCOUNT_USAGE";
+    String sfRole = "ACCOUNTADMIN";  // check ROLE, USER has ROLE
+    //String sfRole = "PRD_USER";"
     Properties properties;
 
-    // Statis Using Variables
+    // Statis Using Query String
     String selectSQL = "SELECT CURRENT_VERSION() AS fromJAVA";
 
     //default constructor
     public checkSfJdbcConn() {
         properties = new Properties();
         try{
-            Class.forName( driverClassName );    //snowflake 2
+            Class.forName( driverClassName );    //snowflake
         }catch (Exception e){
             e.printStackTrace();
         }
     }
+
+    // check current used Snowflake JDBC version
+    public void SnowflakeJdbcVersionDetail() {
+        Package pkg = net.snowflake.client.jdbc.SnowflakeDriver.class.getPackage();
+        System.out.println("SNOWFLAKE Driver pkg: " + pkg.getImplementationVersion());
+
+        Enumeration<Driver> drivers = DriverManager.getDrivers();
+        while (drivers.hasMoreElements()) {
+            Driver d = drivers.nextElement();
+            System.out.println("Loaded driver: " + d.getClass().getName() +
+                    "(VER: " + d.getMajorVersion() + "." + d.getMinorVersion() + ") " +
+                    d.getClass().getProtectionDomain().getCodeSource().getLocation()
+            );
+        }
+    }
+
     //entry main method
     public void setConnProperties() {
         //setting properties
@@ -76,17 +92,18 @@ public class checkSfJdbcConn {
         properties.put("ocspFailOpen", "true");
         properties.put("insecureMode", "true");
 
-        properties.put("private_key_file", "../../_keys/rsa_key_nocrypt.p8");
-
+        // WARNING: KEY_PAIR file must located at ./_keys directory of RUNNING BINARY
+        properties.put("private_key_file", "./_keys/key_nocrypt_PALMTEST.p8");
     }
 
     public void getConnection() {
         System.out.println("\t::driver:" + driverClassName );
         System.out.println("\t::connUrl+sfAccount:" + jdbcUrl + "::" + sfAccount );
         System.out.println("\t::checkSql:" + selectSQL );
+        System.out.println("\t::properties.privatekey:" + properties.getProperty("private_key_files"));
         try {
             sfConn = DriverManager.getConnection(jdbcUrl, properties);
-            //System.out.println("\tJOE::Connection established, connection id : " + sfConn);
+            //System.out.println("\tJOE::Connection established, connection : " + sfConn);
 
             sfStmt = sfConn.createStatement();
             sfStmt.executeQuery("ALTER SESSION SET JDBC_QUERY_RESULT_FORMAT='JSON'");
@@ -104,7 +121,7 @@ public class checkSfJdbcConn {
 
             sfRS = sfStmt.executeQuery(selectSQL);
             while(sfRS.next()) {
-                //following rs.getXXX should also change as per your select query
+                //following rs.getXXX should also change aligned used query statement
                 System.out.println("\tCURRENT_VERSION(): " + sfRS.getString("FROMJAVA"));
             }
             int sizeRS = 0;
@@ -131,8 +148,8 @@ public class checkSfJdbcConn {
         System.out.println("Usage: need one arguments");
         System.out.println("0 public: " + jdbcUrl00 +"|"+ sfAccount00);
         System.out.println("1 public: " + jdbcUrl01 +"|"+ sfAccount01);
-        System.out.println("2 private: " + jdbcUrl02 +"|"+ sfAccount02);
-        System.out.println("3 private: " + jdbcUrl03 +"|"+ sfAccount03);
+        System.out.println("2 private: " + jdbcUrl02 +"|"+ sfAccount00);
+        System.out.println("3 private: " + jdbcUrl03 +"|"+ sfAccount01);
     }
 
     int setupJdbcUrl(String[] args){
@@ -148,11 +165,11 @@ public class checkSfJdbcConn {
                     break;
                 case 2: // selected
                     jdbcUrl = jdbcUrl02;
-                    sfAccount = sfAccount02;
+                    sfAccount = sfAccount00;
                     break;
                 case 3: // selected
                     jdbcUrl = jdbcUrl03;
-                    sfAccount = sfAccount03;
+                    sfAccount = sfAccount01;
                     break;
                 default:
                     return (-1);
@@ -170,6 +187,7 @@ public class checkSfJdbcConn {
         System.out.println("w/ocspFailOpen=true, w/insecureMode=true");
 
         checkSfJdbcConn my = new checkSfJdbcConn();
+        my.SnowflakeJdbcVersionDetail();
 
         if ( args.length == 1 ) {
             if (my.setupJdbcUrl(args) != -1) {

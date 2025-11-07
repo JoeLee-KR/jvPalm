@@ -7,17 +7,22 @@ Title: Fetch data at Snowflake, and dump to mysql
 package jvPalm;
 
 import java.sql.*;
+import java.util.Base64;
+import java.util.Properties;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.Properties;
+
+import java.sql.Driver;
+import java.sql.DriverManager;
+import java.util.Enumeration;
 
 //class definition
 public class mvSFQH {
     // Static Fixed Variables
     Connection sfConn;
     Statement sfStmt;
-    PreparedStatement sfpStmt;
     ResultSet sfRS;
+    PreparedStatement sfpStmt;
 
     Connection myConn;
     Statement myStmt;
@@ -28,30 +33,27 @@ public class mvSFQH {
     String classNameJdbcMysql = "com.mysql.cj.jdbc.Driver";
     String classNameJdbcSnowflake = "net.snowflake.client.jdbc.SnowflakeDriver";
 
-    String sfjdbcUrl;
     // FOR PUBLIC INTERNET
     String sfjdbcUrl00 = "jdbc:snowflake://jx75304.ap-northeast-2.aws.snowflakecomputing.com";
     String sfjdbcUrl02 = "jdbc:snowflake://skbsfog-skbroadband.snowflakecomputing.com/";
-
     // FOR SKB INTERNAL PRIVATE NETWORK
     String sfjdbcUrl01 = "jdbc:snowflake://jx75304.ap-northeast-2.privatelink.snowflakecomputing.com/";
     String sfjdbcUrl03 = "jdbc:snowflake://skbsfog-skbroadband.privatelink.snowflakecomputing.com/";
+    String sfjdbcUrl;
 
-    String sfUser = "palmadmin";
-    //String sfPswd = "VNgkgk007";
-    //String sfAccount = "skbsfog-skbroadband";
-    //String sfAccount = "skbsfog";
+    String sfUser = "PALMADMIN";
+    //String sfPswd = "YOUR_PASSWORD";
     String sfAccount = "jx75304";
     String sfWarehouse = "WH_PRD_XS";
     String sfDB = "SNOWFLAKE";
     String sfSchema = "ACCOUNT_USAGE";
-    String sfRole = "ACCOUNTADMIN";
+    String sfRole = "ACCOUNTADMIN"; // check ROLE, USER has ROLE
 
     //String myjdbcUrl = "jdbc:mysql://palmmysqldb:3306/palmdb";
-    // FOR SKB INTERNAL
+    // FOR SKB INTERNAL, 9306 for palm252 dev-pc
+    String myjdbcUrl00 = "jdbc:mysql://palmmysqldb:3306/palmdb";
+    String myjdbcUrl01 = "jdbc:mysql://palmmysqldb:9306/palmdb";
     String myjdbcUrl;
-    String myjdbcUrl01 = "jdbc:mysql://palmmysqldb:3306/palmdb";
-    String myjdbcUrl02 = "jdbc:mysql://palmmysqldb:9306/palmdb";
     String myUser = "palmadm";
     String myPswd = "prom3306!!";
 
@@ -75,11 +77,26 @@ public class mvSFQH {
 
         try{
             Class.forName( classNameJdbcMysql );    //mysql
-            Class.forName( classNameJdbcSnowflake );    //snowflake 2
+            Class.forName( classNameJdbcSnowflake );    //snowflake
         }catch (Exception e){
             e.printStackTrace();
         }
     }  // initiator
+
+    public void SnowflakeJdbcVersionDetail() {
+    // check current used Snowflake JDBC version
+        Package pkg = net.snowflake.client.jdbc.SnowflakeDriver.class.getPackage();
+        System.out.println("SNOWFLAKE Driver pkg: " + pkg.getImplementationVersion());
+
+        Enumeration<Driver> drivers = DriverManager.getDrivers();
+        while (drivers.hasMoreElements()) {
+            Driver d = drivers.nextElement();
+            System.out.println("Loaded driver: " + d.getClass().getName() +
+                    "(VER: " + d.getMajorVersion() + "." + d.getMinorVersion() + ") " +
+                    d.getClass().getProtectionDomain().getCodeSource().getLocation()
+            );
+        }
+    }
 
     public void setQueries(){
         sfselectSQL = "SELECT CURRENT_VERSION() AS fromJAVA";
@@ -187,7 +204,8 @@ public class mvSFQH {
                 // timestamp( date_format(now(), "%Y-%m-%d %H:%i:00")
                 // date_format( timestamp(now()),  '%Y-%m-%d %H:%i:00')
         ")";    // insertQueryHistory
-    } // setQueries
+    } // setQuerie Strings
+
     public void setConnProperties() {
         //setting properties
         properties.put("user", sfUser);
@@ -195,22 +213,19 @@ public class mvSFQH {
         properties.put("account", sfAccount); //account-id followed by cloud region.
         properties.put("warehouse", sfWarehouse);
         properties.put("db", sfDB);
-        properties.put("schema", sfSchema);
+        //properties.put("schema", sfSchema);
         properties.put("role", sfRole);
+        properties.put("ocspFailOpen", "true");
         properties.put("insecureMode", "true");
 
-        properties.put("private_key_file", "../../_keys/rsa_key_nocrypt.p8");
+        // WARNING: KEY_PAIR file must located at ./_keys directory of RUNNING BINARY
+        properties.put("private_key_file", "./_keys/key_nocrypt_PALMTEST.p8");
     }
 
     public void getConnection() {
         try {
             sfConn = DriverManager.getConnection( sfjdbcUrl, properties);
             //System.out.println("\tJOE::Connection SF established, connection id : " + sfConn);
-
-            //sfStmt = sfConn.createStatement();
-            //sfStmt.executeQuery("ALTER SESSION SET JDBC_QUERY_RESULT_FORMAT='JSON'");
-            //System.out.println("\tJOE::Alter Session > JSON statement, object-id : " + sfStmt);
-
         } catch (SQLException exp) {
             exp.printStackTrace();
         }
@@ -218,62 +233,26 @@ public class mvSFQH {
         try {
             myConn = DriverManager.getConnection(myjdbcUrl, myUser, myPswd);
             //System.out.println("\tJOE::Connection MYSQL established, connection id : " + myConn);
-
         } catch (SQLException exp) {
             exp.printStackTrace();
         }
     }
+
     public void closeConnection() {
         try{
             sfpStmt.close();
             sfRS.close();
-            // remark for processQuery00
-            //sfStmt.close();
             sfConn.close();
 
             mypStmt.close();
-            // remark for processQuery00
-            //myRS.close();
-            //myStmt.close();
             myConn.close();
-
         }catch(Exception e){
             e.printStackTrace();
         }
     }
 
-    public void getProcessQuery00() {
-        //System.out.println("\tJOE::selectSQL = " + sfselectSQL);
-        //try-catch block
-        try {
-            sfStmt = sfConn.createStatement();
-            //System.out.println("\tJoe::Got the SF statement object, object-id : " + sfStmt);
-
-            sfRS = sfStmt.executeQuery(sfselectSQL);
-            while(sfRS.next()) {
-                //following rs.getXXX should also change as per your select query
-                System.out.println("\tSnowflake CURRENT_VERSION(): " + sfRS.getString("FROMJAVA"));
-            }
-        } catch (SQLException exp) {
-            exp.printStackTrace();
-        }
-
-        try {
-            myStmt = myConn.createStatement();
-            //System.out.println("\tJoe::Got the MYSQL statement object, object-id : " + myStmt);
-
-            myRS = myStmt.executeQuery(myselectSQL);
-            while(myRS.next()) {
-                //following rs.getXXX should also change as per your select query
-                System.out.println("\tmysql CURRENT_VERSION(): " + myRS.getString("fromJAVA"));
-            }
-        } catch (SQLException exp) {
-            exp.printStackTrace();
-        }
-    }
     public void getProcessQuery01() {
         int progressMark = 0;
-        int progressSuccessCount = 0;
         int firstProgressMark = 1;
 
         try {
@@ -281,15 +260,12 @@ public class mvSFQH {
             sfpStmt = sfConn.prepareStatement(selectQueryHistory);
             sfpStmt.setTimestamp(1, selectFromTS );
             sfpStmt.setTimestamp(2, selectToTS );
-
             sfRS = sfpStmt.executeQuery();
 
             // make insertQueryString with ResultSet of select
             mypStmt = myConn.prepareStatement(insertQueryHistory);
 
-            //System.out.println("\tJoe::Got the statement object, object-id : " + sfpStmt);
             System.out.println("::DB dump start: " + LocalDateTime.now() );
-
             while(sfRS.next()) {
                 progressMark++;
                 if ( progressMark == 10 || progressMark == 100 )
@@ -297,17 +273,6 @@ public class mvSFQH {
                 if ( progressMark % firstProgressMark == 0) System.out.print(".");
                 if ( progressMark % 1000 == 0) System.out.println(":" + progressMark);
                 //following rs.getXXX should also change as per your select query
-
-                /*
-                System.out.print("\t>>getting Row is:");
-                System.out.print("|" + sfRS.getString("QUERY_ID") );
-                System.out.print("|" + sfRS.getTimestamp("START_TIME") );
-                System.out.print("|" + sfRS.getString("USER_NAME") );
-                System.out.print("|" + sfRS.getLong("SESSION_ID") );
-                System.out.print("|" + sfRS.getInt("COMPILATION_TIME") );
-                System.out.print("|" + sfRS.getTimestamp("NOWTS") );
-                System.out.println();
-                */
 
                 // insert to mysql & with collision handle
                 try {
@@ -350,13 +315,6 @@ public class mvSFQH {
                     mypStmt.setTimestamp(29,sfRS.getTimestamp("START_TIME") );
                     // timestamp( date_format(now(), "%Y-%m-%d %H:%i:00")
 
-                    //LOG insert one row...
-                    /*
-                    System.out.println("\t\t>>End at Insert Row:"+sfRS.getString("QUERY_ID")+"|"+
-                            sfRS.getTimestamp("START_TIME") +"|"+
-                            sfRS.getBigDecimal("CREDITS_USED_CLOUD_SERVICES")
-                    );
-                    */
                     mypStmt.executeUpdate();
                 } catch (SQLException exp) {
                     // case with args
@@ -373,7 +331,7 @@ public class mvSFQH {
                         progressMark--;
                         break;
                     }
-                }
+                } // catch
             } //while
             mypStmt.close();
             sfpStmt.close();
@@ -388,19 +346,20 @@ public class mvSFQH {
     public Timestamp makeTS(String strDate){
         return Timestamp.valueOf( LocalDate.parse(strDate).atTime(0,0,0) );
     }
+
     public Timestamp makeTS(LocalDateTime staticDT){
         return Timestamp.valueOf( staticDT );
     }
 
     public int setSFandMyURL(String x){
-        if ( Integer.parseInt( x ) == 0 )         { sfjdbcUrl = sfjdbcUrl00; myjdbcUrl=myjdbcUrl01;}
-        else if ( Integer.parseInt( x ) == 1 )    { sfjdbcUrl = sfjdbcUrl01; myjdbcUrl=myjdbcUrl01;}
-        else if ( Integer.parseInt( x ) == 2 )    { sfjdbcUrl = sfjdbcUrl00; myjdbcUrl=myjdbcUrl02;}
-        else if ( Integer.parseInt( x ) == 3 )    { sfjdbcUrl = sfjdbcUrl01; myjdbcUrl=myjdbcUrl02;}
-        else if ( Integer.parseInt( x ) == 4 )    { sfjdbcUrl = sfjdbcUrl02; myjdbcUrl=myjdbcUrl01;}
-        else if ( Integer.parseInt( x ) == 5 )    { sfjdbcUrl = sfjdbcUrl03; myjdbcUrl=myjdbcUrl02;}
-        else if ( Integer.parseInt( x ) == 6 )    { sfjdbcUrl = sfjdbcUrl02; myjdbcUrl=myjdbcUrl02;}
-        else if ( Integer.parseInt( x ) == 7 )    { sfjdbcUrl = sfjdbcUrl03; myjdbcUrl=myjdbcUrl02;}
+        if ( Integer.parseInt( x ) == 0 )         { sfjdbcUrl = sfjdbcUrl00; myjdbcUrl=myjdbcUrl00;}
+        else if ( Integer.parseInt( x ) == 1 )    { sfjdbcUrl = sfjdbcUrl01; myjdbcUrl=myjdbcUrl00;}
+        else if ( Integer.parseInt( x ) == 2 )    { sfjdbcUrl = sfjdbcUrl00; myjdbcUrl=myjdbcUrl01;}
+        else if ( Integer.parseInt( x ) == 3 )    { sfjdbcUrl = sfjdbcUrl01; myjdbcUrl=myjdbcUrl01;}
+        else if ( Integer.parseInt( x ) == 4 )    { sfjdbcUrl = sfjdbcUrl02; myjdbcUrl=myjdbcUrl00;}
+        else if ( Integer.parseInt( x ) == 5 )    { sfjdbcUrl = sfjdbcUrl03; myjdbcUrl=myjdbcUrl00;}
+        else if ( Integer.parseInt( x ) == 6 )    { sfjdbcUrl = sfjdbcUrl02; myjdbcUrl=myjdbcUrl01;}
+        else if ( Integer.parseInt( x ) == 7 )    { sfjdbcUrl = sfjdbcUrl03; myjdbcUrl=myjdbcUrl01;}
         else return(-1);
         return(0);
     }
@@ -411,23 +370,15 @@ public class mvSFQH {
         System.out.println("\t1 arg: (1)connMode (default now -15 min get");
         System.out.println("\t2 args: (1)connMode, (2)now -X min get");
         System.out.println("\t3 args: (1)connMode, (2)target day, (3)target a Hour (hourly(0..23) or 24 is hole day)");
-        System.out.println("\t---1st arg connMode codemap, with SF Locator URL(jx75304) ---");
+        System.out.println("\t  --1st arg connMode codemap, with SF Locator URL(jx75304) ---");
         System.out.println("\t0:SF-Pub.jx75304-3306, 1:SF-Pri.jx75304-3306, 2:SF-Pub.jx75304-9306, 3:SF-Pri.jx75304-9306");
         System.out.println("\t4:SF-Pub.skbsfog-3306, 5:SF-Pri.skbsfog-3306, 6:SF-Pub.skbsfog-9306, 7:SF-Pri.skbsfog-9306");
-        System.out.println("\t---[251103] java jvPalm.mvSFQH 2 or 6, for develeop notebook+EX-mysql");
-        System.out.println("\t---[251103] java jvPalm.mvSFQH 0 or 4, for develeop palm252 Server+IN-mysql");
-        System.out.println("\t---[251103] java jvPalm.mvSFQH 1 or 5, for opeation Serve+IN-mysql");
+        System.out.println("\t  --[251103] java jvPalm.mvSFQH 2(6), for develeop notebook+EX-mysql");
+        System.out.println("\t  --[251103] java jvPalm.mvSFQH 0(4), for develeop palm252 Server+IN-mysql");
+        System.out.println("\t  --[251103] java jvPalm.mvSFQH 1(5), for opeation Serve+IN-mysql");
     }
 
     public int getArgs(String[] args) {
-        /*
-        System.out.println("<<arg Parsing start----: args.length:" + args.length );
-        if ( args.length == 2 || args.length == 1 || args.length == 0 ) {
-
-        } else {
-            return (-1);
-        }
-        */
         switch(args.length){
             case 0: // minutes now -15, with default URL
                 // printHelp01();
@@ -489,18 +440,16 @@ public class mvSFQH {
         System.out.println("Oasis.snowflake.dump.2palm.start---"+ LocalDateTime.now());
 
         mvSFQH my = new mvSFQH();
+        my.SnowflakeJdbcVersionDetail();
 
         if ( my.getArgs(args) == -1) {
             my.printHelp01();
         } else {
-
             my.setQueries();
             my.setConnProperties();
             my.getConnection();
-            // my.getProcessQuery00();
             my.getProcessQuery01();
             my.closeConnection();
-
         } // args
 
         System.out.println("Oasis.snowflake.dump.2palm.end---"+ LocalDateTime.now());
